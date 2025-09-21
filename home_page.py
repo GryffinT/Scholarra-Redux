@@ -17,18 +17,9 @@ def pad(amount):
         st.title("")
 
 def embed(message, size, center):
-    html_content = f"""
-    <div style="
-        border: 2px solid #314158;
-        background-color: #d3d3d3;
-        padding: 20px;
-        border-radius: 10px;
-        text-align:{'center' if center==1 else 'left'};
-    ">
-        {format_chat(f"{message}", size, center)}
-    </div>
-    """
-    st.markdown(html_content, unsafe_allow_html=True)
+    with st.container():
+        fomrat_chat(f"{message}", size, center)
+        
 
 
 
