@@ -4,6 +4,7 @@ from home_page import display_home
 from home_page import pad
 import os
 from home_page import embed
+from home_page import contain
 
 images_dir = os.path.join(os.path.dirname(__file__), "media")
 logo = [
