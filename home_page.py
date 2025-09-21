@@ -3,6 +3,9 @@ import os
 
 
 def format_chat(message, size, centering):
+    def air(amount):
+        for i in range(amount):
+            st.title("")
     if centering == 1:
         st.markdown(f"""
             <h1 style="font-size:{size}px; text-align:center; font-family:'Josefin Sans', sans-serif;">
@@ -21,9 +24,7 @@ def display_home():
     os.path.join(images_dir, "excel_logo.png"),
     ]
     format_chat("Welcome, User.", 70, 0)
-    st.title("")
-    st.title("")
-    st.title("")
+    air(3)
     format_chat("Smarter study starts here.", 50, 1)
     format_chat("Expand and feed your interests, understanding, and curiosities", 50, 1)
     format_chat("We offer Microsoft Excel prep materials.", 70, 1)
