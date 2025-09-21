@@ -16,25 +16,6 @@ def pad(amount):
     for i in range(amount):
         st.title("")
 
-def embed(message, size, center):
-    with st.container():
-        st.markdown(f"""
-            <div style="
-                border: 2px solid #d3d3d3;
-                background-color: #d3d3d3;
-                padding: 20px;
-                border-radius: 10px;
-            ">
-                {format_chat(message, size, center)}
-            </div>
-        """, unsafe_allow_html=True)
-
-        
-
-
-
-
-
 def format_chat(message, size, centering):
 
     if centering == 1:
@@ -54,6 +35,19 @@ def format_chat(message, size, centering):
             <h1 style="font-size:{size}px; text-align:right; font-family:'Josefin Sans', sans-serif;">
                 {message}
             </h1>
+        """, unsafe_allow_html=True)
+
+def embed(message, size, center):
+    with st.container():
+        st.markdown(f"""
+            <div style="
+                border: 2px solid #d3d3d3;
+                background-color: #d3d3d3;
+                padding: 20px;
+                border-radius: 10px;
+            ">
+                {format_chat(message, size, center)}
+            </div>
         """, unsafe_allow_html=True)
 
 def display_home():
