@@ -31,11 +31,11 @@ def format_chat(message, size, centering):
             </h1>
         """, unsafe_allow_html=True)
     elif centering == 2:
-    st.markdown(f"""
-        <h1 style="font-size:{size}px; text-align:left; font-family:'Josefin Sans', sans-serif;">
-            {message}
-        </h1>
-    """, unsafe_allow_html=True)
+        st.markdown(f"""
+            <h1 style="font-size:{size}px; text-align:left; font-family:'Josefin Sans', sans-serif;">
+                {message}
+            </h1>
+        """, unsafe_allow_html=True)
 
 def display_home():
     format_chat("Welcome, User.", 70, 0)
