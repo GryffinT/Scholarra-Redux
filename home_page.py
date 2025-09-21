@@ -17,17 +17,18 @@ def pad(amount):
         st.title("")
 
 def embed(message, size, center):
-    with st.container():
-        st.markdown("""
-            <div style="
-                border: 2px solid #314158;
-                background-color: #d3d3d3;
-                padding: 20px;
-                border-radius: 10px;
-            ">
-        """, unsafe_allow_html=True)
-        format_chat(message, size, center)
-        st.markdown("</div>", unsafe_allow_html=True)
+    html_content = f"""
+    <div style="
+        border: 2px solid #314158;
+        background-color: #d3d3d3;
+        padding: 20px;
+        border-radius: 10px;
+    ">
+        {format_chat(message, size, center)}
+    </div>
+    """
+    st.markdown(html_content, unsafe_allow_html=True)
+
 
 
 def format_chat(message, size, centering):
