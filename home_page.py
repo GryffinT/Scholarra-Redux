@@ -9,8 +9,10 @@ def display_home():
     format_chat("Expand and feed your interests, understanding, and curiosities", 50)
     st.markdown('<h1 style="font-size:70px; text-align:center;">We offer Microsoft Excel prep materials.</h1>', unsafe_allow_html=True)
     
-    # Correct way to display the image
-    st.markdown('<p style="text-align:center;"><img src="media/excel_logo.png" width="200"></p>', unsafe_allow_html=True)
+    st.markdown(
+    '<p style="text-align:center;"><img src="media/excel_logo.png" width="200"></p>',
+    unsafe_allow_html=True)
+
 
 
 
