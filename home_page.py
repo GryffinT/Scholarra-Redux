@@ -8,7 +8,7 @@ logo = [
 
 def graphic(image):
     st.markdown(
-        f'<p style="text-align:center;"><img src="{logo[image]}" width="200"></p>',
+        f'<p style="text-align:center;"><img src="{st.image(logo[image])}" width="200"></p>',
         unsafe_allow_html=True
     )
 
