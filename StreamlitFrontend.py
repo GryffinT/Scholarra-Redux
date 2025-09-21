@@ -3,6 +3,7 @@ import streamlit as st
 from home_page import display_home
 from home_page import pad
 import os
+from home_page import embed
 
 st.set_page_config(layout="wide")
 
