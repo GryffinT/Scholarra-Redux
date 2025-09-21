@@ -1,37 +1,31 @@
 [theme]
 base = "dark"
 
+# General color setup
 primaryColor="#7b7050"
 backgroundColor="#50505a"
 secondaryBackgroundColor="#3a3a48"
 textColor="#e2e8f0"
 
+# Widgets
 showWidgetBorder = true
 borderColor = "#314158"
+
+# Dataframes
 dataframeHeaderBackgroundColor = "#1d293d"
 
-font = "Comfortaa"
-baseFontWeight = 400
+# Base text
+font = "Josefin Sans"
+baseFontWeight = 300
 baseFontSize = 14
 
-headingFont = "Comfortaa"
-headingFontWeights = [300, 400, 700]
+# Heading text
+headingFont = "Josefin Sans"
+headingFontWeights = [300, 400, 400, 300, 300, 300]
 headingFontSizes = ["2.5rem", "1.5rem", "1rem"]
 
 [[theme.fontFaces]]
-family = "Comfortaa"
+family = "Josefin Sans"
 style = "normal"
-weight = "300"
-url = "https://fonts.gstatic.com/s/comfortaa/v29/1Ptgg87LROyAm0K08i4C9eu0.woff2"
-
-[[theme.fontFaces]]
-family = "Comfortaa"
-style = "normal"
-weight = "400"
-url = "https://fonts.gstatic.com/s/comfortaa/v29/1Ptsg87LROyAm0K08i4C.woff2"
-
-[[theme.fontFaces]]
-family = "Comfortaa"
-style = "normal"
-weight = "700"
-url = "https://fonts.gstatic.com/s/comfortaa/v29/1Ptvg87LROyAm0K08i4C9cS9.woff2"
+weight = "300 700"
+url = "https://fonts.gstatic.com/s/josefinsans/v33/Qw3aZQNVED7rKGKxtqIqX5EUDX5n8A.woff2"
