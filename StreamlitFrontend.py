@@ -21,7 +21,6 @@ selected = option_menu(
 
 if selected == "Home":
     display_home()
-    st.image(logo[0])
 elif selected == "Courses":
     st.title("📚 Browse Courses")
 elif selected == "Search":
