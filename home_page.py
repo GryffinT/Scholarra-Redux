@@ -14,7 +14,8 @@ def contain(*messages):
     
     # Add each message to the div
     for msg, size, align in messages:
-        html_content += f'<p style="text-align:{align}; font-size:{size}px;">{msg}</p>'
+        alignment = ["center", "left", "right"]
+        html_content += f'<p style="text-align:{alignment[align]}; font-size:{size}px;">{msg}</p>'
     
     # Close the div
     html_content += '</div>'
