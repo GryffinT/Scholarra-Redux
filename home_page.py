@@ -1,11 +1,11 @@
 import streamlit as st
 import os
-
+def air(amount):
+    for i in range(amount):
+        st.title("")
 
 def format_chat(message, size, centering):
-    def air(amount):
-        for i in range(amount):
-            st.title("")
+
     if centering == 1:
         st.markdown(f"""
             <h1 style="font-size:{size}px; text-align:center; font-family:'Josefin Sans', sans-serif;">
