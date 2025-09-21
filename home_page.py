@@ -73,6 +73,7 @@ def embed(message, size, centering, extra=None):
 
 
 def display_home():
+    graphic(1, 6)
     format_chat("Smarter study starts here.", 25, 1)
     pad(2)
     format_chat("Expand and feed your interests, understanding, and curiosities", 50, 1)
