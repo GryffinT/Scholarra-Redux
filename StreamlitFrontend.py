@@ -27,12 +27,11 @@ st.set_page_config(layout="wide")
 
 import streamlit as st
 
-# Inject custom CSS to style tabs
 st.markdown("""
     <style>
         div[data-testid="stTabs"] button {
-            font-size: 20px;
-            padding: 12px 24px;
+            font-size: 50px;
+            padding: 12px 60px;
             font-weight: 600;
         }
     </style>
