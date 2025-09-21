@@ -121,11 +121,15 @@ def display_home():
 
     
     with tab1:
-        format_chat("A site redux!", 40, 0)
-        format_chat("We did an entire site-wide redux to improve UI experience and backend work!", 25, 0)
+        contain(
+            ("A site redux!", 40, 0),
+            ("We did an entire site-wide redux to improve UI experience and backend work!", 25, 0)
+        )
     with tab2:
-        format_chat("Meet Laurent", 40, 1)
-        format_chat("The newest member to the Scholarra team! Laurent.FP16, a Logistic Regression Transformer with Float Point 16 precision, can be found on the chat tab!", 25, 1)
+        contain(
+            ("Meet Laurent", 40, 1),
+            ("The newest member to the Scholarra team! Laurent.FP16, a Logistic Regression Transformer with Float Point 16 precision, can be found on the chat tab!", 25, 1)
+        )
     with tab3:
         contain(
             ("Excel, with Scholarra!", 40, 2),
