@@ -25,13 +25,29 @@ st.set_page_config(layout="wide")
 #    elif selected == "Search":
 #    elif selected == "Profile":
 
+import streamlit as st
+
+# Inject custom CSS to style tabs
+st.markdown("""
+    <style>
+        div[data-testid="stTabs"] button {
+            font-size: 20px;
+            padding: 12px 24px;
+            font-weight: 600;
+        }
+    </style>
+""", unsafe_allow_html=True)
+
+# Define tabs
 tab1, tab2, tab3 = st.tabs(["Home", "Courses", "Profile"])
 
 with tab1:
     display_home()
+
 with tab2:
     st.header("A dog")
     st.image("https://static.streamlit.io/examples/dog.jpg", width=200)
+
 with tab3:
     st.header("An owl")
     st.image("https://static.streamlit.io/examples/owl.jpg", width=200)
