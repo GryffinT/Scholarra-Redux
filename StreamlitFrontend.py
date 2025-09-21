@@ -12,18 +12,26 @@ logo = [
 
 st.set_page_config(layout="wide")
 
-selected = option_menu(
-    menu_title=None,
-    options=["Home", "Courses", "Search", "Profile"],
-    icons=["house", "book", "search", "person"],
-    orientation="horizontal",
-)
+#    selected = option_menu(
+#        menu_title=None,
+#        options=["Home", "Courses", "Search", "Profile"],
+#        icons=["house", "book", "search", "person"],
+#        orientation="horizontal",
+#    )
+#    
+#    if selected == "Home":
+#        display_home()
+#    elif selected == "Browse Courses":
+#    elif selected == "Search":
+#    elif selected == "Profile":
 
-if selected == "Home":
+tab1, tab2, tab3 = st.tabs(["Home", "Courses", "Profile"])
+
+with tab1:
     display_home()
-elif selected == "Courses":
-    st.title("📚 Browse Courses")
-elif selected == "Search":
-    st.title("🔍 Search Tool")
-elif selected == "Profile":
-    st.title("👤 Your Profile")
+with tab2:
+    st.header("A dog")
+    st.image("https://static.streamlit.io/examples/dog.jpg", width=200)
+with tab3:
+    st.header("An owl")
+    st.image("https://static.streamlit.io/examples/owl.jpg", width=200)
