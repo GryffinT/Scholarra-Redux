@@ -47,6 +47,7 @@ def display_home():
             <div style="
                 border: 2px solid #314158;
                 background-color: #d3d3d3;
+                border-color: #d3d3d3;
                 padding: 20px;
                 border-radius: 10px;
             ">
