@@ -16,6 +16,20 @@ def pad(amount):
     for i in range(amount):
         st.title("")
 
+def embed(message):
+    with st.container():
+    st.markdown(f"""
+        <div style="
+            border: 2px solid #314158;
+            background-color: #d3d3d3;
+            padding: 20px;
+            border-radius: 10px;
+        ">
+            {format_chat(f"{message}", 70, "left")}
+        </div>
+    """, unsafe_allow_html=True)
+
+
 def format_chat(message, size, centering):
 
     if centering == 1:
@@ -42,21 +56,7 @@ def display_home():
     pad(3)
     format_chat("Smarter study starts here.", 50, 1)
     format_chat("Expand and feed your interests, understanding, and curiosities", 50, 1)
-    with st.container():
-        st.markdown("""
-            <div style="
-                border: 2px solid #314158;
-                background-color: #d3d3d3;
-                border-color: #d3d3d3;
-                padding: 20px;
-                border-radius: 10px;
-            ">
-                <h1 style="font-size:70px; text-align:left; font-family:'Josefin Sans', sans-serif;">
-                    We offer Microsoft Excel prep materials.
-                </h1>
-            </div>
-        """, unsafe_allow_html=True)
-
+    embed("We offer Microsoft Excel prep materials.")
     graphic(0)
     format_chat("New to Scholarra.", 50, 0)
     tab1, tab2, tab3 = st.tabs(["A site redux", "Meet Laurent", "Excel, with Scholarra"])
