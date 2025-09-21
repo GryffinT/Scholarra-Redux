@@ -12,8 +12,5 @@ def display_home():
     # Correct way to display the image
     st.markdown('<p style="text-align:center;"><img src="media/excel_logo.png" width="200"></p>', unsafe_allow_html=True)
 
-display_home()
-
-
 
 
