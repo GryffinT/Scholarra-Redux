@@ -1,14 +1,21 @@
 import streamlit as st
 import os
+import base64
 
 images_dir = os.path.join(os.path.dirname(__file__), "media")
 logo = [
     os.path.join(images_dir, "excel_logo.png")
 ]
 
-def graphic(image):
+def graphic(image_index):
+    image_path = logo[image_index]
+    with open(image_path, "rb") as img_file:
+        encoded = base64.b64encode(img_file.read()).decode()
+
     st.markdown(
-        f'<p style="text-align:center;"><img src="{st.image(logo[image])}" width="200"></p>',
+        f'<p style="text-align:center;">'
+        f'<img src="data:image/png;base64,{encoded}" width="200">'
+        f'</p>',
         unsafe_allow_html=True
     )
 
