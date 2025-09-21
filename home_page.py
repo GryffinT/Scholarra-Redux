@@ -25,7 +25,7 @@ def embed(message, size, center):
         border-radius: 10px;
         text-align:{'center' if center==1 else 'left'};
     ">
-        {format_chat(message, size, center)}
+        {format_chat(f"{message}", size, center)}
     </div>
     """
     st.markdown(html_content, unsafe_allow_html=True)
