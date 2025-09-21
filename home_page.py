@@ -25,12 +25,6 @@ def contain(*messages):
     """, unsafe_allow_html=True)
 
 
-
-
-
- 
-
-
 def graphic(image_index, size):
     image_path = logo[image_index]
     with open(image_path, "rb") as img_file:
