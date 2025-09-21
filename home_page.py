@@ -5,7 +5,7 @@ def format_chat(message, size):
     st.markdown(f'<h1 style="font-size:{size}px">{message}</h1>', unsafe_allow_html=True)
 
 def display_home():
-    images_dir = os.path.join(base_dir, "media")
+    images_dir = os.path.join(os.path.dirname(__file__), "media")
     logo = [
     os.path.join(images_dir, "excel_logo.png"),
     ]
