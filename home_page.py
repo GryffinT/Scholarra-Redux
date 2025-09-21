@@ -24,12 +24,18 @@ def format_chat(message, size, centering):
                 {message}
             </h1>
         """, unsafe_allow_html=True)
-    else:
+    elif centering == 0:
         st.markdown(f"""
             <h1 style="font-size:{size}px; font-family:'Josefin Sans', sans-serif;">
                 {message}
             </h1>
         """, unsafe_allow_html=True)
+    elif centering == 2:
+    st.markdown(f"""
+        <h1 style="font-size:{size}px; text-align:left; font-family:'Josefin Sans', sans-serif;">
+            {message}
+        </h1>
+    """, unsafe_allow_html=True)
 
 def display_home():
     format_chat("Welcome, User.", 70, 0)
@@ -38,7 +44,18 @@ def display_home():
     format_chat("Expand and feed your interests, understanding, and curiosities", 50, 1)
     format_chat("We offer Microsoft Excel prep materials.", 70, 1)
     graphic(0)
-
+    format_chat("New to Scholarra.")
+    tab1, tab2, tab3 = st.tabs(["Redux", "Meet Laurent", "Excel"])
+    
+    with tab1:
+        format_chat("A site redux!", 25, 0)
+        format_chat("We did an entire site-wide redux to improve UI experience and backend work!", 12, 0)
+    with tab2:
+        format_chat("Meet Laurent", 25, 1)
+        format_chat("The newest member to the Scholarra team! Laurent.FP16, a Logistic Regression Transformer with Float Point 16 precision, can be found on the chat tab!", 12, 1)
+    with tab3:
+        format_chat("Excel, with Scholarra!", 25, 2)
+        format_chat("We're pleased to announce that starting now, 9/23/2025, users can now access the Excel prep course through the course tab, free of cost!", 12, 2)
 
 
 
