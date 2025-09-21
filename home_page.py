@@ -37,7 +37,8 @@ def format_chat(message, size, centering):
             </h1>
         """, unsafe_allow_html=True)
 
-def embed(message, size, center):
+def embed(message, size, centering):
+    align = {0: "left", 1: "center", 2: "right"}.get(centering, "left")
     with st.container():
         st.markdown(f"""
             <div style="
@@ -46,9 +47,12 @@ def embed(message, size, center):
                 padding: 20px;
                 border-radius: 10px;
             ">
-                {format_chat(message, size, center)}
+                <h1 style="font-size:{size}px; text-align:{align}; font-family:'Josefin Sans', sans-serif;">
+                    {message}
+                </h1>
             </div>
         """, unsafe_allow_html=True)
+
 
 def display_home():
     format_chat("Welcome, User.", 70, 0)
