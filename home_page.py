@@ -15,7 +15,7 @@ def display_home():
     logo = [
     os.path.join(images_dir, "excel_logo.png"),
     ]
-    format_chat("Welcome, User.", 70)
+    format_chat("Welcome, User.", 70, "left")
     st.title("")
     st.title("")
     st.title("")
