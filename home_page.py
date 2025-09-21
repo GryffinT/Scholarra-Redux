@@ -9,20 +9,22 @@ logo = [
 ]
 
 def contain(*messages):
-    st.markdown("""
+    content = ""
+    for msg, size, align in messages:
+        content += format_chat(msg, size, align)
+
+    st.markdown(f"""
         <div style="
             border: 2px solid #d3d3d3;
             background-color: #d3d3d3;
             padding: 20px;
             border-radius: 10px;
-            margin-bottom: 20px;
         ">
+            {content}
+        </div>
     """, unsafe_allow_html=True)
 
-    for msg, size, align in messages:
-        format_chat(msg, size, align)
 
-    st.markdown("</div>", unsafe_allow_html=True)
 
 
 
