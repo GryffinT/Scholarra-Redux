@@ -1,12 +1,11 @@
 import streamlit as st
 from streamlit_option_menu import option_menu
 
-selected = option_menu(
-    menu_title=None,
-    options=["Home", "Courses", "Search", "Profile"],
-    icons=["house", "book", "search", "person"],
-    orientation="horizontal",
-)
+with st.sidebar:
+    selected = option_menu("Main Menu", ["Home", 'Settings'], 
+        icons=['house', 'gear'], menu_icon="cast", default_index=1)
+    selected
+
 
 st.write(f"You selected: {selected}")
 
