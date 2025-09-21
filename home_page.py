@@ -8,14 +8,14 @@ logo = [
     os.path.join(images_dir, "Scholarra Splotch Logo.png")
 ]
 
-def graphic(image_index):
+def graphic(image_index, size):
     image_path = logo[image_index]
     with open(image_path, "rb") as img_file:
         encoded = base64.b64encode(img_file.read()).decode()
 
     st.markdown(
         f'<p style="text-align:center;">'
-        f'<img src="data:image/png;base64,{encoded}" width="200">'
+        f'<img src="data:image/png;base64,{encoded}" width=f"{size}">'
         f'</p>',
         unsafe_allow_html=True
     )
@@ -73,7 +73,7 @@ def embed(message, size, centering, extra=None):
 
 
 def display_home():
-    graphic(1)
+    graphic(1, 600)
     format_chat("Smarter study starts here.", 25, 1)
     pad(2)
     format_chat("Expand and feed your interests, understanding, and curiosities", 50, 1)
