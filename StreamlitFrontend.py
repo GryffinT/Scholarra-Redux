@@ -30,12 +30,18 @@ import streamlit as st
 st.markdown("""
     <style>
         div[data-testid="stTabs"] button {
-            font-size: 200px;
-            padding: 60px;
+            font-size: 20px;
+            padding: 12px 24px;
             font-weight: 600;
+        }
+
+        .custom-container {
+            padding-left: 33vw;
+            padding-right: 33vw;
         }
     </style>
 """, unsafe_allow_html=True)
+
 
 # Define tabs
 tab1, tab2, tab3 = st.tabs(["Home", "Courses", "Profile"])
