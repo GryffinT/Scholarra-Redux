@@ -23,11 +23,13 @@ def embed(message, size, center):
         background-color: #d3d3d3;
         padding: 20px;
         border-radius: 10px;
+        text-align:{'center' if center==1 else 'left'};
     ">
         {format_chat(message, size, center)}
     </div>
     """
     st.markdown(html_content, unsafe_allow_html=True)
+
 
 
 
