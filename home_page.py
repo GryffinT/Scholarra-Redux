@@ -122,13 +122,13 @@ def display_home():
     
     with tab1:
         contain(
-            ("A site redux!", 40, 0),
-            ("We did an entire site-wide redux to improve UI experience and backend work!", 25, 0)
+            ("A site redux!", 40, 1),
+            ("We did an entire site-wide redux to improve UI experience and backend work!", 25, 1)
         )
     with tab2:
         contain(
-            ("Meet Laurent", 40, 1),
-            ("The newest member to the Scholarra team! Laurent.FP16, a Logistic Regression Transformer with Float Point 16 precision, can be found on the chat tab!", 25, 1)
+            ("Meet Laurent", 40, 0),
+            ("The newest member to the Scholarra team! Laurent.FP16, a Logistic Regression Transformer with Float Point 16 precision, can be found on the chat tab!", 25, 0)
         )
     with tab3:
         contain(
