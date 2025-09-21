@@ -15,7 +15,7 @@ def display_home():
     st.markdown('<h1 style="font-size:70px; text-align:center;">We offer Microsoft Excel prep materials.</h1>', unsafe_allow_html=True)
     
     st.markdown(
-    f'<p style="text-align:center;"><img src="{logo[1]}" width="200"></p>',
+    f'<p style="text-align:center;"><img src="{logo[0]}" width="200"></p>',
     unsafe_allow_html=True)
 
 
