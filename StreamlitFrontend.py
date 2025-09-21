@@ -25,17 +25,16 @@ st.set_page_config(layout="wide")
 #    elif selected == "Search":
 #    elif selected == "Profile":
 
-import streamlit as st
-
 st.markdown("""
     <style>
         div[data-testid="stTabs"] button {
             font-size: 50px;
-            padding: 100px 100px;
+            padding: 4px 100px;  /* vertical = 4px, horizontal = 100px */
             font-weight: 600;
         }
     </style>
 """, unsafe_allow_html=True)
+
 
 
 # Define tabs
