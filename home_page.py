@@ -32,7 +32,7 @@ def format_chat(message, size, centering):
         """, unsafe_allow_html=True)
     elif centering == 2:
         st.markdown(f"""
-            <h1 style="font-size:{size}px; text-align:left; font-family:'Josefin Sans', sans-serif;">
+            <h1 style="font-size:{size}px; text-align:right; font-family:'Josefin Sans', sans-serif;">
                 {message}
             </h1>
         """, unsafe_allow_html=True)
@@ -44,7 +44,7 @@ def display_home():
     format_chat("Expand and feed your interests, understanding, and curiosities", 50, 1)
     format_chat("We offer Microsoft Excel prep materials.", 70, 1)
     graphic(0)
-    format_chat("New to Scholarra.")
+    format_chat("New to Scholarra.", 25, 0)
     tab1, tab2, tab3 = st.tabs(["Redux", "Meet Laurent", "Excel"])
     
     with tab1:
