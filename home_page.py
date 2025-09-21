@@ -1,6 +1,17 @@
 import streamlit as st
 import os
 
+images_dir = os.path.join(os.path.dirname(__file__), "media")
+logo = [
+    os.path.join(images_dir, "excel_logo.png")
+]
+
+def graphic(image):
+    st.markdown(
+        f'<p style="text-align:center;"><img src="{logo[image]}" width="200"></p>',
+        unsafe_allow_html=True
+    )
+
 def pad(amount):
     for i in range(amount):
         st.title("")
@@ -19,20 +30,14 @@ def format_chat(message, size, centering):
                 {message}
             </h1>
         """, unsafe_allow_html=True)
+
 def display_home():
-    images_dir = os.path.join(os.path.dirname(__file__), "media")
-    logo = [
-    os.path.join(images_dir, "excel_logo.png"),
-    ]
     format_chat("Welcome, User.", 70, 0)
     pad(3)
     format_chat("Smarter study starts here.", 50, 1)
     format_chat("Expand and feed your interests, understanding, and curiosities", 50, 1)
     format_chat("We offer Microsoft Excel prep materials.", 70, 1)
-    
-    st.markdown(
-    f'<p style="text-align:center;"><img src="{logo[0]}" width="200"></p>',
-    unsafe_allow_html=True)
+    graphic(0)
 
 
 
