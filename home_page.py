@@ -4,7 +4,7 @@ import base64
 
 images_dir = os.path.join(os.path.dirname(__file__), "media")
 logo = [
-    os.path.join(images_dir, "excel_logo.png")
+    os.path.join(images_dir, "excel_logo.png"),
     os.path.join(iamges_dir, "Scholarra Splotch Logo.png")
 ]
 
