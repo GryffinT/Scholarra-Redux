@@ -44,8 +44,8 @@ def display_home():
     format_chat("Expand and feed your interests, understanding, and curiosities", 50, 1)
     format_chat("We offer Microsoft Excel prep materials.", 70, 1)
     graphic(0)
-    format_chat("New to Scholarra.", 25, 0)
-    tab1, tab2, tab3 = st.tabs(["Redux", "Meet Laurent", "Excel"])
+    format_chat("New to Scholarra.", 50, 0)
+    tab1, tab2, tab3 = st.tabs(["A site redux", "Meet Laurent", "Excel, with Scholarra"])
     
     with tab1:
         format_chat("A site redux!", 25, 0)
