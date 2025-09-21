@@ -10,7 +10,9 @@ def display_home():
     os.path.join(images_dir, "excel_logo.png"),
     ]
     st.markdown('<h1 style="font-size:70px; text-align:center;">Welcome, User.</h1>', unsafe_allow_html=True)
-    st.empty
+    st.title("")
+    st.title("")
+    st.title("")
     st.markdown('<h1 style="font-size:70px; text-align:center;">Smarter study starts here</h1>', unsafe_allow_html=True)
     format_chat("Expand and feed your interests, understanding, and curiosities", 50)
     st.markdown('<h1 style="font-size:70px; text-align:center;">We offer Microsoft Excel prep materials.</h1>', unsafe_allow_html=True)
