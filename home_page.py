@@ -8,14 +8,11 @@ logo = [
     os.path.join(images_dir, "Scholarra Splotch Logo.png")
 ]
 
-def contain(*interior):
+def contain(*messages):
     container = st.container(border=True)
     with container:
-        for item in interior:
-            st.markdown(item, unsafe_allow_html=True)
-
-
-
+        for msg, size, align in messages:
+            format_chat(msg, size, align)
 
 def graphic(image_index, size):
     image_path = logo[image_index]
