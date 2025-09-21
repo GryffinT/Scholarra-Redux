@@ -1,4 +1,5 @@
 import streamlit as st
+import os
 
 def format_chat(message, size):
     st.markdown(f'<h1 style="font-size:{size}px">{message}</h1>', unsafe_allow_html=True)
