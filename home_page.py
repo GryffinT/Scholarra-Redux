@@ -44,37 +44,31 @@ def format_chat(message, size, centering):
             </h1>
         """, unsafe_allow_html=True)
 
-def embed(message, size, centering, extra):
+def embed(message, size, centering, extra=None):
     align = {0: "left", 1: "center", 2: "right"}.get(centering, "left")
-    if extra != 1:
-        with st.container():
-            st.markdown(f"""
-                <div style="
-                    border: 2px solid #d3d3d3;
-                    background-color: #d3d3d3;
-                    padding: 20px;
-                    border-radius: 10px;
-                ">
-                    <h1 style="font-size:{size}px; text-align:{align}; font-family:'Josefin Sans', sans-serif;">
-                        {message}
-                    </h1>
-                    {extra}
-                </div>
-            """, unsafe_allow_html=True)
-    elif extra == 1:
-        with st.container():
-            st.markdown(f"""
-                <div style="
-                    border: 2px solid #d3d3d3;
-                    background-color: #d3d3d3;
-                    padding: 20px;
-                    border-radius: 10px;
-                ">
-                    <h1 style="font-size:{size}px; text-align:{align}; font-family:'Josefin Sans', sans-serif;">
-                        {message}
-                    </h1>
-                </div>
-            """, unsafe_allow_html=True)
+
+    image_html = ""
+    if extra is not None and 0 <= extra < len(logo):
+        image_path = logo[extra]
+        with open(image_path, "rb") as img_file:
+            encoded = base64.b64encode(img_file.read()).decode()
+        image_html = f'<img src="data:image/png;base64,{encoded}" width="200" style="display:block; margin:20px auto;">'
+
+    with st.container():
+        st.markdown(f"""
+            <div style="
+                border: 2px solid #d3d3d3;
+                background-color: #d3d3d3;
+                padding: 20px;
+                border-radius: 10px;
+            ">
+                <h1 style="font-size:{size}px; text-align:{align}; font-family:'Josefin Sans', sans-serif;">
+                    {message}
+                </h1>
+                {image_html}
+            </div>
+        """, unsafe_allow_html=True)
+
 
 
 def display_home():
@@ -82,7 +76,7 @@ def display_home():
     pad(3)
     format_chat("Smarter study starts here.", 50, 1)
     format_chat("Expand and feed your interests, understanding, and curiosities", 50, 1)
-    embed("We offer Microsoft Excel prep materials.", 50, 1, graphic(0))
+    embed("We offer Microsoft Excel prep materials.", 50, 1, 0)
     format_chat("New to Scholarra.", 50, 0)
     tab1, tab2, tab3 = st.tabs(["A site redux", "Meet Laurent", "Excel, with Scholarra"])
     
