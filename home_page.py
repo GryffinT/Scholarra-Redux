@@ -1,4 +1,5 @@
 import streamlit as st
+from media import excel_logo.png
 
 def format_chat(message, size):
   st.markdown(f'<h1 style="font-size:{size}px">{message}</h1>', unsafe_allow_html=True)
@@ -12,6 +13,7 @@ def display_home():
     '<h1 style="font-size:70px; text-align:center;">We offer Microsoft Excel prep materials.</h1>', 
     unsafe_allow_html=True
   )
+  st.image(excel_logo.png)
 
 
 
