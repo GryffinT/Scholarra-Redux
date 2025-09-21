@@ -1,11 +1,20 @@
-import streamlit as st
 from streamlit_option_menu import option_menu
+import streamlit as st
 
-with st.sidebar:
-    selected = option_menu("Main Menu", ["Home", 'Settings'], 
-        icons=['house', 'gear'], menu_icon="cast", default_index=1)
-    selected
+st.set_page_config(layout="wide")
 
+selected = option_menu(
+    menu_title=None,
+    options=["Home", "Courses", "Search", "Profile"],
+    icons=["house", "book", "search", "person"],
+    orientation="horizontal",
+)
 
-st.write(f"You selected: {selected}")
-
+if selected == "Home":
+    st.title("🏠 Welcome to Home")
+elif selected == "Courses":
+    st.title("📚 Browse Courses")
+elif selected == "Search":
+    st.title("🔍 Search Tool")
+elif selected == "Profile":
+    st.title("👤 Your Profile")
