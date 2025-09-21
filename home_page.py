@@ -9,23 +9,19 @@ logo = [
 ]
 
 def contain(*messages):
-    container = st.container()
-    with container:
-        # Start the container div
-        st.markdown(
-            '<div style="border:2px solid black; background-color:#d3d3d3; padding:10px; border-radius:5px;">',
-            unsafe_allow_html=True
-        )
-        
-        # Add each message inside the div
-        for msg, size, align in messages:
-            st.markdown(
-                f'<p style="text-align:{align}; font-size:{size}px;">{msg}</p>',
-                unsafe_allow_html=True
-            )
-        
-        # Close the div
-        st.markdown('</div>', unsafe_allow_html=True)
+    # Start the div with styles
+    html_content = '<div style="border:2px solid black; background-color:#d3d3d3; padding:10px; border-radius:5px;">'
+    
+    # Add each message to the div
+    for msg, size, align in messages:
+        html_content += f'<p style="text-align:{align}; font-size:{size}px;">{msg}</p>'
+    
+    # Close the div
+    html_content += '</div>'
+    
+    # Render everything at once
+    st.markdown(html_content, unsafe_allow_html=True)
+
 
 
 #def contain(*messages):
