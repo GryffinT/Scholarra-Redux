@@ -10,7 +10,7 @@ logo = [
 
 def contain(*messages):
     # Start the div with styles
-    html_content = '<div style="border:2px #d3d3d3; background-color:#FFFFFF; padding:10px; border-radius:5px;">'
+    html_content = '<div style="border:2px solid #d3d3d3; background-color:#FFFFFF; padding:10px; border-radius:5px;">'
     
     # Add each message to the div
     for msg, size, align in messages:
