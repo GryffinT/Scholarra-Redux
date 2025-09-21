@@ -31,6 +31,7 @@ def embed(message, size, center):
 
 
 
+
 def format_chat(message, size, centering):
 
     if centering == 1:
