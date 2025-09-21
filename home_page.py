@@ -10,8 +10,8 @@ logo = [
 
 def contain(interior):
     container = st.container(border=True)
-        with container:
-            interior
+    with container:
+        interior
 
 def graphic(image_index, size):
     image_path = logo[image_index]
