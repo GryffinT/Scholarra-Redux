@@ -30,4 +30,4 @@ headingFontSizes = ["2.5rem", "1.5rem", "1rem"]
 family = "Space Grotesk"
 style = "normal"
 weight = "300 700"
-url = "https://fonts.gstatic.com/s/spacegrotesk/v21/V8mDoQDjQSkFtoMM3T6r8E7mPbF4C_k3HqU.woff2"
+url = "https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap'"
