@@ -12,7 +12,7 @@ selected = option_menu(
 )
 
 if selected == "Home":
-    display_home()
+    home_page.display_home()
 elif selected == "Courses":
     st.title("📚 Browse Courses")
 elif selected == "Search":
