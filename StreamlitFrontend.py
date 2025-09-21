@@ -5,6 +5,11 @@ from home_page import pad
 import os
 from home_page import embed
 
+images_dir = os.path.join(os.path.dirname(__file__), "media")
+logo = [
+    os.path.join(images_dir, "excel_logo.png")
+]
+
 st.set_page_config(layout="wide")
 
 selected = option_menu(
