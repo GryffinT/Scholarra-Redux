@@ -8,10 +8,12 @@ logo = [
     os.path.join(images_dir, "Scholarra Splotch Logo.png")
 ]
 
-def contain(interior):
+def contain(*interior):
     container = st.container(border=True)
     with container:
-        interior
+        for item in interior:
+            item 
+
 
 def graphic(image_index, size):
     image_path = logo[image_index]
@@ -109,9 +111,10 @@ def display_home():
         format_chat("The newest member to the Scholarra team! Laurent.FP16, a Logistic Regression Transformer with Float Point 16 precision, can be found on the chat tab!", 25, 1)
     with tab3:
         contain(
-            format_chat("Excel, with Scholarra!", 40, 2)
+            format_chat("Excel, with Scholarra!", 40, 2),
             format_chat("We're pleased to announce that starting now, 9/23/2025, users can access the Excel prep course through the course tab, free of cost!", 25, 2)
         )
+
 
 
 
