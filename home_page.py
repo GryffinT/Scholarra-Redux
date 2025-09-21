@@ -5,6 +5,7 @@ import base64
 images_dir = os.path.join(os.path.dirname(__file__), "media")
 logo = [
     os.path.join(images_dir, "excel_logo.png")
+    os.path.join(iamges_dir, "Scholarra Splotch Logo.png")
 ]
 
 def graphic(image_index):
@@ -72,7 +73,7 @@ def embed(message, size, centering, extra=None):
 
 
 def display_home():
-    format_chat("Welcome, User.", 70,1)
+    graphic(1)
     format_chat("Smarter study starts here.", 25, 1)
     pad(2)
     format_chat("Expand and feed your interests, understanding, and curiosities", 50, 1)
