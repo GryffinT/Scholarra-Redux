@@ -84,6 +84,17 @@ def display_home():
     pad(2)
     format_chat("New to Scholarra.", 50, 0)
     tab1, tab2, tab3 = st.tabs(["A site redux", "Meet Laurent", "Excel, with Scholarra"])
+
+    st.markdown("""
+        <style>
+            div[data-testid="stTabs"] button {
+                font-size: 50px;
+                padding: 4px 100px;  /* vertical = 4px, horizontal = 100px */
+                font-weight: 600;
+            }
+        </style>
+    """, unsafe_allow_html=True)
+
     
     with tab1:
         format_chat("A site redux!", 40, 0)
