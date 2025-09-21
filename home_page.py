@@ -44,21 +44,37 @@ def format_chat(message, size, centering):
             </h1>
         """, unsafe_allow_html=True)
 
-def embed(message, size, centering):
+def embed(message, size, centering, extra):
     align = {0: "left", 1: "center", 2: "right"}.get(centering, "left")
-    with st.container():
-        st.markdown(f"""
-            <div style="
-                border: 2px solid #d3d3d3;
-                background-color: #d3d3d3;
-                padding: 20px;
-                border-radius: 10px;
-            ">
-                <h1 style="font-size:{size}px; text-align:{align}; font-family:'Josefin Sans', sans-serif;">
-                    {message}
-                </h1>
-            </div>
-        """, unsafe_allow_html=True)
+    if extra:
+        with st.container():
+            st.markdown(f"""
+                <div style="
+                    border: 2px solid #d3d3d3;
+                    background-color: #d3d3d3;
+                    padding: 20px;
+                    border-radius: 10px;
+                ">
+                    <h1 style="font-size:{size}px; text-align:{align}; font-family:'Josefin Sans', sans-serif;">
+                        {message}
+                    </h1>
+                    {extra}
+                </div>
+            """, unsafe_allow_html=True)
+    else:
+        with st.container():
+            st.markdown(f"""
+                <div style="
+                    border: 2px solid #d3d3d3;
+                    background-color: #d3d3d3;
+                    padding: 20px;
+                    border-radius: 10px;
+                ">
+                    <h1 style="font-size:{size}px; text-align:{align}; font-family:'Josefin Sans', sans-serif;">
+                        {message}
+                    </h1>
+                </div>
+            """, unsafe_allow_html=True)
 
 
 def display_home():
