@@ -31,7 +31,7 @@ st.markdown("""
     <style>
         div[data-testid="stTabs"] button {
             font-size: 50px;
-            padding: 50px 50px;
+            padding: 100px 100px;
             font-weight: 600;
         }
     </style>
