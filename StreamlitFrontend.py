@@ -1,5 +1,6 @@
 from streamlit_option_menu import option_menu
 import streamlit as st
+from home_page import display_home
 
 st.set_page_config(layout="wide")
 
@@ -11,7 +12,7 @@ selected = option_menu(
 )
 
 if selected == "Home":
-    st.title("🏠 Welcome to Home")
+    display_home()
 elif selected == "Courses":
     st.title("📚 Browse Courses")
 elif selected == "Search":
