@@ -15,7 +15,7 @@ def graphic(image_index, size):
 
     st.markdown(
         f'<p style="text-align:center;">'
-        f'<img src="data:image/png;base64,{encoded}" width=f"{size}">'
+        f'<img src="data:image/png;base64,{encoded}" width={size}>'
         f'</p>',
         unsafe_allow_html=True
     )
