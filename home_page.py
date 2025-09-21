@@ -18,7 +18,7 @@ def contain(*messages):
             unsafe_allow_html=True
             for msg, size, align in messages:
                 format_chat(msg, size, align)
-    )
+        )
 
 #def contain(*messages):
 #    container = st.container(border=True)
