@@ -18,7 +18,7 @@ def pad(amount):
 
 def embed(message, size, center):
     with st.container():
-        fomrat_chat(f"{message}", size, center)
+        format_chat(f"{message}", size, center)
         
 
 
