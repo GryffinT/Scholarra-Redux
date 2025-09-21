@@ -8,11 +8,21 @@ logo = [
     os.path.join(images_dir, "Scholarra Splotch Logo.png")
 ]
 
-def contain(*messages):
-    container = st.container(border=True)
-    with container:
-        for msg, size, align in messages:
-            format_chat(msg, size, align)
+def contain(*interior):
+    st.markdown("""
+        <div style="
+            border: 2px solid #d3d3d3;
+            background-color: #d3d3d3;
+            padding: 20px;
+            border-radius: 10px;
+        ">
+    """, unsafe_allow_html=True)
+
+    for item in interior:
+        st.markdown(item, unsafe_allow_html=True)
+
+    st.markdown("</div>", unsafe_allow_html=True)
+
  
 
 
@@ -112,9 +122,10 @@ def display_home():
         format_chat("The newest member to the Scholarra team! Laurent.FP16, a Logistic Regression Transformer with Float Point 16 precision, can be found on the chat tab!", 25, 1)
     with tab3:
         contain(
-            ("Excel, with Scholarra!", 40, 2),
-            ("Starting now, 9/23/2025, users can access the Excel prep course free of cost!", 25, 2)
+            format_chat("Excel, with Scholarra!", 40, 2),
+            format_chat("Starting now, 9/23/2025, users can access the Excel prep course free of cost!", 25, 2)
         )
+
 
 
 
