@@ -101,13 +101,10 @@ def embed(message, size, centering, extra=None):
 
     key = f"button_{message}"
 
-    # CSS for hover box
-    css = f'''
+    # CSS to style the Streamlit button like the box
+    st.markdown(f'''
     <style>
     div.stButton > button#{key} {{
-        all: unset;
-    }}
-    .hover-box-btn > button {{
         all: unset;
         display: block;
         width: 100%;
@@ -120,32 +117,22 @@ def embed(message, size, centering, extra=None):
         transition: all 0.3s ease;
         text-align: {align};
     }}
-    .hover-box-btn > button:hover {{
+    div.stButton > button#{key}:hover {{
         transform: scale(1.02);
         background-color: #e0e0ff;
         border-color: #888;
     }}
-    .hover-box-btn h1 {{
+    div.stButton > button#{key} h1 {{
         font-size: {size}px;
         font-family: 'Josefin Sans', sans-serif;
         margin: 0;
     }}
     </style>
-    '''
-    st.markdown(css, unsafe_allow_html=True)
+    ''', unsafe_allow_html=True)
 
-
-
-    # Visible styled box
-    html_box = f'''
-    <div class="hover-box-btn">
-        <button id="{key}">
-            <h1>{message}</h1>
-            {image_html}
-        </button>
-    </div>
-    '''
-    st.markdown(html_box, unsafe_allow_html=True)
+    # Streamlit button that **looks like your box** and triggers Python
+    if st.button(label=f'<h1>{message}</h1>{image_html}', key=key, unsafe_allow_html=True):
+        display_course()
     
 def display_home():
     
