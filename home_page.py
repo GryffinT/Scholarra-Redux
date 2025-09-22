@@ -66,12 +66,6 @@ def format_chat(message, size, centering):
             </h1>
         """, unsafe_allow_html=True)
 
-import streamlit as st
-import base64
-
-def display_course():
-    st.success("✅ display_course() triggered!")
-
 def embed(message, size, centering, extra=None):
     align = {0: "left", 1: "center", 2: "right"}.get(centering, "left")
 
@@ -120,7 +114,7 @@ def embed(message, size, centering, extra=None):
 
     # Detect click via query param
     if st.query_params.get("click") == [key]:
-        display_course()
+        print("Clicked")
         # Clear the parameter to allow future clicks
         st.query_params = {}
     
