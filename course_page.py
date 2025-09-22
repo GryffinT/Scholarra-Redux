@@ -13,7 +13,7 @@ medias = [
     
 ]
 
-def navigation_buttons():
+def navigation_buttons(id1,id2):
     if "prog" not in st.session_state:
         st.session_state.prog = 1
     # CSS styling for buttons
@@ -36,14 +36,14 @@ def navigation_buttons():
 
     # Back button (left)
     with col1:
-        if st.button("Back"):
+        if st.button("Back", key=id1):
             st.session_state.prog -= 1
 
     # Spacer column col2 does nothing (just stretches space)
 
     # Next button (right)
     with col3:
-        if st.button("Next"):
+        if st.button("Next", key=id2):
             st.session_state.prog += 1
 
     # Display current value centered
@@ -151,7 +151,7 @@ def display_course():
         )
         st.audio(medias[3])
         st.pdf(medias[4])
-        navigation_buttons()
+        navigation_buttons(1,2)
 
         
     with tab2:
