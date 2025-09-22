@@ -105,31 +105,44 @@ def display_home():
     st.markdown(
         f"""
         <style>
-        .banner {{
+        .banner-wrapper {{
+            position: relative;
             width: 100%;
-            height: 200px;  /* slice height */
+            height: 200px;
             background-image: url("data:image/png;base64,{encoded}");
-            background-size: cover;     /* scale image */
-            background-position: center; /* center slice */
+            background-size: cover;
+            background-position: center;
             background-repeat: no-repeat;
+            overflow: hidden;
+        }}
+        .banner-foreground {{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 200px;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
-            color: white;  /* optional: text color */
-            font-size: 32px; /* optional: banner text size */
-            font-weight: bold;
+            z-index: 2;
         }}
         </style>
-        <div class="banner">
-            Smarter study starts here.
+    
+        <div class="banner-wrapper">
+            <div class="banner-foreground" id="banner-foreground"></div>
         </div>
         """,
         unsafe_allow_html=True
     )
-    pad(2)
     
-    graphic(1, 600)
-    format_chat("Smarter study starts here.", 25, 1)
+    # Create a container tied to that foreground div
+    foreground = st.container()
+    
+    with foreground:
+        graphic(1, 600)
+        format_chat("Smarter study starts here.", 25, 1)
+        
     pad(2)
     format_chat("Expand and feed your interests, understanding, and curiosities", 50, 1)
     format_chat("Through Scholarra you can take courses and learn with Laurent", 25, 1)
