@@ -6,6 +6,7 @@ import os
 from home_page import embed
 from home_page import contain
 from course_page import display_course
+import time
 
 images_dir = os.path.join(os.path.dirname(__file__), "media")
 logo = [
