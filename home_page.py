@@ -76,19 +76,6 @@ def format_chat(message, size, centering):
 def display_course():
     st.success("✅ display_course() triggered!")
 
-
-import streamlit as st
-import base64
-
-def display_course():
-    st.success("✅ display_course() has been triggered!")
-
-import streamlit as st
-import base64
-
-def display_course():
-    st.success("✅ display_course() has been triggered!")
-
 def embed(message, size, centering, extra=None):
     align = {0: "left", 1: "center", 2: "right"}.get(centering, "left")
 
@@ -99,39 +86,45 @@ def embed(message, size, centering, extra=None):
             encoded = base64.b64encode(img_file.read()).decode()
         image_html = f'<img src="data:image/png;base64,{encoded}" width="200" style="display:block; margin:20px auto;">'
 
-    key = f"button_{message}"
+    # Unique key to track click
+    key = str(uuid.uuid4())
+    if key not in st.session_state:
+        st.session_state[key] = False
 
-    # CSS to style the Streamlit button like the box
+    # CSS + HTML
     st.markdown(f'''
     <style>
-    div.stButton > button#{key} {{
-        all: unset;
-        display: block;
-        width: 100%;
-        cursor: pointer;
-        border-radius: 10px;
+    .hover-box {{
         border: 2px solid #d3d3d3;
         background-color: #d3d3d3;
         padding: 20px;
-        box-sizing: border-box;
+        border-radius: 10px;
         transition: all 0.3s ease;
+        cursor: pointer;
         text-align: {align};
     }}
-    div.stButton > button#{key}:hover {{
+    .hover-box:hover {{
         transform: scale(1.02);
         background-color: #e0e0ff;
         border-color: #888;
     }}
-    div.stButton > button#{key} h1 {{
+    .hover-box h1 {{
         font-size: {size}px;
         font-family: 'Josefin Sans', sans-serif;
         margin: 0;
     }}
     </style>
+    <div class="hover-box" onclick="document.getElementById('{key}').click();">
+        <h1>{message}</h1>
+        {image_html}
+    </div>
+    <form>
+        <input type="submit" id="{key}" style="display:none;">
+    </form>
     ''', unsafe_allow_html=True)
 
-    # Streamlit button that **looks like your box** and triggers Python
-    if st.button(label=f'<h1>{message}</h1>{image_html}', key=key, unsafe_allow_html=True):
+    # Detect if hidden submit clicked
+    if st.button("", key=key):
         display_course()
     
 def display_home():
