@@ -111,8 +111,8 @@ def display_home():
             position: fixed;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 200px;
+            width: 50%;
+            height: 50px;
             background-image: url("data:image/png;base64,{encoded}");
             background-size: cover;
             background-position: center;
