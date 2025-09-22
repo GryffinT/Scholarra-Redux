@@ -3,64 +3,64 @@ import streamlit as st
 
 def display_course():
     
-    # Unique key to detect click
-    if "box_clicked" not in st.session_state:
-        st.session_state.box_clicked = False
+    with open(logo[2], "rb") as image_file:
+        bg_encoded = base64.b64encode(image_file.read()).decode()
     
-    # Inject CSS + JS
+    with open(logo[1], "rb") as image_file:
+        fg_encoded = base64.b64encode(image_file.read()).decode()
+    
     st.markdown(
-        """
+        f"""
         <style>
-        .expand-box {
-            display: inline-block;
-            background-color: #f0f0f0;
-            border: 2px solid #ccc;
-            border-radius: 10px;
-            padding: 20px;
-            text-align: center;
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-        .expand-box:hover {
-            transform: scale(1.1);
-            background-color: #e0e0ff;
-            border-color: #888;
-        }
+        /* Background banner */
+        .banner-wrapper {{
+            position: relative;
+            width: 100%;
+            height: 600px; /* background height */
+            background-image: url("data:image/png;base64,{bg_encoded}");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            overflow: hidden;
+        }}
+    
+        /* Foreground content */
+        .banner-foreground {{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 400px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 2;
+        }}
+    
+        /* Foreground logo (adjust size here) */
+        .banner-foreground img {{
+            width: 600px;   /* change foreground size independently */
+            height: auto;   /* keep aspect ratio */
+            margin-bottom: 10px;
+        }}
+    
+        /* Foreground text */
+        .banner-foreground p {{
+            font-size: 25px;
+            font-weight: 700;
+            color: white;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.6);
+            margin: 0;
+        }}
         </style>
     
-        <script>
-        function sendClick() {
-            const streamlitEvent = new Event("streamlit:custom_click");
-            window.parent.document.dispatchEvent(streamlitEvent);
-        }
-        </script>
-    
-        <div class="expand-box" onclick="sendClick()">
-            🚀 Hover & Click Me
+        <div class="banner-wrapper">
+            <div class="banner-foreground">
+                <img src="data:image/png;base64,{fg_encoded}">
+                <p>Smarter study starts here.</p>
+            </div>
         </div>
         """,
-        unsafe_allow_html=True,
+        unsafe_allow_html=True
     )
-    
-    # Listen for the JS event and set a flag
-    clicked = st.session_state.box_clicked
-    st.markdown(
-        """
-        <script>
-        const doc = window.parent.document;
-        doc.addEventListener("streamlit:custom_click", function() {
-            fetch("/_stcore/streamlit_set_value", {
-                method: "POST",
-                body: JSON.stringify({key: "box_clicked", value: true}),
-                headers: {"Content-Type": "application/json"}
-            });
-        });
-        </script>
-        """,
-        unsafe_allow_html=True,
-    )
-    
-    # Check if it was clicked
-    if st.session_state.box_clicked:
-        st.success("✅ You clicked the expanding box!")
-        st.session_state.box_clicked = False  # reset after click
