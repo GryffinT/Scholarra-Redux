@@ -91,58 +91,45 @@ def embed(message, size, centering, extra=None):
             encoded = base64.b64encode(img_file.read()).decode()
         image_html = f'<img src="data:image/png;base64,{encoded}" width="200" style="display:block; margin:20px auto;">'
 
-    # Unique ID for this box
-    box_id = f"box_{uuid.uuid4().hex}"
-
-    # Prepare JS for click event safely
-    js_click = f"""
-    <script>
-    const box = document.getElementById("{box_id}");
-    box.onclick = () => {{
-        fetch("/_stcore/streamlit_set_value", {{
-            method: "POST",
-            headers: {{"Content-Type": "application/json"}},
-            body: JSON.stringify({{"key": "{box_id}_clicked", "value": true}})
-        }});
-    }};
-    </script>
-    """
-
-    # CSS + HTML
-    st.markdown(f"""
+    # Add CSS for hover effect
+    st.markdown(
+        """
         <style>
-        #{box_id} {{
+        .hover-box {
             border: 2px solid #d3d3d3;
             background-color: #d3d3d3;
             padding: 20px;
             border-radius: 10px;
             transition: all 0.3s ease;
-            cursor: pointer;
             width: 100%;
             box-sizing: border-box;
-        }}
-        #{box_id}:hover {{
+        }
+        .hover-box:hover {
             transform: scale(1.02);
             background-color: #e0e0ff;
             border-color: #888;
-        }}
+        }
         </style>
+        """,
+        unsafe_allow_html=True,
+    )
 
-        <div id="{box_id}">
+    # Use a Streamlit button with container styling
+    if st.button("", key=message):
+        display_course()
+
+    # Render the styled div as visual
+    st.markdown(
+        f"""
+        <div class="hover-box">
             <h1 style="font-size:{size}px; text-align:{align}; font-family:'Josefin Sans', sans-serif;">
                 {message}
             </h1>
             {image_html}
         </div>
-
-        {js_click}
-    """, unsafe_allow_html=True)
-
-    # Check if clicked
-    if st.session_state.get(f"{box_id}_clicked", False):
-        display_course()
-        st.session_state[f"{box_id}_clicked"] = False
-
+        """,
+        unsafe_allow_html=True,
+    )
 
 
 def display_home():
