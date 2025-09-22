@@ -16,8 +16,8 @@ def navigation_buttons():
         <style>
         div.stButton > button {
             background-color: #FFFFFF;
-            color: white;
-            border: 2px solid #000000;
+            color: black;
+            border: 2px solid #e6e6e6;
             border-radius: 5px;
             padding: 8px 20px;
             font-size: 16px;
