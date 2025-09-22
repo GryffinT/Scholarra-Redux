@@ -30,7 +30,7 @@ def display_course():
                 height: 800px;
                 background-image: url("data:image/png;base64,{bg_encoded}");
                 background-size: cover;
-                background-position: center top;
+                background-position: center bottom;
                 background-repeat: no-repeat;
                 overflow: hidden;
             }}
