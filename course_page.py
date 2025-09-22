@@ -82,7 +82,7 @@ def navigation_buttons(id1,id2):
             st.rerun()
 
     # Display current value centered
-    st.markdown(f"<h3 style='text-align:center;'>Current prog: {st.session_state.prog}</h3>", unsafe_allow_html=True)
+    st.progress_bar(st.session_state.prog, width=stretch)
 
 def contain(*messages):
     # Start the div with styles
