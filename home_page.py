@@ -98,7 +98,7 @@ def embed(message, size, centering, extra=None):
 
 
 def display_home():
-    st.image(logo[2])
+    st.image(logo[2], use_column_width=True)
     pad(2)
     graphic(1, 600)
     format_chat("Smarter study starts here.", 25, 1)
