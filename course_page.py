@@ -225,7 +225,6 @@ def display_course():
         elif st.session_state.prog == 2:
             url_video_func("https://www.youtube.com/watch?v=EaS2Ooe9BNc&t=67s", "Kevin Stratvert", "How to import PDF into Excel" )
             url_video_func("https://www.youtube.com/watch?v=ebnNy5yEkvc", "ProgrammingKnowledge2", "How to Import CSV File Into Excel")
-            take_quiz(assessments.lesson_1_quiz, "Lesson 1")
             navigation_buttons(3,4)
         elif st.session_state.prog == 3:
             contain(
