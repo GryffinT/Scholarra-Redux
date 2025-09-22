@@ -149,6 +149,7 @@ def display_course():
         )
         st.audio(medias[3])
         st.pdf(medias[4])
+        st.write("s")
         navigation_buttons(1,2)
 
         
