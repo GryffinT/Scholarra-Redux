@@ -99,13 +99,16 @@ def embed(message, size, centering, extra=None):
 
 def display_home():
     
-    background_image_url = "https://images.unsplash.com/photo-1616627981734-6b3c1c3b3e6d?auto=format&fit=crop&w=1920&q=80"
+    # Load and encode image
+    with open(logo[2], "rb") as image_file:
+        encoded = base64.b64encode(image_file.read()).decode()
     
+    # Inject CSS with base64 background
     st.markdown(
         f"""
         <style>
         .stApp {{
-            background-image: url('{background_image_url}');
+            background-image: url("data:image/png;base64,{encoded}");
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
