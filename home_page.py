@@ -82,7 +82,6 @@ def embed(message, size, centering, extra=None):
 
     # Build URL with query parameter
     query = st.query_params
-    url = f"?click={key}"
 
     # CSS for hover box
     st.markdown(f'''
