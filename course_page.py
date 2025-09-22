@@ -149,8 +149,8 @@ def display_course():
             ("Welcome! We're so glad you've chosen to enroll in our excel prep program! Feel free to look through the course syllabus. Once done scroll down and click next.", 25, 0)
         )
         st.audio(medias[3])
-        st.pdf(medias[4])
         st.pdf(medias[5])
+        st.pdf(medias[4])
         navigation_buttons(1,2)
 
         
