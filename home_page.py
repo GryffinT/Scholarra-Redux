@@ -126,7 +126,7 @@ def display_home():
             top: 0;
             left: 0;
             width: 100%;
-            height: 400px;
+            height: 800px;
             display: flex;
             flex-direction: column;
             align-items: center;
