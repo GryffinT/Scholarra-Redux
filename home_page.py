@@ -106,24 +106,22 @@ def display_home():
     st.markdown(
         f"""
         <style>
-        .top-banner {{
+        .banner {{
             position: fixed;
             top: 0;
             left: 0;
-            width: 100%;
+            width: 100vw;
             height: 200px;
             background-image: url("data:image/png;base64,{encoded}");
             background-size: cover;
-            background-color: #FFFFF;
             background-position: center;
-            background-repeat: no-repeat;
             z-index: -1;
         }}
         .stApp {{
-            padding-top: 200px;
+            margin-top: 200px;
         }}
         </style>
-        <div class="top-banner"></div>
+        <div class="banner"></div>
         """,
         unsafe_allow_html=True
     )
