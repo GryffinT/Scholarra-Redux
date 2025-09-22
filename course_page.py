@@ -15,7 +15,7 @@ medias = [
 ]
 
 def url_video_func(url, name, video_title):
-    contain((video_title))
+    contain((video_title), 1)
     st.video(url)
     video_credit_expander = st.expander("Video credit")
     with video_credit_expander:
