@@ -106,22 +106,21 @@ def display_home():
     st.markdown(
         f"""
         <style>
-        .banner {{
+        .center-banner {{
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80vw;
             height: 200px;
             background-image: url("data:image/png;base64,{encoded}");
             background-size: cover;
             background-position: center;
+            background-repeat: no-repeat;
             z-index: -1;
         }}
-        .stApp {{
-            margin-top: 200px;
-        }}
         </style>
-        <div class="banner"></div>
+        <div class="center-banner"></div>
         """,
         unsafe_allow_html=True
     )
