@@ -11,7 +11,7 @@ logo = [
 ]
 
 def navigation_buttons():
-    # CSS styling for buttons
+    # CSS for button styling
     st.markdown("""
         <style>
         div.stButton > button {
@@ -26,19 +26,24 @@ def navigation_buttons():
         </style>
     """, unsafe_allow_html=True)
 
-    # Two buttons in columns: Back left, Next right
+    # Two columns: Back left, Next right
     col1, col2 = st.columns([1, 1])
+
+    # Back button in left column (left-aligned by default)
     with col1:
         if st.button("Back"):
             st.session_state.prog -= 1
 
+    # Next button in right column, aligned to the right using container
     with col2:
-        st.markdown("<div style='text-align:right'>", unsafe_allow_html=True)
-        if st.button("Next", key="next"):
-            st.session_state.prog += 1
-        st.markdown("</div>", unsafe_allow_html=True)
+        right_container = st.container()
+        with right_container:
+            st.markdown("<div style='text-align: right;'>", unsafe_allow_html=True)
+            if st.button("Next", key="next"):
+                st.session_state.prog += 1
+            st.markdown("</div>", unsafe_allow_html=True)
 
-    # Display current value
+    # Display current value centered
     st.markdown(f"<h3 style='text-align:center;'>Current prog: {st.session_state.prog}</h3>", unsafe_allow_html=True)
 
 def contain(*messages):
