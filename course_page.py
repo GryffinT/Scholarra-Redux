@@ -7,8 +7,8 @@ medias = [
     os.path.join(images_dir, "excel_medias.png"),
     os.path.join(images_dir, "scholarracourselogo.png"),
     os.path.join(images_dir, "courseimage.jpg"),
-    os.path.join(images_dir, "Syllabus TTS.mp3")
-    os.path.join(images_dir, "mo-200-microsoft-excel-2019-skills.measured (2).pdf)
+    os.path.join(images_dir, "Syllabus TTS.mp3"),
+    os.path.join(images_dir, "mo-200-microsoft-excel-2019-skills.measured (2).pdf")
     
 ]
 
