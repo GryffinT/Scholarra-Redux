@@ -4,6 +4,20 @@ import streamlit as st
 from Main_classification import render_sidebar
 from Main_generative import output
 
+def contain(*messages):
+    # Start the div with styles
+    html_content = '<div style="border:2px solid #e6e6e6; background-color:#FFFFFF; padding:10px; border-radius:10px;">'
+    
+    # Add each message to the div
+    for msg, size, align in messages:
+        alignment = ["center", "left", "right"]
+        html_content += f'<p style="text-align:{alignment[align]}; font-size:{size}px;">{msg}</p>'
+    
+    # Close the div
+    html_content += '</div>'
+    
+    # Render everything at once
+    st.markdown(html_content, unsafe_allow_html=True)
 
 def display_ai():
     # -------------------------
