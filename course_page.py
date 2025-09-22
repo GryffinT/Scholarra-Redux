@@ -10,7 +10,8 @@ medias = [
     os.path.join(images_dir, "courseimage.jpg"),
     os.path.join(images_dir, "Syllabus TTS.mp3"),
     os.path.join(images_dir, "mo-200-microsoft-excel-2019-skills-measured (2).pdf"),
-    os.path.join(images_dir, "Excel-Fundamentals-Manual.pdf")
+    os.path.join(images_dir, "Excel-Fundamentals-Manual.pdf"),
+    os.path.join(images_dir, "cat.png")
     
 ]
 
@@ -276,6 +277,7 @@ def display_course():
         contain(("Nothing to see here..", 40, 0),
                 ("We're still working on this course. In the mean time, look after this guy.", 25, 0)
         )
+        st.image(medias[6])
 
 
 
