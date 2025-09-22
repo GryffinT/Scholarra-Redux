@@ -1,5 +1,6 @@
 import streamlit as st
 import os
+import base64
 
 images_dir = os.path.join(os.path.dirname(__file__), "media")
 logo = [
