@@ -102,32 +102,31 @@ def display_home():
     # Load and encode image
     with open(logo[2], "rb") as image_file:
         encoded = base64.b64encode(image_file.read()).decode()
-    
     st.markdown(
         f"""
         <style>
-        .page-banner {{
-            position: absolute;
-            top: 200px;
-            left: 0;
-            width: 100vw;
-            height: calc(100vh - 500px); /* 200px from top + 300px from bottom */
+        .banner {{
+            width: 100%;
+            height: 200px;  /* slice height */
             background-image: url("data:image/png;base64,{encoded}");
-            background-size: cover;
-            background-position: center;
+            background-size: cover;     /* scale image */
+            background-position: center; /* center slice */
             background-repeat: no-repeat;
-            z-index: -1;
-            pointer-events: none;
-        }}
-        .stApp {{
-            position: relative;
-            background-color: transparent;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;  /* optional: text color */
+            font-size: 32px; /* optional: banner text size */
+            font-weight: bold;
         }}
         </style>
-        <div class="page-banner"></div>
+        <div class="banner">
+            Smarter study starts here.
+        </div>
         """,
         unsafe_allow_html=True
     )
+    
     pad(2)
     graphic(1, 600)
     format_chat("Smarter study starts here.", 25, 1)
