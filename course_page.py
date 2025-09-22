@@ -1,5 +1,5 @@
-
 import streamlit as st
+import os
 
 images_dir = os.path.join(os.path.dirname(__file__), "media")
 logo = [
