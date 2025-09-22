@@ -117,10 +117,11 @@ def display_home():
             background-position: center;
             background-repeat: no-repeat;
             z-index: -1;
-            pointer-events: none; /* allows clicks to pass through */
+            pointer-events: none;
         }}
         .stApp {{
             position: relative;
+            background-color: transparent;
         }}
         </style>
         <div class="page-banner"></div>
