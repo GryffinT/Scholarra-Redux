@@ -251,6 +251,7 @@ def display_course():
             url_video_func("https://www.youtube.com/watch?v=FwI46frGd9k", "KnowWithBeau", "Excel MOS 2.2.6 Apply cell formats from the Format Cells dialog box - KwB")
             url_video_func("https://www.youtube.com/watch?v=YSsQmEPFNaI", "Simon Sez IT", "Using Cell Styles in Excel")
             url_video_func("https://www.youtube.com/watch?v=B9ol_9_QmJU", "ExcelHow Tech", "How to Clear Cell Contents and Formatting")
+            navigation_buttons(9,10)
         elif st.session_state.prog == 8:
             contain(("Lesson 6, manipulating data in worksheets", 40, 0),
                     ("In this lesson, you’ll learn how to paste data by using special paste options, fill cells efficiently with Auto Fill, and insert or delete multiple columns, rows, or individual cells. These skills will help you manage and organize data more effectively, saving time while ensuring your worksheets remain accurate and well-structured.", 40, 0)
@@ -258,6 +259,7 @@ def display_course():
             url_video_func("https://www.youtube.com/watch?v=_ODK4XW-aNs", "HowcastTechGadgets", "How to Use Paste Special | Microsoft Excel")
             url_video_func("https://www.youtube.com/watch?v=HMXLU9TGogc", "Excel Tutorials by EasyClick Academy", "How to Use AutoFill in Excel (Best Practices)")
             url_video_func("https://www.youtube.com/watch?v=JvSoAAkcWyY", "Microsoft 365", "How to insert or delete rows and columns in Microsoft Excel")
+            navigation_buttons(11,12)
 
 
 
