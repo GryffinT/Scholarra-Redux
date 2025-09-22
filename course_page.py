@@ -82,7 +82,7 @@ def navigation_buttons(id1,id2):
             st.rerun()
 
     # Display current value centered
-    st.progress(st.session_state.prog, width=9)
+    st.progress(st.session_state.prog, width="stretch")
 
 def contain(*messages):
     # Start the div with styles
