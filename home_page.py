@@ -136,7 +136,7 @@ def display_home():
     
         /* Foreground logo (adjust size here) */
         .banner-foreground img {{
-            width: 200px;   /* change foreground size independently */
+            width: 400px;   /* change foreground size independently */
             height: auto;   /* keep aspect ratio */
             margin-bottom: 10px;
         }}
