@@ -5,6 +5,7 @@ import uuid
 import json
 from course_page import display_course
 from urllib.parse import urlencode
+from StreamlitFrontend import st.session_state.page
 
 
 images_dir = os.path.join(os.path.dirname(__file__), "media")
@@ -119,109 +120,110 @@ def embed(message, size, centering, extra=None):
         st.query_params = {}
     
 def display_home():
-    
-    with open(logo[2], "rb") as image_file:
-        bg_encoded = base64.b64encode(image_file.read()).decode()
-    
-    with open(logo[1], "rb") as image_file:
-        fg_encoded = base64.b64encode(image_file.read()).decode()
-    
-    st.markdown(
-        f"""
-        <style>
-        /* Background banner */
-        .banner-wrapper {{
-            position: relative;
-            width: 100%;
-            height: 600px; /* background height */
-            background-image: url("data:image/png;base64,{bg_encoded}");
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            overflow: hidden;
-        }}
-    
-        /* Foreground content */
-        .banner-foreground {{
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 400px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            z-index: 2;
-        }}
-    
-        /* Foreground logo (adjust size here) */
-        .banner-foreground img {{
-            width: 600px;   /* change foreground size independently */
-            height: auto;   /* keep aspect ratio */
-            margin-bottom: 10px;
-        }}
-    
-        /* Foreground text */
-        .banner-foreground p {{
-            font-size: 25px;
-            font-weight: 700;
-            color: white;
-            text-shadow: 2px 2px 5px rgba(0,0,0,0.6);
-            margin: 0;
-        }}
-        </style>
-    
-        <div class="banner-wrapper">
-            <div class="banner-foreground">
-                <img src="data:image/png;base64,{fg_encoded}">
-                <p>Smarter study starts here.</p>
-            </div>
-        </div>
-        """,
-        unsafe_allow_html=True
-    )
+    if st.session_state.page == 1:
         
-    pad(2)
-    format_chat("Expand and feed your interests, understanding, and curiosities", 50, 1)
-    format_chat("Through Scholarra you can take courses and learn with Laurent", 25, 1)
-    pad(2)
-    embed("Excel, with Scholarra! Earn your Excel certifcation today!", 30, 1, extra=0)
-    pad(2)
-    format_chat("New to Scholarra.", 50, 0)
-    tab1, tab2, tab3 = st.tabs(["A site redux", "Meet Laurent", "Excel, with Scholarra"])
-
-    st.markdown("""
-        <style>
-            div[data-testid="stTabs"] button {
-                font-size: 50px;
-                padding: 4px 100px;  /* vertical = 4px, horizontal = 100px */
-                font-weight: 600;
-            }
-        </style>
-    """, unsafe_allow_html=True)
-
+        with open(logo[2], "rb") as image_file:
+            bg_encoded = base64.b64encode(image_file.read()).decode()
+        
+        with open(logo[1], "rb") as image_file:
+            fg_encoded = base64.b64encode(image_file.read()).decode()
+        
+        st.markdown(
+            f"""
+            <style>
+            /* Background banner */
+            .banner-wrapper {{
+                position: relative;
+                width: 100%;
+                height: 600px; /* background height */
+                background-image: url("data:image/png;base64,{bg_encoded}");
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+                overflow: hidden;
+            }}
+        
+            /* Foreground content */
+            .banner-foreground {{
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 400px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                z-index: 2;
+            }}
+        
+            /* Foreground logo (adjust size here) */
+            .banner-foreground img {{
+                width: 600px;   /* change foreground size independently */
+                height: auto;   /* keep aspect ratio */
+                margin-bottom: 10px;
+            }}
+        
+            /* Foreground text */
+            .banner-foreground p {{
+                font-size: 25px;
+                font-weight: 700;
+                color: white;
+                text-shadow: 2px 2px 5px rgba(0,0,0,0.6);
+                margin: 0;
+            }}
+            </style>
+        
+            <div class="banner-wrapper">
+                <div class="banner-foreground">
+                    <img src="data:image/png;base64,{fg_encoded}">
+                    <p>Smarter study starts here.</p>
+                </div>
+            </div>
+            """,
+            unsafe_allow_html=True
+        )
+            
+        pad(2)
+        format_chat("Expand and feed your interests, understanding, and curiosities", 50, 1)
+        format_chat("Through Scholarra you can take courses and learn with Laurent", 25, 1)
+        pad(2)
+        embed("Excel, with Scholarra! Earn your Excel certifcation today!", 30, 1, extra=0)
+        pad(2)
+        format_chat("New to Scholarra.", 50, 0)
+        tab1, tab2, tab3 = st.tabs(["A site redux", "Meet Laurent", "Excel, with Scholarra"])
     
-    with tab1:
-        contain(
-            ("A site redux!", 40, 1),
-            ("We did an entire site-wide redux to improve UI experience and backend work!", 25, 1)
-        )
-    with tab2:
-        contain(
-            ("Meet Laurent", 40, 0),
-            ("The newest member to the Scholarra team! Laurent.FP16, a Logistic Regression Transformer with Float Point 16 precision, can be found on the chat tab!", 25, 0)
-        )
-    with tab3:
-        contain(
-            ("Excel, with Scholarra!", 40, 2),
-            ("Starting now, 9/23/2025, users can access the Excel prep course free of cost!", 25, 2)
-        )
-
-
-
-
-
+        st.markdown("""
+            <style>
+                div[data-testid="stTabs"] button {
+                    font-size: 50px;
+                    padding: 4px 100px;  /* vertical = 4px, horizontal = 100px */
+                    font-weight: 600;
+                }
+            </style>
+        """, unsafe_allow_html=True)
+    
+        
+        with tab1:
+            contain(
+                ("A site redux!", 40, 1),
+                ("We did an entire site-wide redux to improve UI experience and backend work!", 25, 1)
+            )
+        with tab2:
+            contain(
+                ("Meet Laurent", 40, 0),
+                ("The newest member to the Scholarra team! Laurent.FP16, a Logistic Regression Transformer with Float Point 16 precision, can be found on the chat tab!", 25, 0)
+            )
+        with tab3:
+            contain(
+                ("Excel, with Scholarra!", 40, 2),
+                ("Starting now, 9/23/2025, users can access the Excel prep course free of cost!", 25, 2)
+            )
+    
+    
+    
+    
+    
 
 
 
