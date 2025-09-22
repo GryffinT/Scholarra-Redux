@@ -8,6 +8,7 @@ medias = [
     os.path.join(images_dir, "scholarracourselogo.png"),
     os.path.join(images_dir, "courseimage.jpg"),
     os.path.join(images_dir, "Syllabus TTS.mp3")
+    os.path.join(images_dir, "mo-200-microsoft-excel-2019-skills.measured (2).pdf)
     
 ]
 
@@ -146,6 +147,7 @@ def display_course():
             ("Welcome! We're so glad you've chosen to enroll in our excel prep program! Feel free to look through the course syllabus. Once done scroll down and click next.", 25, 0)
         )
         st.audio(medias[3])
+        st.pdf(medias[4])
         navigation_buttons()
 
         
