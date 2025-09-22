@@ -44,6 +44,8 @@ tab1, tab2, tab3 = st.tabs(["Home", "Courses", "Profile"])
 
 with tab1:
     display_home()
+    time.sleep(840)
+    st.rerun
 
 with tab2:
     display_course()
