@@ -66,12 +66,6 @@ def format_chat(message, size, centering):
             </h1>
         """, unsafe_allow_html=True)
 
-import streamlit as st
-import base64
-
-def display_course():
-    st.success("✅ display_course() triggered!")
-
 def embed(message, size, centering, extra=None):
     align = {0: "left", 1: "center", 2: "right"}.get(centering, "left")
 
@@ -83,9 +77,9 @@ def embed(message, size, centering, extra=None):
             encoded = base64.b64encode(img_file.read()).decode()
         image_html = f'<img src="data:image/png;base64,{encoded}" width="200" style="display:block; margin:20px auto;">'
 
-    key = f"button_{message}"
+    key = message.replace(" ", "_")
 
-    # CSS for hover box + overlay invisible button
+    # CSS for hover box
     st.markdown(f'''
     <style>
     .hover-box {{
@@ -96,8 +90,8 @@ def embed(message, size, centering, extra=None):
         transition: all 0.3s ease;
         cursor: pointer;
         text-align: {align};
+        color: inherit;
         display: block;
-        position: relative;
     }}
     .hover-box:hover {{
         transform: scale(1.02);
@@ -109,26 +103,17 @@ def embed(message, size, centering, extra=None):
         font-family: 'Josefin Sans', sans-serif;
         margin: 0;
     }}
-    .hover-box button {{
-        all: unset;
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        cursor: pointer;
-    }}
     </style>
-    <div class="hover-box">
+    <div class="hover-box" onclick="document.getElementById('{key}').click();">
         <h1>{message}</h1>
         {image_html}
-        <form action="." method="post">
-            <button type="submit"></button>
-        </form>
     </div>
+    <form>
+        <input type="submit" id="{key}" style="display:none">
+    </form>
     ''', unsafe_allow_html=True)
 
-    # Overlay Streamlit button that fills the box
+    # Detect click via hidden submit
     if st.button("", key=key):
         display_course()
     
