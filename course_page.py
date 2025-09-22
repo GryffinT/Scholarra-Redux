@@ -230,6 +230,17 @@ def display_course():
             url_video_func("https://www.youtube.com/watch?v=5ta5Vf8VRms", "David Hays", "Modify basic workbook properties")
             url_video_func("https://www.youtube.com/watch?v=nBkv7EGsAIU", "Excel Tutorials by EasyClick Academy", "Display formulas")
             navigation_buttons(5,6)
+        elif st.session_state.prog == 6:
+            contain(("Lesson 4, how to configure for collaboration", 40, 0),
+                    ("In this lesson, you’ll learn how to set a print area, save workbooks in alternative file formats, configure print settings, and inspect workbooks for issues. These skills will ensure your spreadsheets are prepared for sharing, printing, and distribution while maintaining accuracy, compatibility, and professionalism.", 25, 0)
+            )
+            url_video_func("https://www.youtube.com/watch?v=Mrt4v0ysA8w", "Excel Tutorials by EasyClick Academy", "How to Set the Print Area in Excel (Step by Step)")
+            url_video_func("https://www.youtube.com/watch?v=P2L4GOGDsx8", "Kay Rand Morgan", "Microsoft Excel - Save workbooks in alternative file formats CC")
+            url_video_func("https://www.youtube.com/watch?v=HfwMo6M1XzM", "Kevin Stratvert", "How to Print Excel Sheet")
+            url_video_func("https://www.youtube.com/watch?v=KbJUKAY8FZ8", "How To Tutorials- Maha Gurus", "Inspecting and Protecting Workbooks- Inspect Document in Excel Tutorial")
+            navigation_buttons(7,8)
+
+
 
 
 
