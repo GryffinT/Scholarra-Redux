@@ -49,7 +49,7 @@ def display_course():
                 z-index: 2;
             }}
 
-            /* Foreground logo (adjust size here) */
+            /* Foreground logo */
             .course-banner-foreground img {{
                 width: 600px;
                 height: auto;
@@ -74,14 +74,13 @@ def display_course():
             </div>
 
             <script>
-            window.addEventListener('scroll', () => {{
-                const banner = document.getElementById('courseBanner');
-                const scrollTop = window.pageYOffset;
-                const yPos = -(scrollTop * 0.3); // adjust speed here
-                banner.style.backgroundPosition = `center ${yPos}px`;
+            window.addEventListener('scroll', function() {{
+                var banner = document.getElementById('courseBanner');
+                var scrollTop = window.pageYOffset;
+                var yPos = -(scrollTop * 0.3); // adjust speed here
+                banner.style.backgroundPosition = 'center ' + yPos + 'px';
             }});
             </script>
             """,
             unsafe_allow_html=True
         )
-
