@@ -47,6 +47,7 @@ def navigation_buttons(id1,id2):
     with col1:
         if st.button("Back", key=id1):
             st.session_state.prog -= 1
+            st.rerun()
 
     # Spacer column col2 does nothing (just stretches space)
 
@@ -54,6 +55,7 @@ def navigation_buttons(id1,id2):
     with col3:
         if st.button("Next", key=id2):
             st.session_state.prog += 1
+            st.rerun()
 
     # Display current value centered
     st.markdown(f"<h3 style='text-align:center;'>Current prog: {st.session_state.prog}</h3>", unsafe_allow_html=True)
