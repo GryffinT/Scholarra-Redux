@@ -83,6 +83,12 @@ import base64
 def display_course():
     st.success("✅ display_course() has been triggered!")
 
+import streamlit as st
+import base64
+
+def display_course():
+    st.success("✅ display_course() has been triggered!")
+
 def embed(message, size, centering, extra=None):
     align = {0: "left", 1: "center", 2: "right"}.get(centering, "left")
 
