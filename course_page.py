@@ -27,14 +27,14 @@ def display_course():
             .course-banner-wrapper {{
                 position: relative;
                 width: 100%;
-                height: -600px; /* background height */
+                height: 800px;
                 background-image: url("data:image/png;base64,{bg_encoded}");
                 background-size: cover;
-                background-position: center;
+                background-position: center top;
                 background-repeat: no-repeat;
                 overflow: hidden;
             }}
-        
+
             /* Foreground content */
             .course-banner-foreground {{
                 position: absolute;
@@ -48,14 +48,14 @@ def display_course():
                 justify-content: center;
                 z-index: 2;
             }}
-        
+
             /* Foreground logo (adjust size here) */
             .course-banner-foreground img {{
-                width: 600px;   /* change foreground size independently */
-                height: auto;   /* keep aspect ratio */
+                width: 600px;
+                height: auto;
                 margin-bottom: 10px;
             }}
-        
+
             /* Foreground text */
             .course-banner-foreground p {{
                 font-size: 25px;
@@ -65,13 +65,23 @@ def display_course():
                 margin: 0;
             }}
             </style>
-        
-            <div class="course-banner-wrapper">
+
+            <div class="course-banner-wrapper" id="courseBanner">
                 <div class="course-banner-foreground">
                     <img src="data:image/png;base64,{fg_encoded}">
                     <p>Smarter study starts here.</p>
                 </div>
             </div>
+
+            <script>
+            window.addEventListener('scroll', () => {{
+                const banner = document.getElementById('courseBanner');
+                const scrollTop = window.pageYOffset;
+                const yPos = -(scrollTop * 0.3); // adjust speed here
+                banner.style.backgroundPosition = `center ${yPos}px`;
+            }});
+            </script>
             """,
             unsafe_allow_html=True
         )
+
