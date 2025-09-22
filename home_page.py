@@ -158,7 +158,7 @@ def display_home():
         fg_encoded = base64.b64encode(image_file.read()).decode()
     
     st.markdown(
-        f""
+        f"""
         <style>
         /* Background banner */
         .banner-wrapper {{
@@ -209,7 +209,7 @@ def display_home():
                 <p>Smarter study starts here.</p>
             </div>
         </div>
-        "",
+        """,
         unsafe_allow_html=True
     )
         
