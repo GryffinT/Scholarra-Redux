@@ -10,6 +10,16 @@ logo = [
     
 ]
 
+def back():
+    button = st.button("Back")
+    if button:
+        st.session_state.prog -= 1
+
+def next():
+    button = st.button("Next")
+    if button:
+        st.session_state.prog += 1
+
 def contain(*messages):
     # Start the div with styles
     html_content = '<div style="border:2px solid #e6e6e6; background-color:#FFFFFF; padding:10px; border-radius:10px;">'
@@ -26,6 +36,10 @@ def contain(*messages):
     st.markdown(html_content, unsafe_allow_html=True)
 
 def display_course():
+    if st.session_state.prog:
+        pass
+    else:
+        st.session_state.prog = 1
     if st.session_state.page == 2:
         
         with open(logo[2], "rb") as image_file:
@@ -106,6 +120,8 @@ def display_course():
             ("MO-200 Excel", 40, 0),
             ("Welcome! We're so glad you've chosen to enroll in our excel prep program! Feel free to look through the course syllabus. Once done scroll down and click next.", 25, 0)
         )
+        next()
+        
     with tab2:
         st.header("Intro to ML")
         st.image("https://static.streamlit.io/examples/dog.jpg", width=200)
