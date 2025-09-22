@@ -152,10 +152,12 @@ def display_course():
         contain(
             ("Course Syllabus", 25, 0)
         )
+        st.write("")
         st.pdf(medias[4])
         contain(
             ("Excel Manual", 25, 0)
         )
+        st.write("")
         st.pdf(medias[5])
         navigation_buttons(1,2)
 
