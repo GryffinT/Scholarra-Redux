@@ -100,7 +100,7 @@ def embed(message, size, centering, extra=None):
     key = message.replace(" ", "_")
 
     # Build URL with query parameter
-    query = st.experimental_get_query_params()
+    query = st.query_params()
     url = f"?click={key}"
 
     # CSS for hover box
@@ -136,10 +136,10 @@ def embed(message, size, centering, extra=None):
     ''', unsafe_allow_html=True)
 
     # Detect click via query param
-    if st.st.query_params().get("click") == [key]:
+    if st.query_params().get("click") == [key]:
         display_course()
         # Optionally clear the parameter to allow clicking again
-        st.st.query_params()
+        st.query_params()
     
 def display_home():
     
