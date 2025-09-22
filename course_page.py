@@ -2,7 +2,7 @@ import streamlit as st
 import os
 import base64
 import streamlit_pdf
-from courses.excel import assessments
+from courses.excel.assessments import lesson_3_quiz
 
 images_dir = os.path.join(os.path.dirname(__file__), "media")
 medias = [
@@ -245,7 +245,7 @@ def display_course():
             url_video_func("https://www.youtube.com/watch?v=0SRt9dkR3Zg", "learnexcel.video","Excel Page Layout: The Ultimate Guide")
             url_video_func("https://www.youtube.com/watch?v=wI6U9I2nZWg", "Technology for Teachers and Students", "3 Ways to AutoFit all Columns and Rows in Excel")
             url_video_func("https://www.youtube.com/watch?v=UbYcYXfHwII", "Technology for Teachers and Students", "Create Custom Headers and Footers in Excel")
-            take_quiz(assessments.lesson_3_quiz, "Lesson 3")
+            take_quiz(lesson_3_quiz, "Lesson 3")
             navigation_buttons(5,6)
         elif st.session_state.prog == 5:
             contain(("Lesson 3.1, customization", 40, 0),
