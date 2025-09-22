@@ -42,3 +42,4 @@ def display_ai():
             response = f"The classifications are: {classifications}, and my answer is {generation}"
             st.markdown(response)
         st.session_state.messages.append({"role": "assistant", "content": response})
+        st.rerun()
