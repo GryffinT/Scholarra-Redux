@@ -80,20 +80,54 @@ def embed(message, size, centering, extra=None):
             encoded = base64.b64encode(img_file.read()).decode()
         image_html = f'<img src="data:image/png;base64,{encoded}" width="200" style="display:block; margin:20px auto;">'
 
-    with st.container():
-        st.markdown(f"""
-            <div style="
-                border: 2px solid #d3d3d3;
-                background-color: #d3d3d3;
-                padding: 20px;
-                border-radius: 10px;
-            ">
-                <h1 style="font-size:{size}px; text-align:{align}; font-family:'Josefin Sans', sans-serif;">
-                    {message}
-                </h1>
-                {image_html}
-            </div>
-        """, unsafe_allow_html=True)
+    # Unique key for Streamlit state
+    key = f"embed_clicked_{message}"
+
+    # CSS for hover expand
+    st.markdown(
+        f"""
+        <style>
+        .expand-box {{
+            border: 2px solid #d3d3d3;
+            background-color: #d3d3d3;
+            padding: 20px;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }}
+        .expand-box:hover {{
+            transform: scale(1.05);
+            background-color: #e0e0ff;
+            border-color: #888;
+        }}
+        </style>
+        """,
+        unsafe_allow_html=True,
+    )
+
+    # Create button-like container
+    clicked = st.button(
+        label="",
+        key=key,
+        help=message,  # tooltip
+    )
+
+    # Render styled HTML container (fake button visuals)
+    st.markdown(
+        f"""
+        <div class="expand-box">
+            <h1 style="font-size:{size}px; text-align:{align}; font-family:'Josefin Sans', sans-serif;">
+                {message}
+            </h1>
+            {image_html}
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+
+    # If clicked, run function
+    if clicked:
+        display_course()
 
 
 
