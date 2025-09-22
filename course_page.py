@@ -20,8 +20,22 @@ def url_video_func(url, name, video_title):
     st.video(url)
     video_credit_expander = st.expander("Video credit")
     with video_credit_expander:
-        st.write(f"Video produced by {name} on Youtube.")
-        st.write(f"URL: [{url}]({url})")
+        st.markdown(
+            f'''
+            <div style="
+                background-color: #FFFFFF;
+                color: black;
+                border: 2px solid #e6e6e6;
+                border-radius: 5px;
+                padding: 8px 20px;
+                font-size: 16px;
+            ">
+                Video produced by <strong>{name}</strong> on Youtube.<br>
+                URL: <a href="{url}" target="_blank">{url}</a>
+            </div>
+            ''',
+            unsafe_allow_html=True
+        )
 
 def navigation_buttons(id1,id2):
     if "prog" not in st.session_state:
