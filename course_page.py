@@ -12,7 +12,7 @@ logo = [
 
 
 def display_course():
-    if st.session_state.page == 2
+    if st.session_state.page == 2:
         
         with open(logo[2], "rb") as image_file:
             bg_encoded = base64.b64encode(image_file.read()).decode()
