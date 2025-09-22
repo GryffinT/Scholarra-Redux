@@ -122,7 +122,7 @@ def display_home():
             position: absolute;
             top: 0;
             left: 0;
-            width: 100%;
+            width: 200%;
             height: 400px;
             display: flex;
             flex-direction: column;
