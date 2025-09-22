@@ -5,7 +5,7 @@ import uuid
 import json
 from course_page import display_course
 from urllib.parse import urlencode
-from StreamlitFrontend import session_state.page
+from StreamlitFrontend import session_state["page"]
 
 
 images_dir = os.path.join(os.path.dirname(__file__), "media")
