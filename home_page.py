@@ -134,9 +134,7 @@ def embed(message, size, centering, extra=None):
     '''
     st.markdown(css, unsafe_allow_html=True)
 
-    # Streamlit button (required to trigger Python code)
-    if st.button(label=message, key=key):
-        display_course()
+
 
     # Visible styled box
     html_box = f'''
