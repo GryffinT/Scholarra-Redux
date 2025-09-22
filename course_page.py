@@ -5,7 +5,7 @@ import base64
 images_dir = os.path.join(os.path.dirname(__file__), "media")
 medias = [
     os.path.join(images_dir, "excel_medias.png"),
-    os.path.join(images_dir, "scholarracoursemedias.png"),
+    os.path.join(images_dir, "scholarracourselogo.png"),
     os.path.join(images_dir, "courseimage.jpg"),
     os.path.join(images_dir, "Syllabus TTS.mp3")
     
