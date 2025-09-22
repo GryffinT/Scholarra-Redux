@@ -66,13 +66,6 @@ def format_chat(message, size, centering):
             </h1>
         """, unsafe_allow_html=True)
 
-def display_course():
-    st.success("✅ display_course() triggered!")
-
-import streamlit as st
-import base64
-from urllib.parse import urlencode
-
 def embed(message, size, centering, extra=None):
     align = {0: "left", 1: "center", 2: "right"}.get(centering, "left")
 
