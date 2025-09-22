@@ -106,13 +106,12 @@ def display_home():
     st.markdown(
         f"""
         <style>
-        .center-banner {{
+        .floating-banner {{
             position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 80vw;
-            height: 200px;
+            top: 200px;
+            bottom: 300px;
+            left: 0;
+            width: 100vw;
             background-image: url("data:image/png;base64,{encoded}");
             background-size: cover;
             background-position: center;
@@ -120,7 +119,7 @@ def display_home():
             z-index: -1;
         }}
         </style>
-        <div class="center-banner"></div>
+        <div class="floating-banner"></div>
         """,
         unsafe_allow_html=True
     )
