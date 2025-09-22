@@ -225,6 +225,7 @@ def display_course():
         elif st.session_state.prog == 2:
             url_video_func("https://www.youtube.com/watch?v=EaS2Ooe9BNc&t=67s", "Kevin Stratvert", "How to import PDF into Excel" )
             url_video_func("https://www.youtube.com/watch?v=ebnNy5yEkvc", "ProgrammingKnowledge2", "How to Import CSV File Into Excel")
+            take_quiz(assessments.lesson_1_quiz, "Lesson 1")
             navigation_buttons(3,4)
         elif st.session_state.prog == 3:
             contain(
@@ -237,6 +238,7 @@ def display_course():
             url_video_func("https://www.youtube.com/watch?v=ovDpZD4BxQk", "Kay Rand Morgan", "Search for data within a workbook" )
             url_video_func("https://www.youtube.com/watch?v=Z7RQnu3yrPk", "Kay Rand Morgan", "Navigating to named cells, ranges, or workbook elements" )
             url_video_func("https://www.youtube.com/watch?v=QMzx3h-USM4", "Santhu Analytics", "How to Create & Remove Hyperlinks" )
+            take_quiz(assessments.lesson_2_quiz, "Lesson 2")
             navigation_buttons(5,6)
         elif st.session_state.prog == 4:
             contain(("Lesson 3, formatting", 40, 0),
@@ -267,6 +269,7 @@ def display_course():
             url_video_func("https://www.youtube.com/watch?v=P2L4GOGDsx8", "Kay Rand Morgan", "Microsoft Excel - Save workbooks in alternative file formats CC")
             url_video_func("https://www.youtube.com/watch?v=HfwMo6M1XzM", "Kevin Stratvert", "How to Print Excel Sheet")
             url_video_func("https://www.youtube.com/watch?v=KbJUKAY8FZ8", "How To Tutorials- Maha Gurus", "Inspecting and Protecting Workbooks- Inspect Document in Excel Tutorial")
+            take_quiz(assessments.lesson_4_quiz, "Lesson 4")
             navigation_buttons(7,8)
         elif st.session_state.prog == 7:
             contain(("Lesson 5, formatting cells and ranges", 40, 0),
@@ -280,6 +283,7 @@ def display_course():
             url_video_func("https://www.youtube.com/watch?v=FwI46frGd9k", "KnowWithBeau", "Excel MOS 2.2.6 Apply cell formats from the Format Cells dialog box - KwB")
             url_video_func("https://www.youtube.com/watch?v=YSsQmEPFNaI", "Simon Sez IT", "Using Cell Styles in Excel")
             url_video_func("https://www.youtube.com/watch?v=B9ol_9_QmJU", "ExcelHow Tech", "How to Clear Cell Contents and Formatting")
+            take_quiz(assessments.lesson_5_quiz, "Lesson 5")
             navigation_buttons(9,10)
         elif st.session_state.prog == 8:
             contain(("Lesson 6, manipulating data in worksheets", 40, 0),
@@ -288,6 +292,7 @@ def display_course():
             url_video_func("https://www.youtube.com/watch?v=_ODK4XW-aNs", "HowcastTechGadgets", "How to Use Paste Special | Microsoft Excel")
             url_video_func("https://www.youtube.com/watch?v=HMXLU9TGogc", "Excel Tutorials by EasyClick Academy", "How to Use AutoFill in Excel (Best Practices)")
             url_video_func("https://www.youtube.com/watch?v=JvSoAAkcWyY", "Microsoft 365", "How to insert or delete rows and columns in Microsoft Excel")
+            take_quiz(assessments.lesson_6_quiz, "Lesson 6")
             navigation_buttons(11,12)
         elif st.session_state.prog >= 9:
             contain(("Congratulations!", 40, 0),
