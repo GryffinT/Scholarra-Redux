@@ -2,6 +2,7 @@ import streamlit as st
 import os
 import base64
 import streamlit_pdf
+from home_page import embed
 
 images_dir = os.path.join(os.path.dirname(__file__), "media")
 medias = [
@@ -276,5 +277,4 @@ def display_course():
         contain(("Nothing to see here..", 40, 0),
                 ("We're still working on this course, feel free to leave some feedback below to let us know if you'd be interested in taking it!", 25, 0)
         )
-        with st.container():
-            st.feedback("faces")
+        embed(st.feedback("faces"))
