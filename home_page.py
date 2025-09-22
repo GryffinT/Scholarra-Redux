@@ -90,11 +90,17 @@ def embed(message, size, centering, extra=None):
     # Unique key for Streamlit button
     key = f"button_{message}"
 
-    # CSS to style the button like a box
+    # CSS to hide the actual Streamlit button and style the HTML button
     st.markdown(
         f"""
         <style>
+        /* Hide the Streamlit button (actual clickable element) */
         div.stButton > button#{key} {{
+            all: unset;
+        }}
+
+        /* Style our visible box */
+        .hover-box-btn > button {{
             all: unset;
             display: block;
             width: 100%;
@@ -107,12 +113,12 @@ def embed(message, size, centering, extra=None):
             transition: all 0.3s ease;
             text-align: {align};
         }}
-        div.stButton > button#{key}:hover {{
+        .hover-box-btn > button:hover {{
             transform: scale(1.02);
             background-color: #e0e0ff;
             border-color: #888;
         }}
-        div.stButton > button#{key} h1 {{
+        .hover-box-btn h1 {{
             font-size: {size}px;
             font-family: 'Josefin Sans', sans-serif;
             margin: 0;
@@ -122,14 +128,14 @@ def embed(message, size, centering, extra=None):
         unsafe_allow_html=True,
     )
 
-    # Render the button with your content inside
-    if st.button(key=key):
+    # Use st.button with a real label (can be empty string)
+    if st.button(label=message, key=key):
         display_course()
 
-    # Markdown with HTML inside button styling
+    # Render the visible styled box
     st.markdown(
         f"""
-        <div class="stButton">
+        <div class="hover-box-btn">
             <button id="{key}">
                 <h1>{message}</h1>
                 {image_html}
@@ -138,6 +144,7 @@ def embed(message, size, centering, extra=None):
         """,
         unsafe_allow_html=True,
     )
+    
 def display_home():
     
     with open(logo[2], "rb") as image_file:
