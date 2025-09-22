@@ -24,7 +24,7 @@ def display_course():
             f"""
             <style>
             /* Background banner */
-            .banner-wrapper {{
+            .course-banner-wrapper {{
                 position: relative;
                 width: 100%;
                 height: 600px; /* background height */
@@ -36,7 +36,7 @@ def display_course():
             }}
         
             /* Foreground content */
-            .banner-foreground {{
+            .course-banner-foreground {{
                 position: absolute;
                 top: 0;
                 left: 0;
@@ -50,14 +50,14 @@ def display_course():
             }}
         
             /* Foreground logo (adjust size here) */
-            .banner-foreground img {{
+            .course-banner-foreground img {{
                 width: 600px;   /* change foreground size independently */
                 height: auto;   /* keep aspect ratio */
                 margin-bottom: 10px;
             }}
         
             /* Foreground text */
-            .banner-foreground p {{
+            .course-banner-foreground p {{
                 font-size: 25px;
                 font-weight: 700;
                 color: white;
@@ -66,8 +66,8 @@ def display_course():
             }}
             </style>
         
-            <div class="banner-wrapper">
-                <div class="banner-foreground">
+            <div class="course-banner-wrapper">
+                <div class="course-banner-foreground">
                     <img src="data:image/png;base64,{fg_encoded}">
                     <p>Smarter study starts here.</p>
                 </div>
