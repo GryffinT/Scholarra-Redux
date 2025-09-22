@@ -103,19 +103,25 @@ def display_home():
     with open(logo[2], "rb") as image_file:
         encoded = base64.b64encode(image_file.read()).decode()
     
-    # Inject CSS with base64 background
     st.markdown(
         f"""
         <style>
-        .stApp {{
+        .banner {{
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 200px;
             background-image: url("data:image/png;base64,{encoded}");
             background-size: cover;
-            background-position: center top;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            padding-top: 80px;  /* Push content down */
+            background-position: center;
+            z-index: -1;
+        }}
+        .stApp {{
+            margin-top: 200px;
         }}
         </style>
+        <div class="banner"></div>
         """,
         unsafe_allow_html=True
     )
