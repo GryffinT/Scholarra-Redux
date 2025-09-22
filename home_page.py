@@ -136,10 +136,10 @@ def embed(message, size, centering, extra=None):
     ''', unsafe_allow_html=True)
 
     # Detect click via query param
-    if st.experimental_get_query_params().get("click") == [key]:
+    if st.st.query_params().get("click") == [key]:
         display_course()
         # Optionally clear the parameter to allow clicking again
-        st.experimental_set_query_params()
+        st.st.query_params()
     
 def display_home():
     
