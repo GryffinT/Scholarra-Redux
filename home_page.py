@@ -99,17 +99,20 @@ def embed(message, size, centering, extra=None):
 
 def display_home():
     
-    # Load and encode image
     with open(logo[2], "rb") as image_file:
-        encoded = base64.b64encode(image_file.read()).decode()
+        bg_encoded = base64.b64encode(image_file.read()).decode()
+    
+    with open(logo[1], "rb") as image_file:
+        fg_encoded = base64.b64encode(image_file.read()).decode()
+    
     st.markdown(
         f"""
         <style>
         .banner-wrapper {{
             position: relative;
             width: 100%;
-            height: 400px;
-            background-image: url("data:image/png;base64,{encoded}");
+            height: 200px;
+            background-image: url("data:image/png;base64,{bg_encoded}");
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -127,21 +130,28 @@ def display_home():
             justify-content: center;
             z-index: 2;
         }}
+        .banner-foreground img {{
+            max-height: 120px; /* control size of foreground image */
+            margin-bottom: 10px;
+        }}
+        .banner-foreground p {{
+            font-size: 25px;
+            font-weight: 700;
+            color: white;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.6);
+            margin: 0;
+        }}
         </style>
     
         <div class="banner-wrapper">
-            <div class="banner-foreground" id="banner-foreground"></div>
+            <div class="banner-foreground">
+                <img src="data:image/png;base64,{fg_encoded}">
+                <p>Smarter study starts here.</p>
+            </div>
         </div>
         """,
         unsafe_allow_html=True
     )
-    
-    # Create a container tied to that foreground div
-    foreground = st.container()
-    
-    with foreground:
-        graphic(1, 600)
-        format_chat("Smarter study starts here.", 25, 1)
         
     pad(2)
     format_chat("Expand and feed your interests, understanding, and curiosities", 50, 1)
