@@ -1,6 +1,7 @@
 import streamlit as st
 import os
 import base64
+from course_page import display_course
 
 images_dir = os.path.join(os.path.dirname(__file__), "media")
 logo = [
@@ -70,9 +71,11 @@ def format_chat(message, size, centering):
             </h1>
         """, unsafe_allow_html=True)
 
-def embed(message, size, centering, extra=None):
+
+def embed(message, size, centering, extra=None, callback=None):
     align = {0: "left", 1: "center", 2: "right"}.get(centering, "left")
 
+    # Image HTML
     image_html = ""
     if extra is not None and 0 <= extra < len(logo):
         image_path = logo[extra]
@@ -80,54 +83,56 @@ def embed(message, size, centering, extra=None):
             encoded = base64.b64encode(img_file.read()).decode()
         image_html = f'<img src="data:image/png;base64,{encoded}" width="200" style="display:block; margin:20px auto;">'
 
-    # Unique key for Streamlit state
-    key = f"embed_clicked_{message}"
+    # Unique key for Streamlit state/button
+    key = f"embed_{message}"
 
-    # CSS for hover expand
+    # CSS for hover effect
     st.markdown(
         f"""
         <style>
-        .expand-box {{
+        .expand-box-{key} {{
             border: 2px solid #d3d3d3;
             background-color: #d3d3d3;
             padding: 20px;
             border-radius: 10px;
             transition: all 0.3s ease;
             cursor: pointer;
+            width: 100%;
+            box-sizing: border-box;
+            text-align: {align};
         }}
-        .expand-box:hover {{
-            transform: scale(1.05);
+        .expand-box-{key}:hover {{
+            transform: scale(1.02);
             background-color: #e0e0ff;
             border-color: #888;
         }}
+        .expand-box-{key} h1 {{
+            font-size: {size}px;
+            font-family: 'Josefin Sans', sans-serif;
+            margin: 0;
+        }}
         </style>
         """,
-        unsafe_allow_html=True,
+        unsafe_allow_html=True
     )
 
-    # Create button-like container
-    clicked = st.button(
-        label="",
-        key=key,
-        help=message,  # tooltip
-    )
+    # Hidden button to capture clicks
+    if st.button("", key=key):
+        if callback:
+            callback()
+        else:
+            display_course()  # default if no callback provided
 
-    # Render styled HTML container (fake button visuals)
+    # Display the box
     st.markdown(
         f"""
-        <div class="expand-box">
-            <h1 style="font-size:{size}px; text-align:{align}; font-family:'Josefin Sans', sans-serif;">
-                {message}
-            </h1>
+        <div class="expand-box-{key}">
+            <h1>{message}</h1>
             {image_html}
         </div>
         """,
-        unsafe_allow_html=True,
+        unsafe_allow_html=True
     )
-
-    # If clicked, run function
-    if clicked:
-        display_course()
 
 
 
