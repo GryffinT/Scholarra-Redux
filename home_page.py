@@ -126,7 +126,7 @@ def display_home():
             top: 0;
             left: 0;
             width: 100%;
-            height: 200px;
+            height: 400px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -136,7 +136,7 @@ def display_home():
     
         /* Foreground logo (adjust size here) */
         .banner-foreground img {{
-            width: 300px;   /* change foreground size independently */
+            width: 200px;   /* change foreground size independently */
             height: auto;   /* keep aspect ratio */
             margin-bottom: 10px;
         }}
