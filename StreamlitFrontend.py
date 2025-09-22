@@ -43,14 +43,11 @@ st.markdown("""
 tab1, tab2, tab3 = st.tabs(["Home", "Courses", "Profile"])
 
 with tab1:
-    st.rerun()
     display_home()
 
 with tab2:
-    st.rerun()
     display_course()
 
 with tab3:
-    st.rerun()
     st.header("An owl")
     st.image("https://static.streamlit.io/examples/owl.jpg", width=200)
