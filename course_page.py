@@ -277,7 +277,7 @@ def display_course():
         contain(("Nothing to see here..", 40, 0),
                 ("We're still working on this course. In the mean time, look after this guy.", 25, 0)
         )
-        st.image(medias[6],width="stretch')
+        st.image(medias[6], width="stretch")
 
 
 
