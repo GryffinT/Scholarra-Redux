@@ -103,7 +103,8 @@ def display_course():
     
     with tab1:
         contain(
-            (")
+            ("MO-200 Excel", 40, 2),
+            ("Welcome! We're so glad you've chosen to enroll in our excel prep program! Feel free to look through the course syllabus. Once done scroll down and click next.", 25, 2)
         )
     with tab2:
         st.header("Intro to ML")
