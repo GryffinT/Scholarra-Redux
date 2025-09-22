@@ -67,7 +67,10 @@ def format_chat(message, size, centering):
         """, unsafe_allow_html=True)
 
 def embed(message, size, centering, extra=None):
+    import streamlit as st
+
     align = {0: "left", 1: "center", 2: "right"}.get(centering, "left")
+    key = message.replace(" ", "_")
 
     # Encode image if needed
     image_html = ""
@@ -77,51 +80,40 @@ def embed(message, size, centering, extra=None):
             encoded = base64.b64encode(img_file.read()).decode()
         image_html = f'<img src="data:image/png;base64,{encoded}" width="200" style="display:block; margin:20px auto;">'
 
-    # Unique click identifier
-    key = message.replace(" ", "_")
-
-    # Build URL with query parameter
-    query = st.query_params
-    url = f"?click={key}"
-
-    # CSS for hover box
-    st.markdown(f'''
-    <style>
-    .hover-box {{
+    # Render the custom box
+    st.markdown(f"""
+    <div style="position:relative; margin-bottom:20px;">
+      <div style="
         border: 2px solid #d3d3d3;
         background-color: #d3d3d3;
         padding: 20px;
         border-radius: 10px;
-        transition: all 0.3s ease;
-        cursor: pointer;
         text-align: {align};
         text-decoration: none;
         color: inherit;
         display: block;
-    }}
-    .hover-box:hover {{
-        transform: scale(1.02);
-        background-color: #e0e0ff;
-        border-color: #888;
-    }}
-    .hover-box h1 {{
-        font-size: {size}px;
-        font-family: 'Josefin Sans', sans-serif;
-        margin: 0;
-    }}
-    </style>
-    <div class="hover-box" onclick="window.location='javascript:void(0)';">
-        <h1>{message}</h1>
+        ">
+        <h1 style="font-size:{size}px; font-family: 'Josefin Sans', sans-serif; margin: 0;">{message}</h1>
         {image_html}
-    </div>
-    ''', unsafe_allow_html=True)
+      </div>
+      <style>
+        .invisible-btn-{key} {{
+          position: absolute;
+          top: 0; left: 0; width: 100%; height: 100%;
+          opacity: 0;
+          cursor: pointer;
+          z-index: 10;
+        }}
+      </style>
+    """, unsafe_allow_html=True)
 
-    # Detect click via query param
-    if st.query_params.get("click") == [key]:
+    # The actual clickable Streamlit button, hidden by CSS
+    clicked = st.button("", key=f"invisible_btn_{key}")
+    st.markdown(f'<div class="invisible-btn-{key}"></div>', unsafe_allow_html=True)
+
+    if clicked:
         st.success("yay")
         display_course()
-        # Clear the parameter to allow future clicks
-        st.query_params = {}
     
 def display_home():
     
