@@ -112,7 +112,7 @@ def display_home():
         .banner-wrapper {{
             position: relative;
             width: 100%;
-            height: 200px; /* background height */
+            height: 400px; /* background height */
             background-image: url("data:image/png;base64,{bg_encoded}");
             background-size: cover;
             background-position: center;
