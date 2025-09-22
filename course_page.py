@@ -15,7 +15,7 @@ def navigation_buttons():
     st.markdown("""
         <style>
         div.stButton > button {
-            background-color: #4CAF50;
+            background-color: #FFFFFF;
             color: white;
             border: 2px solid #000000;
             border-radius: 5px;
