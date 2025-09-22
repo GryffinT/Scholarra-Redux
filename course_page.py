@@ -260,7 +260,7 @@ def display_course():
             url_video_func("https://www.youtube.com/watch?v=HMXLU9TGogc", "Excel Tutorials by EasyClick Academy", "How to Use AutoFill in Excel (Best Practices)")
             url_video_func("https://www.youtube.com/watch?v=JvSoAAkcWyY", "Microsoft 365", "How to insert or delete rows and columns in Microsoft Excel")
             navigation_buttons(11,12)
-        elif st.session_state.prog == 9:
+        elif st.session_state.prog >= 9:
             contain(("Congratulations!", 40, 0),
                     ("You've completed the excel course!", 40, 0)
                    )
@@ -269,6 +269,7 @@ def display_course():
                    )
             contain(("Goodluck!", 40, 0),
                    )
+            navigation_buttons(13,14)
 
 
 
