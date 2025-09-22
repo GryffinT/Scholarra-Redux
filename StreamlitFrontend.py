@@ -7,6 +7,7 @@ from home_page import embed
 from home_page import contain
 from course_page import display_course
 from streamlit_autorefresh import st_autorefresh
+from ai_page import display_ai
 
 if "prog" not in st.session_state:
     st.session_state.prog = 1
@@ -49,8 +50,7 @@ with tab2:
 with tab3:
     st.session_state.page = 3
     if st.session_state.page == 3:
-        st.header("An owl")
-        st.image("https://static.streamlit.io/examples/owl.jpg", width=200)
+        display_ai()
         st_autorefresh(interval=840000, key="3_auto_refresh")
 
 with tab4:
