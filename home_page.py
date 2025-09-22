@@ -86,45 +86,39 @@ def embed(message, size, centering, extra=None):
             encoded = base64.b64encode(img_file.read()).decode()
         image_html = f'<img src="data:image/png;base64,{encoded}" width="200" style="display:block; margin:20px auto;">'
 
-    # Unique key to track click
-    key = str(uuid.uuid4())
-    if key not in st.session_state:
-        st.session_state[key] = False
+    key = f"button_{message}"
 
-    # CSS + HTML
-    st.markdown(f'''
+    # CSS to style the Streamlit button like a full box
+    st.markdown(f"""
     <style>
-    .hover-box {{
+    div.stButton > button#{key} {{
+        all: unset;
+        display: block;
+        width: 100%;
+        cursor: pointer;
+        border-radius: 10px;
         border: 2px solid #d3d3d3;
         background-color: #d3d3d3;
         padding: 20px;
-        border-radius: 10px;
+        box-sizing: border-box;
         transition: all 0.3s ease;
-        cursor: pointer;
         text-align: {align};
     }}
-    .hover-box:hover {{
+    div.stButton > button#{key}:hover {{
         transform: scale(1.02);
         background-color: #e0e0ff;
         border-color: #888;
     }}
-    .hover-box h1 {{
+    div.stButton > button#{key} h1 {{
         font-size: {size}px;
         font-family: 'Josefin Sans', sans-serif;
         margin: 0;
     }}
     </style>
-    <div class="hover-box" onclick="document.getElementById('{key}').click();">
-        <h1>{message}</h1>
-        {image_html}
-    </div>
-    <form>
-        <input type="submit" id="{key}" style="display:none;">
-    </form>
-    ''', unsafe_allow_html=True)
+    """, unsafe_allow_html=True)
 
-    # Detect if hidden submit clicked
-    if st.button("", key=key):
+    # The actual Streamlit button that **looks like the box**
+    if st.button(label=f"{message}\n{image_html}", key=key, help="Click me"):
         display_course()
     
 def display_home():
