@@ -213,7 +213,7 @@ def display_home():
     format_chat("Expand and feed your interests, understanding, and curiosities", 50, 1)
     format_chat("Through Scholarra you can take courses and learn with Laurent", 25, 1)
     pad(2)
-    embed("Click me!", 30, 1, extra=0, callback=display_course)
+    embed("Click me!", 30, 1, extra=0)
     pad(2)
     format_chat("New to Scholarra.", 50, 0)
     tab1, tab2, tab3 = st.tabs(["A site redux", "Meet Laurent", "Excel, with Scholarra"])
