@@ -239,6 +239,18 @@ def display_course():
             url_video_func("https://www.youtube.com/watch?v=HfwMo6M1XzM", "Kevin Stratvert", "How to Print Excel Sheet")
             url_video_func("https://www.youtube.com/watch?v=KbJUKAY8FZ8", "How To Tutorials- Maha Gurus", "Inspecting and Protecting Workbooks- Inspect Document in Excel Tutorial")
             navigation_buttons(7,8)
+        elif st.session_state.prog == 7:
+            contain(("Lesson 5, formatting cells and ranges", 40, 0),
+                    ("In this lesson, you’ll learn how to merge and unmerge cells, modify cell alignment, orientation, and indentation, format cells using the Format Painter, and wrap text within cells. You’ll also explore how to apply number formats, use the Format Cells dialog box, apply cell styles, and clear cell formatting. Together, these skills will help you present data clearly, maintain consistency in your worksheets, and create professional, easy-to-read spreadsheets.", 25, 0)
+            )
+            url_video_func("https://www.youtube.com/watch?v=b0T9XjhBK_g", "Microsoft 365", "How to merge and unmerge cells in Microsoft Excel")
+            url_video_func("https://www.youtube.com/watch?v=FljG3k2Ly6s", "Kay Rand Morgan", "Microsoft Excel - Modify cell alignment, orientation, and indentation CC")
+            url_video_func("https://www.youtube.com/watch?v=LHSJJvkVrvA", "LearnFree", "Excel Quick Tip: Two Ways to Use the Format Painter")
+            url_video_func("https://www.youtube.com/watch?v=fu0o9fkkMWI", "Technology for Teachers and Students", "3 Ways to Fit Excel Data within a Cell")
+            url_video_func("https://www.youtube.com/watch?v=fjyOG7Ls7BA", "LearnFree", "Excel: Understanding Number Formats")
+            url_video_func("https://www.youtube.com/watch?v=FwI46frGd9k", "KnowWithBeau", "Excel MOS 2.2.6 Apply cell formats from the Format Cells dialog box - KwB")
+            url_video_func("https://www.youtube.com/watch?v=YSsQmEPFNaI", "Simon Sez IT", "Using Cell Styles in Excel")
+            url_video_func("https://www.youtube.com/watch?v=B9ol_9_QmJU", "ExcelHow Tech", "How to Clear Cell Contents and Formatting")
 
 
 
