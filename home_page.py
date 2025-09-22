@@ -4,6 +4,8 @@ import base64
 import uuid
 import json
 from course_page import display_course
+from urllib.parse import urlencode
+
 
 images_dir = os.path.join(os.path.dirname(__file__), "media")
 logo = [
@@ -76,9 +78,17 @@ def format_chat(message, size, centering):
 def display_course():
     st.success("✅ display_course() triggered!")
 
+import streamlit as st
+import base64
+from urllib.parse import urlencode
+
+def display_course():
+    st.success("✅ display_course() triggered!")
+
 def embed(message, size, centering, extra=None):
     align = {0: "left", 1: "center", 2: "right"}.get(centering, "left")
 
+    # Encode image if needed
     image_html = ""
     if extra is not None and 0 <= extra < len(logo):
         image_path = logo[extra]
@@ -86,8 +96,12 @@ def embed(message, size, centering, extra=None):
             encoded = base64.b64encode(img_file.read()).decode()
         image_html = f'<img src="data:image/png;base64,{encoded}" width="200" style="display:block; margin:20px auto;">'
 
-    # Unique key for the form
-    key = f"form_{message}"
+    # Unique click identifier
+    key = message.replace(" ", "_")
+
+    # Build URL with query parameter
+    query = st.experimental_get_query_params()
+    url = f"?click={key}"
 
     # CSS for hover box
     st.markdown(f'''
@@ -100,6 +114,9 @@ def embed(message, size, centering, extra=None):
         transition: all 0.3s ease;
         cursor: pointer;
         text-align: {align};
+        text-decoration: none;
+        color: inherit;
+        display: block;
     }}
     .hover-box:hover {{
         transform: scale(1.02);
@@ -112,21 +129,17 @@ def embed(message, size, centering, extra=None):
         margin: 0;
     }}
     </style>
+    <a class="hover-box" href="{url}">
+        <h1>{message}</h1>
+        {image_html}
+    </a>
     ''', unsafe_allow_html=True)
 
-    # Form with hidden submit button
-    with st.form(key=key):
-        st.markdown(f'''
-        <div class="hover-box">
-            <h1>{message}</h1>
-            {image_html}
-            <button type="submit" style="display:none"></button>
-        </div>
-        ''', unsafe_allow_html=True)
-
-        submitted = st.form_submit_button(label="")
-        if submitted:
-            display_course()
+    # Detect click via query param
+    if st.experimental_get_query_params().get("click") == [key]:
+        display_course()
+        # Optionally clear the parameter to allow clicking again
+        st.experimental_set_query_params()
     
 def display_home():
     
