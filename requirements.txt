@@ -4,3 +4,4 @@ pandas
 numpy
 streamlit-option-menu
 streamlit-autorefresh
+streamlit-pdf
