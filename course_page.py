@@ -2,6 +2,7 @@ import streamlit as st
 import os
 import base64
 import streamlit_pdf
+import assessments
 
 images_dir = os.path.join(os.path.dirname(__file__), "media")
 medias = [
@@ -14,6 +15,31 @@ medias = [
     os.path.join(images_dir, "cat.png")
     
 ]
+
+import streamlit as st
+
+def take_quiz(quiz_dict, lesson_name="Lesson 1"):
+    st.header(f"{lesson_name} Quiz")
+    user_answers = {}
+    
+    # Display each question and get answer
+    for i, (question, correct_answer) in enumerate(quiz_dict.items()):
+        user_input = st.text_input(question, key=f"{lesson_name}_{i}")
+        user_answers[question] = user_input
+    
+    if st.button("Submit"):
+        score = 0
+        for question, correct_answer in quiz_dict.items():
+            if user_answers.get(question, "").strip().lower() == correct_answer.strip().lower():
+                score += 1
+        
+        total_questions = len(quiz_dict)
+        percentage = (score / total_questions) * 100
+        st.success(f"You got {score} out of {total_questions} correct! ({percentage:.1f}%)")
+
+# Example usage:
+# take_quiz(lesson_3_quiz, "Lesson 3")
+
 
 def url_video_func(url, name, video_title):
     contain((video_title, 25, 0))
