@@ -220,7 +220,15 @@ def display_course():
             url_video_func("https://www.youtube.com/watch?v=UbYcYXfHwII", "Technology for Teachers and Students", "Create Custom Headers and Footers in Excel")
             navigation_buttons(5,6)
         elif st.session_state.prog == 5:
-            
+            contain(("Lesson 3.1, customization", 40, 0),
+                    ("In this lesson, you’ll learn how to customize the Quick Access Toolbar, display and modify workbook content in different views, freeze worksheet rows and columns, change window views, modify basic workbook properties, and display formulas. Mastering these features will make navigating Excel more efficient, allow you to organize and review data with greater ease, and give you more control over how your workbook is displayed and managed.", 25, 0)
+            )
+            url_video_func("https://www.youtube.com/watch?v=ERCg7RznD3w", "Simon Sez IT", "Customize the Quick Access toolbar")
+            url_video_func("https://www.youtube.com/watch?v=rqjStG5xTZ4", "Kay Rand Morgan", "Display and modify workbook content in different views")
+            url_video_func("https://www.youtube.com/watch?v=UJ4vPQ18PLg", "Excel Rush", "How to Freeze Multiple Rows and or Columns in Excel using Freeze Panes")
+            url_video_func("https://www.youtube.com/watch?v=GfHWyniYja4", "Kay Rand Morgan", "Change window views")
+            url_video_func("https://www.youtube.com/watch?v=5ta5Vf8VRms", "David Hays", "Modify basic workbook properties")
+            url_video_func("https://www.youtube.com/watch?v=nBkv7EGsAIU", "Excel Tutorials by EasyClick Academy", "Display formulas")
             navigation_buttons(5,6)
 
 
