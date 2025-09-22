@@ -27,7 +27,7 @@ def display_course():
             .course-banner-wrapper {{
                 position: relative;
                 width: 100%;
-                height: 900px; /* background height */
+                height: -600px; /* background height */
                 background-image: url("data:image/png;base64,{bg_encoded}");
                 background-size: cover;
                 background-position: center;
