@@ -113,7 +113,7 @@ def display_home():
             background-position: center top;
             background-repeat: no-repeat;
             background-attachment: fixed;
-            padding-top: 50px;  /* Push content down */
+            padding-top: 80px;  /* Push content down */
         }}
         </style>
         """,
