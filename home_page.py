@@ -110,9 +110,10 @@ def display_home():
         .stApp {{
             background-image: url("data:image/png;base64,{encoded}");
             background-size: cover;
-            background-position: center;
+            background-position: center top;
             background-repeat: no-repeat;
             background-attachment: fixed;
+            padding-top: 200px;  /* Push content down */
         }}
         </style>
         """,
