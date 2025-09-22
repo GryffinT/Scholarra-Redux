@@ -106,12 +106,12 @@ def display_home():
     st.markdown(
         f"""
         <style>
-        .floating-banner {{
-            position: fixed;
+        .page-banner {{
+            position: absolute;
             top: 200px;
-            bottom: 300px;
             left: 0;
             width: 100vw;
+            height: calc(100vh - 500px); /* 200px from top + 300px from bottom */
             background-image: url("data:image/png;base64,{encoded}");
             background-size: cover;
             background-position: center;
@@ -119,7 +119,7 @@ def display_home():
             z-index: -1;
         }}
         </style>
-        <div class="floating-banner"></div>
+        <div class="page-banner"></div>
         """,
         unsafe_allow_html=True
     )
