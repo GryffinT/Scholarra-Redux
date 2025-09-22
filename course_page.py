@@ -169,7 +169,7 @@ def display_course():
             st.write("")
             st.pdf(medias[5])
             navigation_buttons(1,2)
-        elif st.session_state.prog == 2:
+        elif st.session_state.prog >= 2:
             url_video_func("https://www.youtube.com/watch?v=EaS2Ooe9BNc&t=67s", "Kevin Stratvert", "How to import PDF into Excel" )
             url_video_func("https://www.youtube.com/watch?v=ebnNy5yEkvc", "ProgrammingKnowledge2", "How to Import CSV File Into Excel")
             
