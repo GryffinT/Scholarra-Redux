@@ -73,11 +73,6 @@ def format_chat(message, size, centering):
             </h1>
         """, unsafe_allow_html=True)
 
-
-import streamlit as st
-import base64
-
-# Example callback
 def display_course():
     st.success("✅ display_course() triggered!")
 
@@ -91,41 +86,49 @@ def embed(message, size, centering, extra=None):
             encoded = base64.b64encode(img_file.read()).decode()
         image_html = f'<img src="data:image/png;base64,{encoded}" width="200" style="display:block; margin:20px auto;">'
 
-    # Add CSS for hover effect
+    # CSS to style the button to look like the div
     st.markdown(
-        """
+        f"""
         <style>
-        .hover-box {
+        .hover-box-btn > button {{
+            all: unset;  /* remove default button styling */
+            display: block;
+            width: 100%;
+            cursor: pointer;
+            border-radius: 10px;
             border: 2px solid #d3d3d3;
             background-color: #d3d3d3;
             padding: 20px;
-            border-radius: 10px;
+            text-align: {align};
             transition: all 0.3s ease;
-            width: 100%;
-            box-sizing: border-box;
-        }
-        .hover-box:hover {
+        }}
+        .hover-box-btn > button:hover {{
             transform: scale(1.02);
             background-color: #e0e0ff;
             border-color: #888;
-        }
+        }}
+        .hover-box-btn h1 {{
+            font-size: {size}px;
+            font-family: 'Josefin Sans', sans-serif;
+            margin: 0;
+        }}
         </style>
         """,
         unsafe_allow_html=True,
     )
 
-    # Use a Streamlit button with container styling
+    # Wrap the button in a div to apply styling
     if st.button("", key=message):
         display_course()
 
-    # Render the styled div as visual
+    # Render the button visually with HTML inside
     st.markdown(
         f"""
-        <div class="hover-box">
-            <h1 style="font-size:{size}px; text-align:{align}; font-family:'Josefin Sans', sans-serif;">
-                {message}
-            </h1>
-            {image_html}
+        <div class="hover-box-btn">
+            <button>
+                <h1>{message}</h1>
+                {image_html}
+            </button>
         </div>
         """,
         unsafe_allow_html=True,
