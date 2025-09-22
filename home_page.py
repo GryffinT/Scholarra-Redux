@@ -116,11 +116,9 @@ def embed(message, size, centering, extra=None):
     </div>
     ''', unsafe_allow_html=True)
 
-   
-
-
     # Detect click via query param
     if st.query_params.get("click") == [key]:
+        st.success("yay")
         display_course()
         # Clear the parameter to allow future clicks
         st.query_params = {}
