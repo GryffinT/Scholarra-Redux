@@ -98,7 +98,23 @@ def embed(message, size, centering, extra=None):
 
 
 def display_home():
-    st.image(logo[2])
+    
+    background_image_url = "https://images.unsplash.com/photo-1616627981734-6b3c1c3b3e6d?auto=format&fit=crop&w=1920&q=80"
+    
+    st.markdown(
+        """
+        <style>
+        .stApp {
+            background-image: url('""" + background_image_url + """');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+        </style>
+        """,
+        unsafe_allow_html=True
+    )
     pad(2)
     graphic(1, 600)
     format_chat("Smarter study starts here.", 25, 1)
