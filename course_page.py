@@ -171,10 +171,23 @@ def display_course():
             st.write("")
             st.pdf(medias[5])
             navigation_buttons(1,2)
-        elif st.session_state.prog >= 2:
+        elif st.session_state.prog == 2:
             url_video_func("https://www.youtube.com/watch?v=EaS2Ooe9BNc&t=67s", "Kevin Stratvert", "How to import PDF into Excel" )
             url_video_func("https://www.youtube.com/watch?v=ebnNy5yEkvc", "ProgrammingKnowledge2", "How to Import CSV File Into Excel")
             navigation_buttons(3,4)
+        elif st.session_state.prog == 3:
+            contain(
+                ("Lesson 2, navigating workbook", 40, 0),
+                ("""In this lesson, we will explore how to efficiently move through and manage the contents of a workbook. 
+                    You’ll learn how to search for specific data, jump directly to named cells or ranges, and access different workbook elements with ease. 
+                    Additionally, we’ll cover how to insert and remove hyperlinks, making it easier to connect information within your workbook or to external resources. 
+                    Mastering these skills will help you work faster, stay organized, and make your spreadsheets more interactive and user-friendly.""", 25, 0)
+            )
+            url_video_func("https://www.youtube.com/watch?v=ovDpZD4BxQk", "Kay Rand Morgan", "Search for data within a workbook" )
+            url_video_func("https://www.youtube.com/watch?v=Z7RQnu3yrPk", "Kay Rand Morgan", "Navigating to named cells, ranges, or workbook elements" )
+            url_video_func("https://www.youtube.com/watch?v=QMzx3h-USM4", "Santhu Analytics", "How to Create & Remove Hyperlinks" )
+            navigation_buttons(5,6)
+
             
 
         
