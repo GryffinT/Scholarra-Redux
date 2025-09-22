@@ -30,7 +30,7 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-tab1, tab2, tab3, tab4 = st.tabs(["Home", "Courses", "Laurent", "Profile])
+tab1, tab2, tab3, tab4 = st.tabs(["Home", "Courses", "Laurent", "Profile"])
 
 st.session_state.page = 0
 
