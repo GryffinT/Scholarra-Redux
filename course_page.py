@@ -1,6 +1,7 @@
 import streamlit as st
 import os
 import base64
+import streamlit_pdf
 
 images_dir = os.path.join(os.path.dirname(__file__), "media")
 medias = [
