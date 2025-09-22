@@ -84,3 +84,12 @@ def display_course():
             """,
             unsafe_allow_html=True
         )
+    
+    tab1, tab2, tab3 = st.tabs(["Cat", "Dog", "Owl"])
+    
+    with tab1:
+        st.header("Excel")
+        st.image("https://static.streamlit.io/examples/cat.jpg", width=200)
+    with tab2:
+        st.header("Intro to ML")
+        st.image("https://static.streamlit.io/examples/dog.jpg", width=200)
