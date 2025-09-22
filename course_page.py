@@ -211,6 +211,19 @@ def display_course():
             url_video_func("https://www.youtube.com/watch?v=Z7RQnu3yrPk", "Kay Rand Morgan", "Navigating to named cells, ranges, or workbook elements" )
             url_video_func("https://www.youtube.com/watch?v=QMzx3h-USM4", "Santhu Analytics", "How to Create & Remove Hyperlinks" )
             navigation_buttons(5,6)
+        elif st.session_state.prog == 3:
+            contain(("Lesson 3, formatting", 40, 0),
+                    ("In this lesson, you’ll learn how to format worksheets and workbooks, modify page setup for printing and presentation, adjust row height and column width, and customize headers and footers. These skills will help you organize data more effectively, improve the readability of your spreadsheets, and ensure your work is presented in a clear and professional manner.", 25, 0)
+            )
+            url_video_func("https://www.youtube.com/watch?v=0SRt9dkR3Zg", "learnexcel.video","Excel Page Layout: The Ultimate Guide")
+            url_video_func("https://www.youtube.com/watch?v=wI6U9I2nZWg", "Technology for Teachers and Students", "3 Ways to AutoFit all Columns and Rows in Excel")
+            url_video_func("https://www.youtube.com/watch?v=UbYcYXfHwII", "Technology for Teachers and Students", "Create Custom Headers and Footers in Excel")
+            navigation_buttons(5,6)
+        elif st.session_state.prog == 3:
+            
+            navigation_buttons(5,6)
+
+
 
             
 
