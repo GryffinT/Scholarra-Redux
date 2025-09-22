@@ -11,10 +11,10 @@ logo = [
 ]
 
 def navigation_buttons():
-    # CSS for button styling
+    # CSS styling for buttons
     st.markdown("""
         <style>
-        .left-button {
+        div.stButton > button {
             background-color: #4CAF50;
             color: white;
             border: 2px solid #000000;
@@ -22,31 +22,23 @@ def navigation_buttons():
             padding: 8px 20px;
             font-size: 16px;
             cursor: pointer;
-        }
-        .right-button {
-            background-color: #4CAF50;
-            color: white;
-            border: 2px solid #000000;
-            border-radius: 5px;
-            padding: 8px 20px;
-            font-size: 16px;
-            cursor: pointer;
-            float: right;
         }
         </style>
     """, unsafe_allow_html=True)
 
-    # Left-aligned Back button
-    if st.button("Back", key="back"):
-        st.session_state.prog -= 1
+    # Two buttons in columns: Back left, Next right
+    col1, col2 = st.columns([1, 1])
+    with col1:
+        if st.button("Back"):
+            st.session_state.prog -= 1
 
-    # Right-aligned Next button using HTML trick
-    st.markdown("""
-        <form action="#" target="_self">
-            <input type="submit" value="Next" class="right-button"/>
-        </form>
-    """, unsafe_allow_html=True)
+    with col2:
+        st.markdown("<div style='text-align:right'>", unsafe_allow_html=True)
+        if st.button("Next", key="next"):
+            st.session_state.prog += 1
+        st.markdown("</div>", unsafe_allow_html=True)
 
+    # Display current value
     st.markdown(f"<h3 style='text-align:center;'>Current prog: {st.session_state.prog}</h3>", unsafe_allow_html=True)
 
 def contain(*messages):
