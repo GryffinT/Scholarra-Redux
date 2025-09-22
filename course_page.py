@@ -26,16 +26,18 @@ def url_video_func(url, name, video_title):
                 background-color: #FFFFFF;
                 color: black;
                 border: 2px solid #e6e6e6;
-                border-radius: 5px;
-                padding: 8px 20px;
+                border-radius: 10px;
+                padding: 12px 20px;
                 font-size: 16px;
+                box-shadow: 0 2px 5px rgba(0,0,0,0.1);
             ">
-                Video produced by <strong>{name}</strong> on Youtube.<br>
-                URL: <a href="{url}" target="_blank">{url}</a>
+                <p>Video produced by <strong>{name}</strong> on Youtube.</p>
+                <p>URL: <a href="{url}" target="_blank">{url}</a></p>
             </div>
             ''',
             unsafe_allow_html=True
         )
+
 
 def navigation_buttons(id1,id2):
     if "prog" not in st.session_state:
