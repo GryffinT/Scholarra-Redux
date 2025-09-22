@@ -29,15 +29,6 @@ def contain(*messages):
     # Render everything at once
     st.markdown(html_content, unsafe_allow_html=True)
 
-
-
-#def contain(*messages):
-#    container = st.container(border=True)
-#    with container:
-#        for msg, size, align in messages:
-#            format_chat(msg, size, align)
-
-
 def graphic(image_index, size):
     image_path = logo[image_index]
     with open(image_path, "rb") as img_file:
@@ -81,9 +72,6 @@ def display_course():
 import streamlit as st
 import base64
 from urllib.parse import urlencode
-
-def display_course():
-    st.success("✅ display_course() triggered!")
 
 def embed(message, size, centering, extra=None):
     align = {0: "left", 1: "center", 2: "right"}.get(centering, "left")
@@ -209,7 +197,7 @@ def display_home():
     format_chat("Expand and feed your interests, understanding, and curiosities", 50, 1)
     format_chat("Through Scholarra you can take courses and learn with Laurent", 25, 1)
     pad(2)
-    embed("Excel, with Scholarra! Earn your Excel certiifcation today!", 30, 1, extra=0)
+    embed("Excel, with Scholarra! Earn your Excel certifcation today!", 30, 1, extra=0)
     pad(2)
     format_chat("New to Scholarra.", 50, 0)
     tab1, tab2, tab3 = st.tabs(["A site redux", "Meet Laurent", "Excel, with Scholarra"])
