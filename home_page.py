@@ -66,6 +66,12 @@ def format_chat(message, size, centering):
             </h1>
         """, unsafe_allow_html=True)
 
+import streamlit as st
+import base64
+
+def display_course():
+    st.success("✅ display_course() triggered!")
+
 def embed(message, size, centering, extra=None):
     align = {0: "left", 1: "center", 2: "right"}.get(centering, "left")
 
@@ -77,13 +83,9 @@ def embed(message, size, centering, extra=None):
             encoded = base64.b64encode(img_file.read()).decode()
         image_html = f'<img src="data:image/png;base64,{encoded}" width="200" style="display:block; margin:20px auto;">'
 
-    # Unique click identifier
-    key = message.replace(" ", "_")
+    key = f"button_{message}"
 
-    # Build URL with query parameter
-    query = st.query_params
-
-    # CSS for hover box
+    # CSS for hover box + overlay invisible button
     st.markdown(f'''
     <style>
     .hover-box {{
@@ -94,9 +96,8 @@ def embed(message, size, centering, extra=None):
         transition: all 0.3s ease;
         cursor: pointer;
         text-align: {align};
-        text-decoration: none;
-        color: inherit;
         display: block;
+        position: relative;
     }}
     .hover-box:hover {{
         transform: scale(1.02);
@@ -108,18 +109,28 @@ def embed(message, size, centering, extra=None):
         font-family: 'Josefin Sans', sans-serif;
         margin: 0;
     }}
+    .hover-box button {{
+        all: unset;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        cursor: pointer;
+    }}
     </style>
-    <a class="hover-box" href="{url}">
+    <div class="hover-box">
         <h1>{message}</h1>
         {image_html}
-    </a>
+        <form action="." method="post">
+            <button type="submit"></button>
+        </form>
+    </div>
     ''', unsafe_allow_html=True)
 
-    # Detect click via query param
-    if st.query_params.get("click") == [key]:
+    # Overlay Streamlit button that fills the box
+    if st.button("", key=key):
         display_course()
-        # Clear the parameter to allow future clicks
-        st.query_params = {}
     
 def display_home():
     
