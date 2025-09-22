@@ -1,6 +1,8 @@
 import streamlit as st
 import os
 import base64
+import uuid
+import json
 from course_page import display_course
 
 images_dir = os.path.join(os.path.dirname(__file__), "media")
@@ -79,7 +81,7 @@ import base64
 def display_course():
     st.success("✅ display_course() triggered!")
 
-def embed(message, size, centering, extra=None, callback=None):
+def embed(message, size, centering, extra=None):
     align = {0: "left", 1: "center", 2: "right"}.get(centering, "left")
 
     image_html = ""
@@ -89,14 +91,27 @@ def embed(message, size, centering, extra=None, callback=None):
             encoded = base64.b64encode(img_file.read()).decode()
         image_html = f'<img src="data:image/png;base64,{encoded}" width="200" style="display:block; margin:20px auto;">'
 
-    # Generate unique key for button
-    key = f"embed_{message}"
+    # Unique ID for this box
+    box_id = f"box_{uuid.uuid4().hex}"
 
-    # CSS for hover effect
-    st.markdown(
-        f"""
+    # Prepare JS for click event safely
+    js_click = f"""
+    <script>
+    const box = document.getElementById("{box_id}");
+    box.onclick = () => {{
+        fetch("/_stcore/streamlit_set_value", {{
+            method: "POST",
+            headers: {{"Content-Type": "application/json"}},
+            body: JSON.stringify({{"key": "{box_id}_clicked", "value": true}})
+        }});
+    }};
+    </script>
+    """
+
+    # CSS + HTML
+    st.markdown(f"""
         <style>
-        .expand-box-{key} {{
+        #{box_id} {{
             border: 2px solid #d3d3d3;
             background-color: #d3d3d3;
             padding: 20px;
@@ -105,39 +120,28 @@ def embed(message, size, centering, extra=None, callback=None):
             cursor: pointer;
             width: 100%;
             box-sizing: border-box;
-            text-align: {align};
         }}
-        .expand-box-{key}:hover {{
+        #{box_id}:hover {{
             transform: scale(1.02);
             background-color: #e0e0ff;
             border-color: #888;
         }}
-        .expand-box-{key} h1 {{
-            font-size: {size}px;
-            font-family: 'Josefin Sans', sans-serif;
-            margin: 0;
-        }}
         </style>
-        """,
-        unsafe_allow_html=True
-    )
 
-    # Use a hidden button to capture click reliably
-    if st.button("", key=key, help=message):
-        if callback:
-            callback()
-
-    # Display the box
-    st.markdown(
-        f"""
-        <div class="expand-box-{key}">
-            <h1>{message}</h1>
+        <div id="{box_id}">
+            <h1 style="font-size:{size}px; text-align:{align}; font-family:'Josefin Sans', sans-serif;">
+                {message}
+            </h1>
             {image_html}
         </div>
-        """,
-        unsafe_allow_html=True
-    )
 
+        {js_click}
+    """, unsafe_allow_html=True)
+
+    # Check if clicked
+    if st.session_state.get(f"{box_id}_clicked", False):
+        display_course()
+        st.session_state[f"{box_id}_clicked"] = False
 
 
 
