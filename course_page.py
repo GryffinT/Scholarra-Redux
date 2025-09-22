@@ -10,6 +10,20 @@ logo = [
     
 ]
 
+def contain(*messages):
+    # Start the div with styles
+    html_content = '<div style="border:2px solid #e6e6e6; background-color:#FFFFFF; padding:10px; border-radius:10px;">'
+    
+    # Add each message to the div
+    for msg, size, align in messages:
+        alignment = ["center", "left", "right"]
+        html_content += f'<p style="text-align:{alignment[align]}; font-size:{size}px;">{msg}</p>'
+    
+    # Close the div
+    html_content += '</div>'
+    
+    # Render everything at once
+    st.markdown(html_content, unsafe_allow_html=True)
 
 def display_course():
     if st.session_state.page == 2:
@@ -85,11 +99,12 @@ def display_course():
             unsafe_allow_html=True
         )
     
-    tab1, tab2, tab3 = st.tabs(["Cat", "Dog", "Owl"])
+    tab1, tab2, tab3 = st.tabs(["Excel", "Intro to ML"])
     
     with tab1:
-        st.header("Excel")
-        st.image("https://static.streamlit.io/examples/cat.jpg", width=200)
+        contain(
+            (")
+        )
     with tab2:
         st.header("Intro to ML")
         st.image("https://static.streamlit.io/examples/dog.jpg", width=200)
