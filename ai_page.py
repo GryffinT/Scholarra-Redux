@@ -49,7 +49,7 @@ def display_ai():
     if prompt := st.chat_input("Ask Laurent anything."):
         st.session_state.messages.append({"role": "user", "content": prompt})
         with st.chat_message("user"):
-            contain((prompt), 40, 1)
+            contain((prompt, 40, 1))
     
         with st.chat_message("assistant"):
             classifications = Main_classification.pipeline.predict(prompt)
