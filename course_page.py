@@ -14,6 +14,14 @@ medias = [
     
 ]
 
+def url_video_func(url, name, video_title):
+    st.header(video_title)
+    st.video(url)
+    video_credit_expander = st.expander("Video credit")
+    with video_credit_expander:
+        st.write(f"Video produced by {name} on Youtube.")
+        st.write(f"URL: [{url}]({url})")
+
 def navigation_buttons(id1,id2):
     if "prog" not in st.session_state:
         st.session_state.prog = 1
@@ -144,22 +152,27 @@ def display_course():
     tab1, tab2 = st.tabs(["Excel", "Intro to ML"])
     
     with tab1:
-        contain(
-            ("MO-200 Excel", 40, 0),
-            ("Welcome! We're so glad you've chosen to enroll in our excel prep program! Feel free to look through the course syllabus. Once done scroll down and click next.", 25, 0)
-        )
-        st.audio(medias[3])
-        contain(
-            ("Course Syllabus", 25, 0)
-        )
-        st.write("")
-        st.pdf(medias[4])
-        contain(
-            ("Excel Manual", 25, 0)
-        )
-        st.write("")
-        st.pdf(medias[5])
-        navigation_buttons(1,2)
+        if st.session_state.prog <= 1:
+            contain(
+                ("MO-200 Excel", 40, 0),
+                ("Welcome! We're so glad you've chosen to enroll in our excel prep program! Feel free to look through the course syllabus. Once done scroll down and click next.", 25, 0)
+            )
+            st.audio(medias[3])
+            contain(
+                ("Course Syllabus", 25, 0)
+            )
+            st.write("")
+            st.pdf(medias[4])
+            contain(
+                ("Excel Manual", 25, 0)
+            )
+            st.write("")
+            st.pdf(medias[5])
+            navigation_buttons(1,2)
+        elif st.session_state.prog == 2:
+            url_video_func("https://www.youtube.com/watch?v=EaS2Ooe9BNc&t=67s", "Kevin Stratvert", "How to import PDF into Excel" )
+            url_video_func("https://www.youtube.com/watch?v=ebnNy5yEkvc", "ProgrammingKnowledge2", "How to Import CSV File Into Excel")
+            
 
         
     with tab2:
