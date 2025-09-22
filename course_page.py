@@ -219,7 +219,7 @@ def display_course():
             url_video_func("https://www.youtube.com/watch?v=wI6U9I2nZWg", "Technology for Teachers and Students", "3 Ways to AutoFit all Columns and Rows in Excel")
             url_video_func("https://www.youtube.com/watch?v=UbYcYXfHwII", "Technology for Teachers and Students", "Create Custom Headers and Footers in Excel")
             navigation_buttons(5,6)
-        elif st.session_state.prog == 3:
+        elif st.session_state.prog == 4:
             
             navigation_buttons(5,6)
 
