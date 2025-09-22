@@ -77,10 +77,15 @@ def embed(message, size, centering, extra=None):
             encoded = base64.b64encode(img_file.read()).decode()
         image_html = f'<img src="data:image/png;base64,{encoded}" width="200" style="display:block; margin:20px auto;">'
 
+    # Unique click identifier
     key = message.replace(" ", "_")
 
+    # Build URL with query parameter
+    query = st.query_params
+    url = f"?click={key}"
+
     # CSS for hover box
-    st.markdown(f'''
+   st.markdown(f'''
     <style>
     .hover-box {{
         border: 2px solid #d3d3d3;
@@ -90,6 +95,7 @@ def embed(message, size, centering, extra=None):
         transition: all 0.3s ease;
         cursor: pointer;
         text-align: {align};
+        text-decoration: none;
         color: inherit;
         display: block;
     }}
@@ -104,18 +110,18 @@ def embed(message, size, centering, extra=None):
         margin: 0;
     }}
     </style>
-    <div class="hover-box" onclick="document.getElementById('{key}').click();">
+    <div class="hover-box" onclick="window.location='javascript:void(0)';">
         <h1>{message}</h1>
         {image_html}
     </div>
-    <form>
-        <input type="submit" id="{key}" style="display:none">
-    </form>
     ''', unsafe_allow_html=True)
 
-    # Detect click via hidden submit
-    if st.button("", key=key):
+
+    # Detect click via query param
+    if st.query_params.get("click") == [key]:
         display_course()
+        # Clear the parameter to allow future clicks
+        st.query_params = {}
     
 def display_home():
     
