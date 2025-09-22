@@ -43,15 +43,23 @@ st.markdown("""
 # Define tabs
 tab1, tab2, tab3 = st.tabs(["Home", "Courses", "Profile"])
 
+st.session_state.page = 0
+
 with tab1:
-    display_home()
-    st_autorefresh(interval=840000, key="auto_refresh")
+    st.session_state.page = 1
+    if st.session_state.page == 1
+        display_home()
+        st_autorefresh(interval=840000, key="auto_refresh")
 
 with tab2:
-    display_course()
-    st_autorefresh(interval=840000, key="auto_refresh")
+    st.session_state.page = 2
+    if st.session_state.page == 2
+        display_course()
+        st_autorefresh(interval=840000, key="auto_refresh")
 
 with tab3:
-    st.header("An owl")
-    st.image("https://static.streamlit.io/examples/owl.jpg", width=200)
-    st_autorefresh(interval=840000, key="auto_refresh")
+    st.session_state.page = 3
+    if st.session_state.page == 3
+        st.header("An owl")
+        st.image("https://static.streamlit.io/examples/owl.jpg", width=200)
+        st_autorefresh(interval=840000, key="auto_refresh")
