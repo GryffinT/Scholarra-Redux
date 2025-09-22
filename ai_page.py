@@ -41,5 +41,5 @@ def display_ai():
             classifications = Main_classification.pipeline.predict(prompt)
             generation = output(prompt)
             response = f"The classifications are: {classifications}, and my answer is {generation}"
-            st.markdown(response)
+            st.message(response)
         st.session_state.messages.append({"role": "assistant", "content": response})
