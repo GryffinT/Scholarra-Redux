@@ -72,10 +72,16 @@ def format_chat(message, size, centering):
         """, unsafe_allow_html=True)
 
 
+import streamlit as st
+import base64
+
+# Example callback
+def display_course():
+    st.success("✅ display_course() triggered!")
+
 def embed(message, size, centering, extra=None, callback=None):
     align = {0: "left", 1: "center", 2: "right"}.get(centering, "left")
 
-    # Image HTML
     image_html = ""
     if extra is not None and 0 <= extra < len(logo):
         image_path = logo[extra]
@@ -83,7 +89,7 @@ def embed(message, size, centering, extra=None, callback=None):
             encoded = base64.b64encode(img_file.read()).decode()
         image_html = f'<img src="data:image/png;base64,{encoded}" width="200" style="display:block; margin:20px auto;">'
 
-    # Unique key for Streamlit state/button
+    # Generate unique key for button
     key = f"embed_{message}"
 
     # CSS for hover effect
@@ -116,12 +122,10 @@ def embed(message, size, centering, extra=None, callback=None):
         unsafe_allow_html=True
     )
 
-    # Hidden button to capture clicks
-    if st.button("", key=key):
+    # Use a hidden button to capture click reliably
+    if st.button("", key=key, help=message):
         if callback:
             callback()
-        else:
-            display_course()  # default if no callback provided
 
     # Display the box
     st.markdown(
@@ -133,6 +137,7 @@ def embed(message, size, centering, extra=None, callback=None):
         """,
         unsafe_allow_html=True
     )
+
 
 
 
@@ -204,7 +209,7 @@ def display_home():
     format_chat("Expand and feed your interests, understanding, and curiosities", 50, 1)
     format_chat("Through Scholarra you can take courses and learn with Laurent", 25, 1)
     pad(2)
-    embed("We offer Microsoft Excel prep materials.", 50, 1, 0)
+    embed("Click me!", 30, 1, extra=0, callback=display_course)
     pad(2)
     format_chat("New to Scholarra.", 50, 0)
     tab1, tab2, tab3 = st.tabs(["A site redux", "Meet Laurent", "Excel, with Scholarra"])
