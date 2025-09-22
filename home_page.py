@@ -6,11 +6,6 @@ import json
 from course_page import display_course
 from urllib.parse import urlencode
 
-if "prog" not in st.session_state:
-    st.session_state.prog = 1
-if "page" not in st.session_state:
-    st.session_state.page = 1
-
 images_dir = os.path.join(os.path.dirname(__file__), "media")
 logo = [
     os.path.join(images_dir, "excel_logo.png"),
