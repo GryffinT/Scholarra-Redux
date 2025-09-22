@@ -276,6 +276,5 @@ def display_course():
         contain(("Nothing to see here..", 40, 0),
                 ("We're still working on this course, feel free to leave some feedback below to let us know if you'd be interested in taking it!", 25, 0)
         )
-        st.container = feedback_container
-        with feedback_container:
+        with st.container():
             st.feedback("faces")
