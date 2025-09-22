@@ -276,26 +276,28 @@ def display_course():
         contain(("Nothing to see here..", 40, 0),
                 ("We're still working on this course, feel free to leave some feedback below to let us know if you'd be interested in taking it!", 25, 0)
         )
+        st.markdown(
+            """
+            <style>
+            .feedback-box {
+                background-color: #FFFFFF;
+                color: black;
+                border: 2px solid #e6e6e6;
+                border-radius: 10px;
+                padding: 16px 20px;
+                font-size: 16px;
+                box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+                margin-bottom: 15px;
+            }
+            </style>
+            """,
+            unsafe_allow_html=True
+        )
+        
+        # Create the feedback "box"
         with st.container():
-            st.markdown(
-                """
-                <div style="
-                    background-color: #FFFFFF;
-                    color: black;
-                    border: 2px solid #e6e6e6;
-                    border-radius: 10px;
-                    padding: 16px 20px;
-                    font-size: 16px;
-                    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-                    margin-bottom: 15px;
-                ">
-                <strong>Feedback</strong><br>
-                """,
-                unsafe_allow_html=True
-            )
-        
+            st.markdown('<div class="feedback-box"><strong>Feedback</strong><br>', unsafe_allow_html=True)
             st.feedback("faces")
-        
             st.markdown("</div>", unsafe_allow_html=True)
 
 
