@@ -76,6 +76,7 @@ def format_chat(message, size, centering):
 def display_course():
     st.success("✅ display_course() triggered!")
 
+
 def embed(message, size, centering, extra=None):
     align = {0: "left", 1: "center", 2: "right"}.get(centering, "left")
 
@@ -86,49 +87,57 @@ def embed(message, size, centering, extra=None):
             encoded = base64.b64encode(img_file.read()).decode()
         image_html = f'<img src="data:image/png;base64,{encoded}" width="200" style="display:block; margin:20px auto;">'
 
-    # Wrap button in div for styling
-    # Use only one element — the button is the box
-    button_html = f"""
-    <style>
-    .hover-box-btn > button {{
-        all: unset;  /* remove default button style */
-        display: block;
-        width: 100%;
-        cursor: pointer;
-        border-radius: 10px;
-        border: 2px solid #d3d3d3;
-        background-color: #d3d3d3;
-        padding: 20px;
-        text-align: {align};
-        transition: all 0.3s ease;
-        box-sizing: border-box;
-    }}
-    .hover-box-btn > button:hover {{
-        transform: scale(1.02);
-        background-color: #e0e0ff;
-        border-color: #888;
-    }}
-    .hover-box-btn h1 {{
-        font-size: {size}px;
-        font-family: 'Josefin Sans', sans-serif;
-        margin: 0;
-    }}
-    </style>
-    <div class="hover-box-btn">
-        <button type="submit">
-            <h1>{message}</h1>
-            {image_html}
-        </button>
-    </div>
-    """
+    # Unique key for Streamlit button
+    key = f"button_{message}"
 
-    # Use a form so the button click triggers a Streamlit action
-    with st.form(key=f"form_{message}"):
-        st.markdown(button_html, unsafe_allow_html=True)
-        submitted = st.form_submit_button("dummy_submit")  # hidden
-        if submitted:
-            display_course()
+    # CSS to style the button like a box
+    st.markdown(
+        f"""
+        <style>
+        div.stButton > button#{key} {{
+            all: unset;
+            display: block;
+            width: 100%;
+            cursor: pointer;
+            border-radius: 10px;
+            border: 2px solid #d3d3d3;
+            background-color: #d3d3d3;
+            padding: 20px;
+            box-sizing: border-box;
+            transition: all 0.3s ease;
+            text-align: {align};
+        }}
+        div.stButton > button#{key}:hover {{
+            transform: scale(1.02);
+            background-color: #e0e0ff;
+            border-color: #888;
+        }}
+        div.stButton > button#{key} h1 {{
+            font-size: {size}px;
+            font-family: 'Josefin Sans', sans-serif;
+            margin: 0;
+        }}
+        </style>
+        """,
+        unsafe_allow_html=True,
+    )
 
+    # Render the button with your content inside
+    if st.button(key=key):
+        display_course()
+
+    # Markdown with HTML inside button styling
+    st.markdown(
+        f"""
+        <div class="stButton">
+            <button id="{key}">
+                <h1>{message}</h1>
+                {image_html}
+            </button>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
 def display_home():
     
     with open(logo[2], "rb") as image_file:
