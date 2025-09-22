@@ -14,6 +14,8 @@ medias = [
 ]
 
 def navigation_buttons():
+    if "prog" not in st.session_state:
+        st.session_state.prog = 1
     # CSS styling for buttons
     st.markdown("""
         <style>
