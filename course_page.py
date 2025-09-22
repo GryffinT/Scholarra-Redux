@@ -9,7 +9,8 @@ medias = [
     os.path.join(images_dir, "scholarracourselogo.png"),
     os.path.join(images_dir, "courseimage.jpg"),
     os.path.join(images_dir, "Syllabus TTS.mp3"),
-    os.path.join(images_dir, "mo-200-microsoft-excel-2019-skills-measured (2).pdf")
+    os.path.join(images_dir, "mo-200-microsoft-excel-2019-skills-measured (2).pdf"),
+    os.path.join(images_dir, "Excel-Fundamentals-Manual.pdf")
     
 ]
 
@@ -149,7 +150,7 @@ def display_course():
         )
         st.audio(medias[3])
         st.pdf(medias[4])
-        st.write("s")
+        st.pdf(medias[5])
         navigation_buttons(1,2)
 
         
