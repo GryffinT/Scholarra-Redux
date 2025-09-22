@@ -6,7 +6,7 @@ import os
 from home_page import embed
 from home_page import contain
 from course_page import display_course
-import time
+from streamlit_autorefresh import st_autorefresh
 
 images_dir = os.path.join(os.path.dirname(__file__), "media")
 logo = [
@@ -45,12 +45,13 @@ tab1, tab2, tab3 = st.tabs(["Home", "Courses", "Profile"])
 
 with tab1:
     display_home()
-    time.sleep(840)
-    st.rerun
+    st_autorefresh(interval=840000, key="auto_refresh")
 
 with tab2:
     display_course()
+    st_autorefresh(interval=840000, key="auto_refresh")
 
 with tab3:
     st.header("An owl")
     st.image("https://static.streamlit.io/examples/owl.jpg", width=200)
+    st_autorefresh(interval=840000, key="auto_refresh")
