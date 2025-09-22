@@ -49,8 +49,6 @@ def navigation_buttons(id1,id2):
     # Display current value centered
     st.markdown(f"<h3 style='text-align:center;'>Current prog: {st.session_state.prog}</h3>", unsafe_allow_html=True)
 
-navigation_buttons()
-
 def contain(*messages):
     # Start the div with styles
     html_content = '<div style="border:2px solid #e6e6e6; background-color:#FFFFFF; padding:10px; border-radius:10px;">'
