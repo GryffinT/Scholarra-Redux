@@ -9,7 +9,7 @@ lesson_3_quiz = {
   "What is the primary function of the 'Margins": "To adjust the spacing around the edges of the printed page",
   "How can you change the page orientation in Excel to landscape?": "Use the 'Orientation' button in the Page Layout menu to switch from portrait to landscape",
   "What does setting a 'Print Area' in Excel do?": "Defines a specific range of cells to be printed, excluding other content",
-  "How do you insert a manual page break in Excel?": 'Insert Page Break' to add a break above it",
+  "How do you insert a manual page break in Excel?": "Insert Page Break' to add a break above it",
   "What is a notable limitation of inserting a background image through the Page Layout menu?": "The background image will not print; it only appears on screen"
 }
 
