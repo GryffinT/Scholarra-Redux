@@ -5,6 +5,7 @@ from home_page import pad
 import os
 from home_page import embed
 from home_page import contain
+from course_page import dispaly_course
 
 images_dir = os.path.join(os.path.dirname(__file__), "media")
 logo = [
@@ -45,8 +46,7 @@ with tab1:
     display_home()
 
 with tab2:
-    st.header("A dog")
-    st.image("https://static.streamlit.io/examples/dog.jpg", width=200)
+    display_course()
 
 with tab3:
     st.header("An owl")
