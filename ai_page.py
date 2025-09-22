@@ -4,21 +4,6 @@ import streamlit as st
 from Main_classification import render_sidebar
 from Main_generative import output
 
-def contain(*messages):
-    # Start the div with styles
-    html_content = '<div style="border:2px solid #e6e6e6; background-color:#FFFFFF; padding:10px; border-radius:10px;">'
-    
-    # Add each message to the div
-    for msg, size, align in messages:
-        alignment = ["center", "left", "right"]
-        html_content += f'<p style="text-align:{alignment[align]}; font-size:{size}px;">{msg}</p>'
-    
-    # Close the div
-    html_content += '</div>'
-    
-    # Render everything at once
-    st.markdown(html_content, unsafe_allow_html=True)
-
 def display_ai():
     # -------------------------
     # Sidebar (persistent)
@@ -49,11 +34,11 @@ def display_ai():
     if prompt := st.chat_input("Ask Laurent anything."):
         st.session_state.messages.append({"role": "user", "content": prompt})
         with st.chat_message("user"):
-            contain(f"{prompt}", 40, 1)
+            st.markdown(prompt)
     
         with st.chat_message("assistant"):
             classifications = Main_classification.pipeline.predict(prompt)
             generation = output(prompt)
             response = f"The classifications are: {classifications}, and my answer is {generation}"
-            contain(f"{response}", 40, 1)
+            st.markdown(response)
         st.session_state.messages.append({"role": "assistant", "content": response})
