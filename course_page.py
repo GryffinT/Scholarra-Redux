@@ -11,10 +11,10 @@ logo = [
 ]
 
 def navigation_buttons():
-    # CSS for button styling
+    # CSS styling for buttons
     st.markdown("""
         <style>
-        div.stButton > button {
+        .button-left {
             background-color: #4CAF50;
             color: white;
             border: 2px solid #000000;
@@ -23,27 +23,38 @@ def navigation_buttons():
             font-size: 16px;
             cursor: pointer;
         }
+        .button-right {
+            background-color: #4CAF50;
+            color: white;
+            border: 2px solid #000000;
+            border-radius: 5px;
+            padding: 8px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            float: right;
+        }
+        .nav-container {
+            width: 100%;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
         </style>
     """, unsafe_allow_html=True)
 
-    # Two columns: Back left, Next right
-    col1, col2 = st.columns([1, 1])
+    # Left Back button
+    if st.button("Back", key="back"):
+        st.session_state.prog -= 1
 
-    # Back button in left column (left-aligned by default)
-    with col1:
-        if st.button("Back"):
-            st.session_state.prog -= 1
+    # Right Next button (HTML visually floated)
+    st.markdown("""
+        <div class="nav-container">
+            <form action="#">
+                <input type="submit" value="Next" class="button-right">
+            </form>
+        </div>
+    """, unsafe_allow_html=True)
 
-    # Next button in right column, aligned to the right using container
-    with col2:
-        right_container = st.container()
-        with right_container:
-            st.markdown("<div style='text-align: right;'>", unsafe_allow_html=True)
-            if st.button("Next", key="next"):
-                st.session_state.prog += 1
-            st.markdown("</div>", unsafe_allow_html=True)
-
-    # Display current value centered
+    # Display current prog value
     st.markdown(f"<h3 style='text-align:center;'>Current prog: {st.session_state.prog}</h3>", unsafe_allow_html=True)
 
 def contain(*messages):
