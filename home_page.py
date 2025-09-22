@@ -86,40 +86,47 @@ def embed(message, size, centering, extra=None):
             encoded = base64.b64encode(img_file.read()).decode()
         image_html = f'<img src="data:image/png;base64,{encoded}" width="200" style="display:block; margin:20px auto;">'
 
-    key = f"button_{message}"
+    # Unique key for the form
+    key = f"form_{message}"
 
-    # CSS to style the Streamlit button like a full box
-    st.markdown(f"""
+    # CSS for hover box
+    st.markdown(f'''
     <style>
-    div.stButton > button#{key} {{
-        all: unset;
-        display: block;
-        width: 100%;
-        cursor: pointer;
-        border-radius: 10px;
+    .hover-box {{
         border: 2px solid #d3d3d3;
         background-color: #d3d3d3;
         padding: 20px;
-        box-sizing: border-box;
+        border-radius: 10px;
         transition: all 0.3s ease;
+        cursor: pointer;
         text-align: {align};
     }}
-    div.stButton > button#{key}:hover {{
+    .hover-box:hover {{
         transform: scale(1.02);
         background-color: #e0e0ff;
         border-color: #888;
     }}
-    div.stButton > button#{key} h1 {{
+    .hover-box h1 {{
         font-size: {size}px;
         font-family: 'Josefin Sans', sans-serif;
         margin: 0;
     }}
     </style>
-    """, unsafe_allow_html=True)
+    ''', unsafe_allow_html=True)
 
-    # The actual Streamlit button that **looks like the box**
-    if st.button(label=f"{message}\n{image_html}", key=key, help="Click me"):
-        display_course()
+    # Form with hidden submit button
+    with st.form(key=key):
+        st.markdown(f'''
+        <div class="hover-box">
+            <h1>{message}</h1>
+            {image_html}
+            <button type="submit" style="display:none"></button>
+        </div>
+        ''', unsafe_allow_html=True)
+
+        submitted = st.form_submit_button(label="")
+        if submitted:
+            display_course()
     
 def display_home():
     
