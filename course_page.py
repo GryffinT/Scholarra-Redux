@@ -10,15 +10,35 @@ logo = [
     
 ]
 
-def back():
-    button = st.button("Back")
-    if button:
-        st.session_state.prog -= 1
+def navigation_buttons():
+    # CSS for button styling
+    st.markdown("""
+        <style>
+        div.stButton > button {
+            background-color: #4CAF50;
+            color: white;
+            border: 2px solid #000000;
+            border-radius: 5px;
+            padding: 8px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        </style>
+    """, unsafe_allow_html=True)
 
-def next():
-    button = st.button("Next")
-    if button:
-        st.session_state.prog += 1
+    # Create two columns: Back on the left, Next on the right
+    col1, col2 = st.columns([1, 1])
+
+    with col1:
+        if st.button("Back"):
+            st.session_state.prog -= 1
+
+    with col2:
+        if st.button("Next"):
+            st.session_state.prog += 1
+
+    # Display current value centered below
+    st.markdown(f"<h3 style='text-align:center;'>Current prog: {st.session_state.prog}</h3>", unsafe_allow_html=True)
 
 def contain(*messages):
     # Start the div with styles
@@ -119,7 +139,8 @@ def display_course():
             ("Welcome! We're so glad you've chosen to enroll in our excel prep program! Feel free to look through the course syllabus. Once done scroll down and click next.", 25, 0)
         )
         next()
-        st.button("next")
+        navigation_buttons()
+
         
     with tab2:
         st.header("Intro to ML")
