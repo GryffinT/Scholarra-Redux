@@ -274,6 +274,6 @@ def display_course():
 
     with tab2:
         contain(("Nothing to see here..", 40, 0),
-                ("We're still working on this course, feel free to leave some feedback below to let us know if you'd be interested in taking it!, 25, 0)
+                ("We're still working on this course, feel free to leave some feedback below to let us know if you'd be interested in taking it!", 25, 0)
         )
         st.feedback("faces")
