@@ -86,54 +86,48 @@ def embed(message, size, centering, extra=None):
             encoded = base64.b64encode(img_file.read()).decode()
         image_html = f'<img src="data:image/png;base64,{encoded}" width="200" style="display:block; margin:20px auto;">'
 
-    # CSS to style the button to look like the div
-    st.markdown(
-        f"""
-        <style>
-        .hover-box-btn > button {{
-            all: unset;  /* remove default button styling */
-            display: block;
-            width: 100%;
-            cursor: pointer;
-            border-radius: 10px;
-            border: 2px solid #d3d3d3;
-            background-color: #d3d3d3;
-            padding: 20px;
-            text-align: {align};
-            transition: all 0.3s ease;
-        }}
-        .hover-box-btn > button:hover {{
-            transform: scale(1.02);
-            background-color: #e0e0ff;
-            border-color: #888;
-        }}
-        .hover-box-btn h1 {{
-            font-size: {size}px;
-            font-family: 'Josefin Sans', sans-serif;
-            margin: 0;
-        }}
-        </style>
-        """,
-        unsafe_allow_html=True,
-    )
+    # Wrap button in div for styling
+    # Use only one element — the button is the box
+    button_html = f"""
+    <style>
+    .hover-box-btn > button {{
+        all: unset;  /* remove default button style */
+        display: block;
+        width: 100%;
+        cursor: pointer;
+        border-radius: 10px;
+        border: 2px solid #d3d3d3;
+        background-color: #d3d3d3;
+        padding: 20px;
+        text-align: {align};
+        transition: all 0.3s ease;
+        box-sizing: border-box;
+    }}
+    .hover-box-btn > button:hover {{
+        transform: scale(1.02);
+        background-color: #e0e0ff;
+        border-color: #888;
+    }}
+    .hover-box-btn h1 {{
+        font-size: {size}px;
+        font-family: 'Josefin Sans', sans-serif;
+        margin: 0;
+    }}
+    </style>
+    <div class="hover-box-btn">
+        <button type="submit">
+            <h1>{message}</h1>
+            {image_html}
+        </button>
+    </div>
+    """
 
-    # Wrap the button in a div to apply styling
-    if st.button("", key=message):
-        display_course()
-
-    # Render the button visually with HTML inside
-    st.markdown(
-        f"""
-        <div class="hover-box-btn">
-            <button>
-                <h1>{message}</h1>
-                {image_html}
-            </button>
-        </div>
-        """,
-        unsafe_allow_html=True,
-    )
-
+    # Use a form so the button click triggers a Streamlit action
+    with st.form(key=f"form_{message}"):
+        st.markdown(button_html, unsafe_allow_html=True)
+        submitted = st.form_submit_button("dummy_submit")  # hidden
+        if submitted:
+            display_course()
 
 def display_home():
     
