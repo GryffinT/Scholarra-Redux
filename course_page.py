@@ -3,10 +3,11 @@ import os
 import base64
 
 images_dir = os.path.join(os.path.dirname(__file__), "media")
-logo = [
-    os.path.join(images_dir, "excel_logo.png"),
-    os.path.join(images_dir, "scholarracourselogo.png"),
-    os.path.join(images_dir, "courseimage.jpg")
+medias = [
+    os.path.join(images_dir, "excel_medias.png"),
+    os.path.join(images_dir, "scholarracoursemedias.png"),
+    os.path.join(images_dir, "courseimage.jpg"),
+    os.path.join(images_dir, "Syllabus TTS.mp3")
     
 ]
 
@@ -66,10 +67,10 @@ def display_course():
         st.session_state.prog = 1
     if st.session_state.page == 2:
         
-        with open(logo[2], "rb") as image_file:
+        with open(medias[2], "rb") as image_file:
             bg_encoded = base64.b64encode(image_file.read()).decode()
         
-        with open(logo[1], "rb") as image_file:
+        with open(medias[1], "rb") as image_file:
             fg_encoded = base64.b64encode(image_file.read()).decode()
         
         st.markdown(
@@ -101,7 +102,7 @@ def display_course():
                 z-index: 2;
             }}
 
-            /* Foreground logo */
+            /* Foreground medias */
             .course-banner-foreground img {{
                 width: 600px;
                 height: auto;
@@ -144,6 +145,7 @@ def display_course():
             ("MO-200 Excel", 40, 0),
             ("Welcome! We're so glad you've chosen to enroll in our excel prep program! Feel free to look through the course syllabus. Once done scroll down and click next.", 25, 0)
         )
+        st.audio(medias[3])
         navigation_buttons()
 
         
