@@ -36,9 +36,7 @@ def contain(*messages):
     st.markdown(html_content, unsafe_allow_html=True)
 
 def display_course():
-    if st.session_state.prog:
-        pass
-    else:
+    if "prog" not in st.session_state:
         st.session_state.prog = 1
     if st.session_state.page == 2:
         
