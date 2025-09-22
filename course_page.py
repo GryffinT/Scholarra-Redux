@@ -99,7 +99,7 @@ def display_course():
             unsafe_allow_html=True
         )
     
-    tab1, tab2, tab3 = st.tabs(["Excel", "Intro to ML"])
+    tab1, tab2 = st.tabs(["Excel", "Intro to ML"])
     
     with tab1:
         contain(
