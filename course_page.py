@@ -272,13 +272,8 @@ def display_course():
             navigation_buttons(13,14)
 
 
-
-
-
-
-            
-
-        
     with tab2:
-        st.header("Intro to ML")
-        st.image("https://static.streamlit.io/examples/dog.jpg", width=200)
+        contain(("Nothing to see here..", 40, 0),
+                ("We're still working on this course, feel free to leave some feedback below to let us know if you'd be interested in taking it!, 25, 0)
+        )
+        st.feedback("faces")
