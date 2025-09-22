@@ -103,24 +103,30 @@ def display_home():
     with open(logo[2], "rb") as image_file:
         encoded = base64.b64encode(image_file.read()).decode()
     
-    st.markdown("<div style='height:200px'></div>", unsafe_allow_html=True)
-    
     st.markdown(
         f"""
-        <div style="
+        <style>
+        .page-banner {{
+            position: absolute;
+            top: 200px;
+            left: 0;
             width: 100vw;
-            height: calc(100vh - 500px);
-            background-image: url('data:image/png;base64,{encoded}');
+            height: calc(100vh - 500px); /* 200px from top + 300px from bottom */
+            background-image: url("data:image/png;base64,{encoded}");
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-        ">
-        </div>
+            z-index: -1;
+            pointer-events: none; /* allows clicks to pass through */
+        }}
+        .stApp {{
+            position: relative;
+        }}
+        </style>
+        <div class="page-banner"></div>
         """,
         unsafe_allow_html=True
     )
-    
-    st.markdown("<div style='height:300px'></div>", unsafe_allow_html=True)
     pad(2)
     graphic(1, 600)
     format_chat("Smarter study starts here.", 25, 1)
