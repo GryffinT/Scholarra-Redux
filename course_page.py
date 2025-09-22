@@ -18,11 +18,12 @@ def url_video_func(url, name, video_title):
     contain((video_title, 25, 1))
     st.write("")
     st.video(url)
-    video_credit_expander = st.expander("Video credit")
+    video_credit_expander = st.container() 
+    
     with video_credit_expander:
         st.markdown(
             f'''
-            <div style="
+            <details style="
                 background-color: #FFFFFF;
                 color: black;
                 border: 2px solid #e6e6e6;
@@ -31,12 +32,18 @@ def url_video_func(url, name, video_title):
                 font-size: 16px;
                 box-shadow: 0 2px 5px rgba(0,0,0,0.1);
             ">
-                <p>Video produced by <strong>{name}</strong> on Youtube.</p>
-                <p>URL: <a href="{url}" target="_blank">{url}</a></p>
-            </div>
+                <summary style="font-weight:bold; font-size:18px; cursor:pointer;">
+                    Video credit
+                </summary>
+                <div style="margin-top:10px;">
+                    Video produced by <strong>{name}</strong> on Youtube.<br>
+                    URL: <a href="{url}" target="_blank">{url}</a>
+                </div>
+            </details>
             ''',
             unsafe_allow_html=True
         )
+
 
 
 def navigation_buttons(id1,id2):
