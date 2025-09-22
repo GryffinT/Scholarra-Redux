@@ -108,32 +108,40 @@ def display_home():
     st.markdown(
         f"""
         <style>
+        /* Background banner */
         .banner-wrapper {{
             position: relative;
             width: 100%;
-            height: 400px;
+            height: 200px; /* background height */
             background-image: url("data:image/png;base64,{bg_encoded}");
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
             overflow: hidden;
         }}
+    
+        /* Foreground content */
         .banner-foreground {{
             position: absolute;
             top: 0;
             left: 0;
-            width: 200%;
-            height: 400px;
+            width: 100%;
+            height: 200px;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             z-index: 2;
         }}
+    
+        /* Foreground logo (adjust size here) */
         .banner-foreground img {{
-            max-height: 120px; /* control size of foreground image */
+            width: 300px;   /* change foreground size independently */
+            height: auto;   /* keep aspect ratio */
             margin-bottom: 10px;
         }}
+    
+        /* Foreground text */
         .banner-foreground p {{
             font-size: 25px;
             font-weight: 700;
