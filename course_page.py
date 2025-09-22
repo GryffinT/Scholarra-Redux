@@ -14,7 +14,7 @@ def navigation_buttons():
     # CSS styling for buttons
     st.markdown("""
         <style>
-        .button-left {
+        div.stButton > button {
             background-color: #4CAF50;
             color: white;
             border: 2px solid #000000;
@@ -22,40 +22,29 @@ def navigation_buttons():
             padding: 8px 20px;
             font-size: 16px;
             cursor: pointer;
-        }
-        .button-right {
-            background-color: #4CAF50;
-            color: white;
-            border: 2px solid #000000;
-            border-radius: 5px;
-            padding: 8px 20px;
-            font-size: 16px;
-            cursor: pointer;
-            float: right;
-        }
-        .nav-container {
-            width: 100%;
-            overflow: hidden;
-            margin-bottom: 20px;
         }
         </style>
     """, unsafe_allow_html=True)
 
-    # Left Back button
-    if st.button("Back", key="back"):
-        st.session_state.prog -= 1
+    # Three columns: left button, spacer, right button
+    col1, col2, col3 = st.columns([1, 8, 1])
 
-    # Right Next button (HTML visually floated)
-    st.markdown("""
-        <div class="nav-container">
-            <form action="#">
-                <input type="submit" value="Next" class="button-right">
-            </form>
-        </div>
-    """, unsafe_allow_html=True)
+    # Back button (left)
+    with col1:
+        if st.button("Back"):
+            st.session_state.prog -= 1
 
-    # Display current prog value
+    # Spacer column col2 does nothing (just stretches space)
+
+    # Next button (right)
+    with col3:
+        if st.button("Next"):
+            st.session_state.prog += 1
+
+    # Display current value centered
     st.markdown(f"<h3 style='text-align:center;'>Current prog: {st.session_state.prog}</h3>", unsafe_allow_html=True)
+
+navigation_buttons()
 
 def contain(*messages):
     # Start the div with styles
