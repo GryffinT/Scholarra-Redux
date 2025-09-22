@@ -85,36 +85,38 @@ def embed(message, size, centering, extra=None):
     url = f"?click={key}"
 
     # CSS for hover box
-   st.markdown(f'''
-   <style>
-   .hover-box {{
-    border: 2px solid #d3d3d3;
-    background-color: #d3d3d3;
-    padding: 20px;
-    border-radius: 10px;
-    transition: all 0.3s ease;
-    cursor: pointer;
-    text-align: {align};
-    text-decoration: none;
-    color: inherit;
-    display: block;
-}}
-.hover-box:hover {{
-    transform: scale(1.02);
-    background-color: #e0e0ff;
-    border-color: #888;
-}}
-.hover-box h1 {{
-    font-size: {size}px;
-    font-family: 'Josefin Sans', sans-serif;
-    margin: 0;
-}}
-</style>
-<div class="hover-box" onclick="window.location='javascript:void(0)';">
-    <h1>{message}</h1>
-    {image_html}
-</div>
-''', unsafe_allow_html=True)
+    st.markdown(f'''
+    <style>
+    .hover-box {{
+        border: 2px solid #d3d3d3;
+        background-color: #d3d3d3;
+        padding: 20px;
+        border-radius: 10px;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        text-align: {align};
+        text-decoration: none;
+        color: inherit;
+        display: block;
+    }}
+    .hover-box:hover {{
+        transform: scale(1.02);
+        background-color: #e0e0ff;
+        border-color: #888;
+    }}
+    .hover-box h1 {{
+        font-size: {size}px;
+        font-family: 'Josefin Sans', sans-serif;
+        margin: 0;
+    }}
+    </style>
+    <div class="hover-box" onclick="window.location='javascript:void(0)';">
+        <h1>{message}</h1>
+        {image_html}
+    </div>
+    ''', unsafe_allow_html=True)
+
+   
 
 
     # Detect click via query param
