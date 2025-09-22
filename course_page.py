@@ -150,11 +150,11 @@ def display_course():
         )
         st.audio(medias[3])
         contain(
-            ("Course Syllabus, 25, 0)
+            ("Course Syllabus", 25, 0)
         )
         st.pdf(medias[4])
         contain(
-            ("Excel Manual, 25, 0)
+            ("Excel Manual", 25, 0)
         )
         st.pdf(medias[5])
         navigation_buttons(1,2)
