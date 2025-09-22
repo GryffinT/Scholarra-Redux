@@ -77,6 +77,12 @@ def display_course():
     st.success("✅ display_course() triggered!")
 
 
+import streamlit as st
+import base64
+
+def display_course():
+    st.success("✅ display_course() has been triggered!")
+
 def embed(message, size, centering, extra=None):
     align = {0: "left", 1: "center", 2: "right"}.get(centering, "left")
 
@@ -87,63 +93,55 @@ def embed(message, size, centering, extra=None):
             encoded = base64.b64encode(img_file.read()).decode()
         image_html = f'<img src="data:image/png;base64,{encoded}" width="200" style="display:block; margin:20px auto;">'
 
-    # Unique key for Streamlit button
     key = f"button_{message}"
 
-    # CSS to hide the actual Streamlit button and style the HTML button
-    st.markdown(
-        f"""
-        <style>
-        /* Hide the Streamlit button (actual clickable element) */
-        div.stButton > button#{key} {{
-            all: unset;
-        }}
+    # CSS for hover box
+    css = f'''
+    <style>
+    div.stButton > button#{key} {{
+        all: unset;
+    }}
+    .hover-box-btn > button {{
+        all: unset;
+        display: block;
+        width: 100%;
+        cursor: pointer;
+        border-radius: 10px;
+        border: 2px solid #d3d3d3;
+        background-color: #d3d3d3;
+        padding: 20px;
+        box-sizing: border-box;
+        transition: all 0.3s ease;
+        text-align: {align};
+    }}
+    .hover-box-btn > button:hover {{
+        transform: scale(1.02);
+        background-color: #e0e0ff;
+        border-color: #888;
+    }}
+    .hover-box-btn h1 {{
+        font-size: {size}px;
+        font-family: 'Josefin Sans', sans-serif;
+        margin: 0;
+    }}
+    </style>
+    '''
+    st.markdown(css, unsafe_allow_html=True)
 
-        /* Style our visible box */
-        .hover-box-btn > button {{
-            all: unset;
-            display: block;
-            width: 100%;
-            cursor: pointer;
-            border-radius: 10px;
-            border: 2px solid #d3d3d3;
-            background-color: #d3d3d3;
-            padding: 20px;
-            box-sizing: border-box;
-            transition: all 0.3s ease;
-            text-align: {align};
-        }}
-        .hover-box-btn > button:hover {{
-            transform: scale(1.02);
-            background-color: #e0e0ff;
-            border-color: #888;
-        }}
-        .hover-box-btn h1 {{
-            font-size: {size}px;
-            font-family: 'Josefin Sans', sans-serif;
-            margin: 0;
-        }}
-        </style>
-        """,
-        unsafe_allow_html=True,
-    )
-
-    # Use st.button with a real label (can be empty string)
+    # Streamlit button (required to trigger Python code)
     if st.button(label=message, key=key):
         display_course()
 
-    # Render the visible styled box
-    st.markdown(
-        f"""
-        <div class="hover-box-btn">
-            <button id="{key}">
-                <h1>{message}</h1>
-                {image_html}
-            </button>
-        </div>
-        """,
-        unsafe_allow_html=True,
-    )
+    # Visible styled box
+    html_box = f'''
+    <div class="hover-box-btn">
+        <button id="{key}">
+            <h1>{message}</h1>
+            {image_html}
+        </button>
+    </div>
+    '''
+    st.markdown(html_box, unsafe_allow_html=True)
     
 def display_home():
     
@@ -154,7 +152,7 @@ def display_home():
         fg_encoded = base64.b64encode(image_file.read()).decode()
     
     st.markdown(
-        f"""
+        f""
         <style>
         /* Background banner */
         .banner-wrapper {{
@@ -205,7 +203,7 @@ def display_home():
                 <p>Smarter study starts here.</p>
             </div>
         </div>
-        """,
+        "",
         unsafe_allow_html=True
     )
         
