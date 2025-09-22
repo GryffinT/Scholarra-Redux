@@ -20,19 +20,6 @@ logo = [
 
 st.set_page_config(layout="wide")
 
-#    selected = option_menu(
-#        menu_title=None,
-#        options=["Home", "Courses", "Search", "Profile"],
-#        icons=["house", "book", "search", "person"],
-#        orientation="horizontal",
-#    )
-#    
-#    if selected == "Home":
-#        display_home()
-#    elif selected == "Browse Courses":
-#    elif selected == "Search":
-#    elif selected == "Profile":
-
 st.markdown("""
     <style>
         div[data-testid="stTabs"] button {
@@ -43,10 +30,7 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-
-
-# Define tabs
-tab1, tab2, tab3 = st.tabs(["Home", "Courses", "Profile"])
+tab1, tab2, tab3, tab4 = st.tabs(["Home", "Courses", "Laurent", "Profile])
 
 st.session_state.page = 0
 
@@ -68,3 +52,8 @@ with tab3:
         st.header("An owl")
         st.image("https://static.streamlit.io/examples/owl.jpg", width=200)
         st_autorefresh(interval=840000, key="3_auto_refresh")
+
+with tab4:
+    st.session_state.page = 4
+    if st.session_state.page == 4:
+        pass
