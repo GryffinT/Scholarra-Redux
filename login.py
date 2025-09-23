@@ -68,40 +68,38 @@ def login_window():
 
                     st.success(f"Account created successfully! Your ID is {user_id}. You can now log in.")
 
-    # Global button styling
     st.markdown(
         """
         <style>
-        div.stButton > button {
-            padding: 16px 48px;   /* button size */
-            font-size: 22px;      /* text size */
-            border-radius: 8px;   /* rounded corners */
+        .button-row {
+            display: flex;
+            justify-content: space-between; /* pushes buttons apart */
+            align-items: center;
+            width: 100%;
+            margin: 20px 0; /* space above/below row */
+        }
+        .button-row button {
+            padding: 16px 48px;
+            font-size: 22px;
+            border-radius: 8px;
         }
         </style>
+        <div class="button-row">
+            <div id="login-btn"></div>
+            <div id="signup-btn"></div>
+        </div>
         """,
         unsafe_allow_html=True,
     )
     
-    # Two equal columns
-    col_left, col_right = st.columns([1,1])
+    # Inject Streamlit buttons into placeholders
+    login_placeholder = st.empty()
+    signup_placeholder = st.empty()
     
-    with col_left:
-        # Align button to the left edge
-        st.markdown(
-            "<div style='text-align: left;'>",
-            unsafe_allow_html=True
-        )
+    with login_placeholder.container():
         if st.button("Login", key="login_btn"):
             vote("A")
-        st.markdown("</div>", unsafe_allow_html=True)
     
-    with col_right:
-        # Align button to the right edge
-        st.markdown(
-            "<div style='text-align: right;'>",
-            unsafe_allow_html=True
-        )
+    with signup_placeholder.container():
         if st.button("Signup", key="signup_btn"):
             vote("B")
-        st.markdown("</div>", unsafe_allow_html=True)
-
