@@ -11,13 +11,12 @@ def login_window():
     if "username" not in st.session_state:
         st.session_state.username = ""
 
-    @st.experimental_singleton
-    def get_conn():
-        return st.connection("gsheets", type=GSheetsConnection)
+    # Initialize GSheets connection once per session
+    if "conn" not in st.session_state:
+        st.session_state.conn = st.connection("gsheets", type=GSheetsConnection)
+    conn = st.session_state.conn
 
-    conn = get_conn()
-
-    # The function called when a box is clicked
+    # Function called when a box is clicked
     def vote(item):
         if item == "A":
             # LOGIN
