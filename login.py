@@ -69,9 +69,21 @@ def login_window():
                     st.success(f"Account created successfully! Your ID is {user_id}. You can now log in.")
 
     with col2: 
-        if st.button("Login"):
+        if st.markdown(
+            """<style>
+            div.stButton > button:first-child {
+                padding: 12px 32px;
+                font-size: 18px;
+                border-radius: 8px;
+            }
+            </style>""",
+            unsafe_allow_html=True,
+        ):
+            pass
+        if st.button("Login", key="login_btn"):
             vote("A")
+    
     with col3:
-        if st.button("Signup"):
+        if st.button("Signup", key="signup_btn"):
             vote("B")
 
