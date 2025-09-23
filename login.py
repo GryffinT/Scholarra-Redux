@@ -4,37 +4,39 @@ import random
 import string
 from streamlit_gsheets import GSheetsConnection
 
-
 def login_window():
+    # Initialize session state
     if "page" not in st.session_state:
         st.session_state.page = 0
     if "username" not in st.session_state:
         st.session_state.username = ""
 
-    col1, col2, col3, col4 = st.columns(4)
+    @st.experimental_singleton
+    def get_conn():
+        return st.connection("gsheets", type=GSheetsConnection)
 
-    @st.dialog(" ")
+    conn = get_conn()
+
+    # The function called when a box is clicked
     def vote(item):
-        conn = st.connection("gsheets", type=GSheetsConnection)
-
         if item == "A":
             # LOGIN
             st.header("Login")
-            username = st.text_input("Username")
-            password = st.text_input("Password", type="password")
+            username = st.text_input("Username", key="login_username")
+            password = st.text_input("Password", type="password", key="login_password")
+            valid = False
 
-            if st.button("Submit"):
+            if st.button("Submit", key="login_submit"):
                 df = conn.read(worksheet="Sheet1", ttl="10m")
-                valid = False
 
                 for row in df.itertuples(index=False):
                     if row.Username == username and row.Password == password:
                         st.session_state.username = username
                         st.session_state.page += 1
                         st.success("Login successful!")
+                        valid = True
                         st.rerun()
-                    else:
-                        valid = False
+                        break
 
                 if not valid:
                     st.warning("Username or password is incorrect.")
@@ -42,11 +44,11 @@ def login_window():
         elif item == "B":
             # SIGNUP
             st.header("Signup")
-            username = st.text_input("Username")
-            password = st.text_input("Password", type="password")
-            organization = st.text_input("Organization")
+            username = st.text_input("Username", key="signup_username")
+            password = st.text_input("Password", type="password", key="signup_password")
+            organization = st.text_input("Organization", key="signup_org")
 
-            if st.button("Submit"):
+            if st.button("Submit", key="signup_submit"):
                 df = conn.read(worksheet="Sheet1", ttl="10m")
 
                 if username in df["Username"].values:
@@ -67,6 +69,8 @@ def login_window():
                     conn.update(worksheet="Sheet1", data=updated_df)
 
                     st.success(f"Account created successfully! Your ID is {user_id}. You can now log in.")
+
+    # CSS for hover/expanding boxes
     st.markdown("""
     <style>
     .click-box {
@@ -79,11 +83,11 @@ def login_window():
         text-align: center;
         cursor: pointer;
         transition: all 0.3s ease;
-        position: relative;
         width: 100%;
+        display: inline-block;
     }
     .click-box:hover {
-        transform: scale(1.03);
+        transform: scale(1.05);
         background-color: #e0e0ff;
         border-color: #888;
     }
@@ -99,17 +103,16 @@ def login_window():
     }
     </style>
     """, unsafe_allow_html=True)
-    
+
     # Columns for left/right layout
     col_left, col_spacer, col_right = st.columns([1, 8, 1])
-    
+
     with col_left:
         st.markdown("<div class='click-box'>LOGIN</div>", unsafe_allow_html=True)
         if st.button("login_hidden"):
             vote("A")
-    
+
     with col_right:
         st.markdown("<div class='click-box'>SIGNUP</div>", unsafe_allow_html=True)
         if st.button("signup_hidden"):
             vote("B")
-
