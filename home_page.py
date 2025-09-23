@@ -185,7 +185,8 @@ def display_home():
         )
         
         pad(2)
-        login_window()
+        st.button("Login")
+        st.button("Signup")
         pad(2)
         format_chat("Expand and feed your interests, understanding, and curiosities", 50, 1)
         format_chat("Through Scholarra you can take courses and learn with Laurent", 25, 1)
