@@ -8,7 +8,8 @@ from Main_generative import output
 
 images_dir = os.path.join(os.path.dirname(__file__), "media")
 logo = [
-    os.path.join(images_dir, "N_N.png")
+    os.path.join(images_dir, "N_N.png"),
+    os.path.join(images_dir, "LaurentLogo.png")
 ]
 
 def contain(*messages):
@@ -43,7 +44,7 @@ def display_ai():
     with open(logo[0], "rb") as image_file:
             bg_encoded = base64.b64encode(image_file.read()).decode()
         
-    with open(logo[0], "rb") as image_file:
+    with open(logo[1], "rb") as image_file:
         fg_encoded = base64.b64encode(image_file.read()).decode()
     
     st.markdown(
