@@ -73,7 +73,7 @@ def login_window():
             """<style>
             div.stButton > button:first-child {
                 padding: 48px 128px;
-                font-size: 50px;
+                font-size: 100px;
                 border-radius: 8px;
             }
             </style>""",
