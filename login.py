@@ -67,31 +67,40 @@ def login_window():
                     conn.update(worksheet="Sheet1", data=updated_df)
 
                     st.success(f"Account created successfully! Your ID is {user_id}. You can now log in.")
-    st.markdown(
-        """
-        <style>
-        div.stButton > button {
-            padding: 32px 96px;  /* taller and wider buttons */
-            font-size: 40px;     /* bigger text */
-            border-radius: 12px; /* slightly more rounded */
-        }
-        </style>
-        """,
-        unsafe_allow_html=True,
-    )
+    st.markdown("""
+    <style>
+    .hover-button {
+        border: 2px solid #d3d3d3;
+        background-color: #d3d3d3;
+        padding: 32px 96px;
+        border-radius: 12px;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        font-size: 40px;
+        text-align: center;
+        display: inline-block;
+    }
+    .hover-button:hover {
+        transform: scale(1.05);
+        background-color: #e0e0ff;
+        border-color: #888;
+    }
+    </style>
+    """, unsafe_allow_html=True)
     
-    # Columns for alignment
-    col_left, col_spacer, col_right = st.columns([1, 8, 1])
+    # Layout columns
+    col_left, col_spacer, col_right = st.columns([1,8,1])
     
     with col_left:
-        st.markdown("<div style='text-align:left'>", unsafe_allow_html=True)
+        st.markdown("<div class='hover-button'>", unsafe_allow_html=True)
         if st.button("Login", key="login_btn"):
             vote("A")
         st.markdown("</div>", unsafe_allow_html=True)
     
     with col_right:
-        st.markdown("<div style='text-align:right'>", unsafe_allow_html=True)
+        st.markdown("<div class='hover-button'>", unsafe_allow_html=True)
         if st.button("Signup", key="signup_btn"):
             vote("B")
         st.markdown("</div>", unsafe_allow_html=True)
+
 
