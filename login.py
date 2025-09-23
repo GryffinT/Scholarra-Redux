@@ -71,16 +71,16 @@ def login_window():
         """
         <style>
         div.stButton > button {
-            padding: 50px 90px;
-            font-size: 50px;
-            border-radius: 8px;
+            padding: 32px 96px;  /* taller and wider buttons */
+            font-size: 40px;     /* bigger text */
+            border-radius: 12px; /* slightly more rounded */
         }
         </style>
         """,
         unsafe_allow_html=True,
     )
     
-    # Create three columns: left button, spacer, right button
+    # Columns for alignment
     col_left, col_spacer, col_right = st.columns([1, 8, 1])
     
     with col_left:
@@ -94,3 +94,4 @@ def login_window():
         if st.button("Signup", key="signup_btn"):
             vote("B")
         st.markdown("</div>", unsafe_allow_html=True)
+
