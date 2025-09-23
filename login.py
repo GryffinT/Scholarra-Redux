@@ -68,38 +68,30 @@ def login_window():
 
                     st.success(f"Account created successfully! Your ID is {user_id}. You can now log in.")
 
+    # Global button styling
     st.markdown(
         """
         <style>
-        .button-row {
-            display: flex;
-            justify-content: space-between; /* pushes buttons to edges */
-            align-items: center;            /* same vertical position */
-            margin: 50px 80px;              /* top/bottom margin and spacing from edges */
-        }
-        .button-row button {
-            padding: 32px 96px;  /* button size */
-            font-size: 40px;     /* text size */
-            border-radius: 12px; /* rounded corners */
+        div.stButton > button {
+            padding: 16px 48px;   /* size of button */
+            font-size: 22px;      /* text size */
+            border-radius: 8px;   /* rounded corners */
+            margin: 0 auto;       /* centers inside its column */
+            display: block;
         }
         </style>
-        <div class="button-row">
-            <div id="login-btn"></div>
-            <div id="signup-btn"></div>
-        </div>
         """,
         unsafe_allow_html=True,
     )
     
-    # Inject Streamlit buttons into the placeholders
-    login_placeholder = st.empty()
-    signup_placeholder = st.empty()
+    # Two equal columns for layout
+    col1, col2, col3 = st.columns([1,2,1])  # outer padding (col1/col3) + middle space (col2)
     
-    with login_placeholder.container():
+    with col1:
         if st.button("Login", key="login_btn"):
             vote("A")
     
-    with signup_placeholder.container():
+    with col3:
         if st.button("Signup", key="signup_btn"):
             vote("B")
 
