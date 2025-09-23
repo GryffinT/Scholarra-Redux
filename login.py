@@ -92,5 +92,5 @@ def display_login():
           with col3:
               if st.button("Signup"):
                   vote("B")
-    else:
-        f"You voted for {st.session_state.vote['item']} because {st.session_state.vote['reason']}"
+      else:
+          f"You voted for {st.session_state.vote['item']} because {st.session_state.vote['reason']}"
