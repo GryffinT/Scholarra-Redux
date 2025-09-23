@@ -81,7 +81,7 @@ def login_window():
     )
     
     # Create three columns: left button, spacer, right button
-    col_left, col_spacer, col_right = st.columns([1, 18, 1])
+    col_left, col_spacer, col_right = st.columns([1, 8, 1])
     
     with col_left:
         st.markdown("<div style='text-align:left'>", unsafe_allow_html=True)
