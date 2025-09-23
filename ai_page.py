@@ -103,6 +103,8 @@ def display_ai():
         unsafe_allow_html=True
     )
     st.title("")
+    st.stream("Hello, User.")
+    st.stream("What's on today's agenda?")
     # Initialize chat history
     if "messages" not in st.session_state:
         st.session_state.messages = []
