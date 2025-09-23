@@ -8,7 +8,7 @@ from Main_generative import output
 
 images_dir = os.path.join(os.path.dirname(__file__), "media")
 logo = [
-    os.path.join(images_dir, "N_N.png"),
+    os.path.join(images_dir, "long-exposure-pier.jpg"),
     os.path.join(images_dir, "LaurentLogo.png")
 ]
 
