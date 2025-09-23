@@ -73,25 +73,35 @@ def login_window():
         """
         <style>
         div.stButton > button {
-            padding: 16px 48px;   /* size of button */
+            padding: 16px 48px;   /* button size */
             font-size: 22px;      /* text size */
             border-radius: 8px;   /* rounded corners */
-            margin: 0 auto;       /* centers inside its column */
-            display: block;
         }
         </style>
         """,
         unsafe_allow_html=True,
     )
     
-    # Two equal columns for layout
-    col1, col2, col3 = st.columns([1,2,1])  # outer padding (col1/col3) + middle space (col2)
+    # Two equal columns
+    col_left, col_right = st.columns([1,1])
     
-    with col1:
+    with col_left:
+        # Align button to the left edge
+        st.markdown(
+            "<div style='text-align: left;'>",
+            unsafe_allow_html=True
+        )
         if st.button("Login", key="login_btn"):
             vote("A")
+        st.markdown("</div>", unsafe_allow_html=True)
     
-    with col3:
+    with col_right:
+        # Align button to the right edge
+        st.markdown(
+            "<div style='text-align: right;'>",
+            unsafe_allow_html=True
+        )
         if st.button("Signup", key="signup_btn"):
             vote("B")
+        st.markdown("</div>", unsafe_allow_html=True)
 
