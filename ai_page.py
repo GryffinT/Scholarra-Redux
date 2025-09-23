@@ -4,6 +4,11 @@ import streamlit as st
 from Main_classification import render_sidebar
 from Main_generative import output
 
+images_dir = os.path.join(os.path.dirname(__file__), "media")
+images = [
+    os.path.join(images_dir, "N_N.png")
+]
+
 def contain(*messages):
     # Start the div with styles
     html_content = '<div style="border:2px solid #e6e6e6; background-color:#FFFFFF; padding:10px; border-radius:10px;">'
