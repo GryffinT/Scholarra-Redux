@@ -69,43 +69,32 @@ def login_window():
                     st.success(f"Account created successfully! Your ID is {user_id}. You can now log in.")
     st.markdown("""
     <style>
-    .click-box {
+    .big-box-button > button {
+        width: 100%;
+        padding: 60px 0;  /* height of box */
+        font-size: 40px;
+        border-radius: 12px;
         border: 2px solid #d3d3d3;
         background-color: #d3d3d3;
-        padding: 32px 96px;
-        border-radius: 12px;
-        transition: all 0.3s ease;
         cursor: pointer;
-        font-size: 40px;
-        text-align: center;
+        transition: all 0.3s ease;
         font-family: 'Josefin Sans', sans-serif;
-        display: inline-block;
     }
-    .click-box:hover {
-        transform: scale(1.05);
+    .big-box-button > button:hover {
+        transform: scale(1.03);
         background-color: #e0e0ff;
         border-color: #888;
-    }
-    
-    /* Hide the actual Streamlit button */
-    .stButton > button {
-        display: none;
     }
     </style>
     """, unsafe_allow_html=True)
     
-    # Two-column layout
-    col_left, col_spacer, col_right = st.columns([1, 8, 1])
+    # Columns for layout
+    col_left, col_spacer, col_right = st.columns([1,8,1])
     
     with col_left:
-        # Create the clickable Login box
-        if st.button("login_hidden"):
+        if st.button("LOGIN", key="login_btn", help="Click to login"):
             vote("A")
-        st.markdown("<div class='click-box'>LOGIN</div>", unsafe_allow_html=True)
     
     with col_right:
-        # Create the clickable Signup box
-        if st.button("signup_hidden"):
+        if st.button("SIGNUP", key="signup_btn", help="Click to signup"):
             vote("B")
-        st.markdown("<div class='click-box'>SIGNUP</div>", unsafe_allow_html=True)
-
