@@ -35,6 +35,7 @@ def display_ai():
     # -------------------------
     
     contain(("Welcome, User", 50, 1), ("What\'s on today\'s agenda?", 25, 1))
+    st.title("")
     # Initialize chat history
     if "messages" not in st.session_state:
         st.session_state.messages = []
