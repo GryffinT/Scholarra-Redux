@@ -103,8 +103,9 @@ def display_ai():
         unsafe_allow_html=True
     )
     st.title("")
-    st.write("Hello, User.")
-    st.write("What's on today's agenda?")
+    contain(("Hello, User.", 50, 1),
+            ("What's on today's agenda?", 25, 1)
+           )
     # Initialize chat history
     if "messages" not in st.session_state:
         st.session_state.messages = []
