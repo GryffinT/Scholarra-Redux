@@ -8,6 +8,7 @@ from home_page import contain
 from course_page import display_course
 from streamlit_autorefresh import st_autorefresh
 from ai_page import display_ai
+from login import login_window
 
 def contain(*messages):
     # Start the div with styles
