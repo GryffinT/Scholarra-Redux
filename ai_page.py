@@ -7,7 +7,7 @@ from Main_classification import render_sidebar
 from Main_generative import output
 
 images_dir = os.path.join(os.path.dirname(__file__), "media")
-images = [
+logo = [
     os.path.join(images_dir, "N_N.png")
 ]
 
