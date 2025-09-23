@@ -72,7 +72,7 @@ def login_window():
         if st.markdown(
             """<style>
             div.stButton > button:first-child {
-                padding: 24px 64px;
+                padding: 48px 128px;
                 font-size: 50px;
                 border-radius: 8px;
             }
