@@ -105,6 +105,7 @@ def display_ai():
     contain(("Hello, User.", 50, 1),
             ("What's on today's agenda?", 25, 1)
            )
+    st.write("")
     st.warning("Laurent is still in training, this is just a mockup prototype we whipped up for display purposes!", icon="⚠️")
     st.title("")
     # Initialize chat history
