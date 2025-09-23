@@ -1,7 +1,6 @@
 lesson_2_quiz = {
   "What do you click to open the search menu in workbook?": "Find & Select",
-  "Can you type an entry's name to search for it in the name box?": "Yes",
-  "Which of the following can you type into the name box to find an entry.": "An entry's column and row.",
+  "Can you type an entry's name to search for it in the name box? (Yes/No)": "Yes",
   "What do you press to open the hyperlink window?": "Ctrl + K",
 }
 
@@ -14,10 +13,10 @@ lesson_3_quiz = {
 }
 
 lesson_3_1_quiz = {
-    "What problem does autofitting columns and rows in Excel solve?": "Ensures all data is visible without extra space or cut-off",
-    "In the first method, how do you autofit all columns after selecting them?": "Double-click between any two column letters",
-    "What keyboard shortcut sequence autofits all columns in the entire worksheet?": "Select all (Ctrl + A), then hold Alt and press H, O, I",
-    "What is the keyboard shortcut to autofit row heights in Excel according to the video?": "Hold Alt and press H, O, A",
+    "What problem does autofitting columns and rows in Excel solve?": "Ensures all data is visible without extra space or cut off",
+    "In the first method, how do you autofit all columns after selecting them?": "Double click between any two column letters",
+    "What keyboard shortcut sequence autofits all columns in the entire worksheet?": "Select all Ctrl + A then hold Alt and press H + O + I",
+    "What is the keyboard shortcut to autofit row heights in Excel according to the video?": "Hold Alt and press H + O + A",
     "What combination does the video presenter use to undo autofitting changes?": "Hold Ctrl and tap Z"
 }
 
@@ -31,9 +30,9 @@ lesson_4_quiz = {
 }
 
 lesson_5_quiz = {
-    "What steps are involved in the third method to autofit columns and rows?": "Select whole sheet (Ctrl + A), click Home tab, Cells group, Format, then choose Autofit Column Width or Row Height",
+    "What steps are involved in the third method to autofit columns and rows?": "Select whole sheet Ctrl + A click Home tab, Cells group, Format, then choose Autofit Column Width or Row Height",
     "Why does the video presenter consider the second method better than the first?": "Because it is faster and keeps your hands on the keyboard",
-    "What happens if column data cannot fit within the current width in Excel?": "Cell shows hashtags (#####) as a placeholder",
+    "What happens if column data cannot fit within the current width in Excel?": "Cell shows hashtags as a placeholder",
     "What is one way viewers can support the creator of the video channel?": "By donating via the thanks button or Patreon",
     "What did the presenter suggest viewers do after watching the video?": "Like, comment, subscribe, and click the notification bell"
 }
