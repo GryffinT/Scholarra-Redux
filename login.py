@@ -67,39 +67,30 @@ def login_window():
                     conn.update(worksheet="Sheet1", data=updated_df)
 
                     st.success(f"Account created successfully! Your ID is {user_id}. You can now log in.")
-
     st.markdown(
         """
         <style>
-        .button-row {
-            display: flex;
-            justify-content: space-between; /* pushes buttons apart */
-            align-items: center;
-            width: 100%;
-            margin: 20px 0; /* space above/below row */
-        }
-        .button-row button {
+        div.stButton > button {
             padding: 16px 48px;
             font-size: 22px;
             border-radius: 8px;
         }
         </style>
-        <div class="button-row">
-            <div id="login-btn"></div>
-            <div id="signup-btn"></div>
-        </div>
         """,
         unsafe_allow_html=True,
     )
     
-    # Inject Streamlit buttons into placeholders
-    login_placeholder = st.empty()
-    signup_placeholder = st.empty()
+    # Create three columns: left button, spacer, right button
+    col_left, col_spacer, col_right = st.columns([1, 8, 1])
     
-    with login_placeholder.container():
+    with col_left:
+        st.markdown("<div style='text-align:left'>", unsafe_allow_html=True)
         if st.button("Login", key="login_btn"):
             vote("A")
+        st.markdown("</div>", unsafe_allow_html=True)
     
-    with signup_placeholder.container():
+    with col_right:
+        st.markdown("<div style='text-align:right'>", unsafe_allow_html=True)
         if st.button("Signup", key="signup_btn"):
             vote("B")
+        st.markdown("</div>", unsafe_allow_html=True)
