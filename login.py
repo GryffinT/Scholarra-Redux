@@ -89,7 +89,7 @@ def login_window():
     """, unsafe_allow_html=True)
     
     # Columns for layout
-    col_left, col_spacer, col_right = st.columns([1,8,1])
+    col_left, col_spacer, col_right = st.columns([1,1,1])
     
     with col_left:
         if st.button("LOGIN", key="login_btn", help="Click to login"):
