@@ -8,6 +8,7 @@ from home_page import contain
 from course_page import display_course
 from streamlit_autorefresh import st_autorefresh
 from ai_page import display_ai
+from login import display_login
 
 def contain(*messages):
     # Start the div with styles
@@ -71,4 +72,4 @@ with tab3:
 with tab4:
     st.session_state.page = 4
     if st.session_state.page == 4:
-        pass
+        display_login()
