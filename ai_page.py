@@ -34,8 +34,7 @@ def display_ai():
     # Chat panel
     # -------------------------
     
-    contain(("Welcome, User", 40, 1), ("What\'s on today\'s agenda?", 25, 1))
-    st.markdown('<h1 style="font-size:30px">What\'s on today\'s agenda?</h1>', unsafe_allow_html=True)
+    contain(("Welcome, User", 50, 1), ("What\'s on today\'s agenda?", 25, 1))
     # Initialize chat history
     if "messages" not in st.session_state:
         st.session_state.messages = []
