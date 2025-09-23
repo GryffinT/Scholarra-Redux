@@ -95,7 +95,7 @@ def display_ai():
         <div class="ai-banner-wrapper">
             <div class="ai-banner-foreground">
                 <img src="data:image/png;base64,{fg_encoded}">
-                <p>Logistic Regression Transformer, Floating Point 16 percision </p>
+                <p>Logistic Regression Transformer, Floating Point 16 precision </p>
             </div>
         </div>
         """,
@@ -105,6 +105,7 @@ def display_ai():
     contain(("Hello, User.", 50, 1),
             ("What's on today's agenda?", 25, 1)
            )
+    st.warn("Laurent is still in training, this is just a mockup prototype we whipped up for display purposes!", icon="⚠️")
     st.title("")
     # Initialize chat history
     if "messages" not in st.session_state:
