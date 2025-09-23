@@ -86,7 +86,6 @@ def display_ai():
         /* Foreground text */
         .ai-banner-foreground p {{
             font-size: 50px;
-            font-weight: 700;
             color: white;
             text-shadow: 2px 2px 5px rgba(0,0,0,0.6);
             margin: 0;
