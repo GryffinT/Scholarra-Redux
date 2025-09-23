@@ -69,32 +69,47 @@ def login_window():
                     st.success(f"Account created successfully! Your ID is {user_id}. You can now log in.")
     st.markdown("""
     <style>
-    .big-box-button > button {
-        width: 100%;
-        padding: 60px 0;  /* height of box */
-        font-size: 40px;
-        border-radius: 12px;
+    .click-box {
         border: 2px solid #d3d3d3;
         background-color: #d3d3d3;
+        border-radius: 12px;
+        padding: 40px;
+        font-size: 40px;
+        font-family: 'Josefin Sans', sans-serif;
+        text-align: center;
         cursor: pointer;
         transition: all 0.3s ease;
-        font-family: 'Josefin Sans', sans-serif;
+        position: relative;
+        width: 100%;
     }
-    .big-box-button > button:hover {
+    .click-box:hover {
         transform: scale(1.03);
         background-color: #e0e0ff;
         border-color: #888;
     }
+    /* Hide the real button but keep it clickable */
+    .stButton > button {
+        opacity: 0;
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        cursor: pointer;
+    }
     </style>
     """, unsafe_allow_html=True)
     
-    # Columns for layout
-    col_left, col_spacer, col_right = st.columns([1,1,1])
+    # Columns for left/right layout
+    col_left, col_spacer, col_right = st.columns([1, 8, 1])
     
     with col_left:
-        if st.button("LOGIN", key="login_btn", help="Click to login"):
+        st.markdown("<div class='click-box'>LOGIN</div>", unsafe_allow_html=True)
+        if st.button("login_hidden"):
             vote("A")
     
     with col_right:
-        if st.button("SIGNUP", key="signup_btn", help="Click to signup"):
+        st.markdown("<div class='click-box'>SIGNUP</div>", unsafe_allow_html=True)
+        if st.button("signup_hidden"):
             vote("B")
+
