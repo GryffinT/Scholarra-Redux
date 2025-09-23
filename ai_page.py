@@ -50,8 +50,8 @@ def display_ai():
     st.markdown(
         f"""
         <style>
-        /* Background banner */
-        .banner-wrapper {{
+        /* Background ai-banner */
+        .ai-banner-wrapper {{
             position: relative;
             width: 100%;
             height: 600px; /* background height */
@@ -63,7 +63,7 @@ def display_ai():
         }}
     
         /* Foreground content */
-        .banner-foreground {{
+        .ai-banner-foreground {{
             position: absolute;
             top: 0;
             left: 0;
@@ -77,14 +77,14 @@ def display_ai():
         }}
     
         /* Foreground logo (adjust size here) */
-        .banner-foreground img {{
+        .ai-banner-foreground img {{
             width: 600px;   /* change foreground size independently */
             height: auto;   /* keep aspect ratio */
             margin-bottom: 10px;
         }}
     
         /* Foreground text */
-        .banner-foreground p {{
+        .ai-banner-foreground p {{
             font-size: 50px;
             font-weight: 700;
             color: white;
@@ -93,8 +93,8 @@ def display_ai():
         }}
         </style>
     
-        <div class="banner-wrapper">
-            <div class="banner-foreground">
+        <div class="ai-banner-wrapper">
+            <div class="ai-banner-foreground">
                 <img src="data:image/png;base64,{fg_encoded}">
                 <p>Logistic Regression Transformer, Floating Point 16 percision </p>
             </div>
