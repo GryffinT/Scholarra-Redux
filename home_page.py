@@ -5,6 +5,8 @@ import uuid
 import json
 from course_page import display_course
 from urllib.parse import urlencode
+from login import login_window
+
 
 images_dir = os.path.join(os.path.dirname(__file__), "media")
 logo = [
@@ -181,7 +183,9 @@ def display_home():
             """,
             unsafe_allow_html=True
         )
-            
+        
+        pad(2)
+        login_window()
         pad(2)
         format_chat("Expand and feed your interests, understanding, and curiosities", 50, 1)
         format_chat("Through Scholarra you can take courses and learn with Laurent", 25, 1)
